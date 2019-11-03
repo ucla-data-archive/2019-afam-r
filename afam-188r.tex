@@ -1,0 +1,714 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={African American Studies 188: Intro to R \& Mapping in R},
+            pdfauthor={Tim Dennis},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{African American Studies 188: Intro to R \& Mapping in R}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Tim Dennis}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2019-10-30}
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{prerequisites}{%
+\chapter{Prerequisites}\label{prerequisites}}
+
+Before the first class on Oct.~4 get a RStudio Cloud account and take thee R primers on RStudio Cloud.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Go to \url{https://rstudio.cloud} and create an account. Use your email account associated with the campus google account (the one with the \texttt{@g.ucla.edu} as it's base).
+\item
+  Once logged in, you can navigate to the primers, by clicking the menu toggle icon:
+\end{enumerate}
+
+\includegraphics[width=400pt]{images/rstudio-cloud}
+
+Then select the Primers menu item:
+
+\includegraphics[width=400pt]{images/primers}
+
+Take the primer ``The Basics'', which has two tutorials named ``Visualization Basics'' and ``Programming Basics''. These will take you about between an 1.5 or 2.0 hours.
+
+\includegraphics[width=400pt]{images/primers-todo}
+
+\hypertarget{getting-started}{%
+\chapter{Getting Started with Data in R}\label{getting-started}}
+
+\hypertarget{learn-objectives}{%
+\section{Learn Objectives}\label{learn-objectives}}
+
+After this lesson, learners will be able to:
+
+\begin{itemize}
+\tightlist
+\item
+  Describe the purpose and use of each pane in the RStudio IDE
+\item
+  Locate buttons and options in the RStudio IDE
+\item
+  Know how to run code in R
+\item
+  How to save things to an object in R
+\item
+  Call functions
+\item
+  What packages are and where to install and load them
+\item
+  Inspecting data and doing simple plots
+\item
+  Make a map in R, exporting images in R
+\end{itemize}
+
+\hypertarget{r-rstudio}{%
+\section{What are R and RStudio?}\label{r-rstudio}}
+
+Throughout this book, we will assume that you are using R via RStudio. First time users often confuse the two. At its simplest, R is like a car's engine\index{R} while RStudio is like a car's dashboard\index{RStudio} as illustrated in Figure \ref{fig:R-vs-RStudio-1}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{images/shutterstock/R_vs_RStudio_1} 
+
+}
+
+\caption{Analogy of difference between R and RStudio.}\label{fig:R-vs-RStudio-1}
+\end{figure}
+
+More precisely, R is a programming language that runs computations, while RStudio is an \emph{integrated development environment (IDE)} that provides an interface by adding many convenient features and tools. So just as the way of having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio's interface makes using R much easier as well.
+
+\hypertarget{using-r-via-rstudio}{%
+\subsection{Using R via RStudio}\label{using-r-via-rstudio}}
+
+Recall our car analogy from earlier. Much as we don't drive a car by interacting directly with the engine but rather by interacting with elements on the car's dashboard, we won't be using R directly but rather we will use RStudio's interface. After you install R and RStudio on your computer, you'll have two new \emph{programs} (also called \emph{applications}) you can open. We'll always work in RStudio and not in the R application. Figure \ref{fig:R-vs-RStudio-2} shows what icon you should be clicking on your computer.
+
+After you open RStudio, you should see something similar to Figure \ref{fig:RStudio-interface}. (Note that differences might exist if the RStudio interface is updated after 2019 to not be this by default.)
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.93\linewidth]{images/rstudio_screenshots/rstudio} 
+
+}
+
+\caption{RStudio interface to R.}\label{fig:RStudio-interface}
+\end{figure}
+
+Note the three \emph{panes} which are three panels dividing the screen: the \emph{console pane}, the \emph{files pane}, and the \emph{environment pane}. Over the course of this chapter, you'll come to learn what purpose each of these panes serves.
+
+\hypertarget{code}{%
+\section{How do I code in R?}\label{code}}
+
+Now that you're set up with R and RStudio, you are probably asking yourself ``OK. Now how do I use R?''. The first thing to note is that unlike other statistical software programs like Excel, SPSS, or Minitab that provide \href{https://en.wikipedia.org/wiki/Point_and_click}{point-and-click} interfaces, R is an \href{https://en.wikipedia.org/wiki/Interpreted_language}{interpreted language}. This means you have to type in commands written in \emph{R code}. In other words, you get to code/program in R. Note that we'll use the terms ``coding'' and ``programming'' interchangeably in this book.
+
+While it is not required to be a seasoned coder/computer programmer to use R, there is still a set of basic programming concepts that R users need to understand. Consequently, while this book is not a book on programming, you will still learn just enough of these basic programming concepts needed to explore and analyze data effectively.
+
+\hypertarget{programming-concepts}{%
+\subsection{Basic programming concepts and terminology}\label{programming-concepts}}
+
+We now introduce some basic programming concepts and terminology. Instead of asking you to learn all these concepts and terminology right now, we'll guide you so that you'll ``learn by doing.'' Note that in this book we will always use a different font to distinguish regular text from \texttt{computer\_code}. The best way to master these topics is, in our opinions, through \href{https://jamesclear.com/deliberate-practice-theory}{deliberate practice} with R and lots of repetition.
+
+\begin{itemize}
+\tightlist
+\item
+  Basics: \index{programming language basics}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{Console}: where you enter in commands. \index{console}
+  \item
+    \emph{Running code}: the act of telling R to perform an act by giving it commands in the console.
+  \item
+    \emph{Objects}: where values are saved in R. We'll show you how to \emph{assign} values to objects and how to display the contents of objects. \index{objects}
+  \item
+    \emph{Data types}: integers, doubles/numerics, logicals, and characters. \index{data types} Integers are values like -1, 0, 2, 4092. Doubles or numerics are a larger set of values containing both the integers but also fractions and decimal values like -24.932 and 0.8. Logicals are either \texttt{TRUE} or \texttt{FALSE} and characters are text such as ``cabbage'', ``The Wire'', and ``This ramen is delicious.'' Note that characters are often denoted with the quotation marks around them.
+  \end{itemize}
+\item
+  \emph{Vectors}: a series of values. These are created using the \texttt{c()} function, where \texttt{c()} stands for ``combine'' or ``concatenate.'' For example, \texttt{c(6,\ 11,\ 13,\ 31,\ 90,\ 92)} creates a six element series of positive integer values \index{vectors}.
+\item
+  \emph{Factors}: \emph{categorical data} are commonly represented in R as factors. \index{factors} Categorical data can also be represented as \emph{strings}. We'll see this difference as we progress through the book.
+\item
+  \emph{Data frames}: rectangular spreadsheets. They are representations of datasets in R where the rows correspond to \emph{observations} and the columns correspond to \emph{variables} that describe the observations. \index{data frames} We'll cover data frames later in Section \ref{nycflights13}.
+\item
+  \emph{Conditionals}: \index{conditionals}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Testing for equality in R using \texttt{==} (and not \texttt{=}, which is typically used for assignment). For example, \texttt{2\ +\ 1\ ==\ 3} compares \texttt{2\ +\ 1} to \texttt{3} and is correct R code, while \texttt{2\ +\ 1\ =\ 3} will return an error.
+  \item
+    Boolean algebra: \texttt{TRUE/FALSE} statements and mathematical operators such as \texttt{\textless{}} (less than), \texttt{\textless{}=} (less than or equal), and \texttt{!=} (not equal to). \index{Boolean algebra} For example, \texttt{4\ +\ 2\ \textgreater{}=\ 3} will return \texttt{TRUE}, but \texttt{3\ +\ 5\ \textless{}=\ 1} will return \texttt{FALSE}.
+  \item
+    Logical operators: \texttt{\&} representing ``and'' as well as \texttt{\textbar{}} representing ``or.'' For example, \texttt{(2\ +\ 1\ ==\ 3)\ \&\ (2\ +\ 1\ ==\ 4)} returns \texttt{FALSE} since both clauses are not \texttt{TRUE} (only the first clause is \texttt{TRUE}). On the other hand, \texttt{(2\ +\ 1\ ==\ 3)\ \textbar{}\ (2\ +\ 1\ ==\ 4)} returns \texttt{TRUE} since at least one of the two clauses is \texttt{TRUE}. \index{operators!logical}
+  \end{itemize}
+\item
+  \emph{Functions}, also called \emph{commands}: Functions perform tasks in R. They take in inputs called \emph{arguments} and return outputs. You can either manually specify a function's arguments or use the function's \emph{default values}. \index{functions}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For example, the function \texttt{seq()} in R generates a sequence of numbers. If you just run \texttt{seq()} it will return the value 1. That doesn't seem very useful! This is because the default arguments are set as \texttt{seq(from\ =\ 1,\ to\ =\ 1)}. Thus, if you don't pass in different values for \texttt{from} and \texttt{to} to change this behavior, R just assumes all you want is the number 1. You can change the argument values by updating the values after the \texttt{=} sign. If we try out \texttt{seq(from\ =\ 2,\ to\ =\ 5)} we get the result \texttt{2\ 3\ 4\ 5} that we might expect.
+  \item
+    We'll work with functions a lot throughout this book and you'll get lots of practice in understanding their behaviors. To further assist you in understanding when a function is mentioned in the book, we'll also include the \texttt{()} after them as we did with \texttt{seq()} above.
+  \end{itemize}
+\end{itemize}
+
+This list is by no means an exhaustive list of all the programming concepts and terminology needed to become a savvy R user; such a list would be so large it wouldn't be very useful, especially for novices. Rather, we feel this is a minimally viable list of programming concepts and terminology you need to know before getting started. We feel that you can learn the rest as you go. Remember that your mastery of all of these concepts and terminology will build as you practice more and more.
+
+\hypertarget{messages}{%
+\subsection{Errors, warnings, and messages}\label{messages}}
+
+One thing that intimidates new R and RStudio users is how it reports \emph{errors}, \emph{warnings}, and \emph{messages}. R reports errors, warnings, and messages in a glaring red font, which makes it seem like it is scolding you. However, seeing red text in the console is not always bad.
+
+R will show red text in the console pane in three different situations:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Errors}: \index{R!errors} When the red text is a legitimate error, it will be prefaced with ``Error in\ldots{}'' and will try to explain what went wrong. Generally when there's an error, the code will not run. For example, we'll see in Subsection \ref{package-use} if you see \texttt{Error\ in\ ggplot(...)\ :\ could\ not\ find\ function\ "ggplot"}, it means that the \texttt{ggplot()} function is not accessible because the package that contains the function (\texttt{ggplot2}) was not loaded with \texttt{library(ggplot2)}. Thus you cannot use the \texttt{ggplot()} function without the \texttt{ggplot2} package being loaded first.
+\item
+  \textbf{Warnings}: \index{R!warnings} When the red text is a warning, it will be prefaced with ``Warning:'' and R will try to explain why there's a warning. Generally your code will still work, but with some caveats. For example, you will see in Chapter \ref{viz} if you create a scatterplot based on a dataset where two of the rows of data have missing entries that would be needed to create points in the scatterplot, you will see this warning: \texttt{Warning:\ Removed\ 2\ rows\ containing\ missing\ values\ (geom\_point)}. R will still produce the scatterplot with all the remaining non-missing values, but it is warning you that two of the points aren't there.
+\item
+  \textbf{Messages}: \index{R!messages} When the red text doesn't start with either ``Error'' or ``Warning'', it's \emph{just a friendly message}. You'll see these messages when you load \emph{R packages} in the upcoming Subsection \ref{package-loading} or when you read data saved in spreadsheet files with the \texttt{read\_csv()} function as you'll see in Chapter \ref{tidy}. These are helpful diagnostic messages and they don't stop your code from working. Additionally, you'll see these messages when you install packages too using \texttt{install.packages()} as discussed in Subsection \ref{package-installation}.
+\end{itemize}
+
+Remember, when you see red text in the console, \emph{don't panic}. It doesn't necessarily mean anything is wrong. Rather:
+
+\begin{itemize}
+\tightlist
+\item
+  If the text starts with ``Error'', figure out what's causing it. {Think of errors as a red traffic light: something is wrong!}
+\item
+  If the text starts with ``Warning'', figure out if it's something to worry about. For instance, if you get a warning about missing values in a scatterplot and you know there are missing values, you're fine. If that's surprising, look at your data and see what's missing. {Think of warnings as a yellow traffic light: everything is working fine, but watch out/pay attention.}
+\item
+  Otherwise, the text is just a message. Read it, wave back at R, and thank it for talking to you. {Think of messages as a green traffic light: everything is working fine and keep on going!}
+\end{itemize}
+
+\hypertarget{tips-code}{%
+\subsection{Tips on learning to code}\label{tips-code}}
+
+Learning to code/program is quite similar to learning a foreign language. It can be daunting and frustrating at first. Such frustrations are common and it is normal to feel discouraged as you learn. However, just as with learning a foreign language, if you put in the effort and are not afraid to make mistakes, anybody can learn and improve.
+
+Here are a few useful tips to keep in mind as you learn to program:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Remember that computers are not actually that smart}: You may think your computer or smartphone is ``smart,'' but really people spent a lot of time and energy designing them to appear ``smart.'' In reality, you have to tell a computer everything it needs to do. Furthermore, the instructions you give your computer can't have any mistakes in them, nor can they be ambiguous in any way.
+\item
+  \textbf{Take the ``copy, paste, and tweak'' approach}: Especially when you learn your first programming language or you need to understand particularly complicated code, it is often much easier to take existing code that you know works and modify it to suit your ends. This is as opposed to trying to type out the code from scratch. We call this the \emph{``copy, paste, and tweak''} approach. So early on, we suggest not trying to write code from memory, but rather take existing examples we have provided you, then copy, paste, and tweak them to suit your goals. After you start feeling more confident, you can slowly move away from this approach. Think of the ``copy, paste, and tweak'' approach as training wheels for a child learning to ride a bike. After getting comfortable, they won't need them anymore.
+\item
+  \textbf{The best way to learn to code is by doing}: Rather than learning to code for its own sake, we find that learning to code goes much smoother when you have a goal in mind or when you are working on a particular project, like analyzing data that you are interested in and that is important to you.
+\item
+  \textbf{Practice is key}: Just as the only method to improve your foreign language skills is through lots of practice and speaking, the only method to improving your coding skills is through lots of practice. Don't worry, however, we'll give you plenty of opportunities to do so!
+\end{itemize}
+
+\hypertarget{packages}{%
+\section{What are R packages?}\label{packages}}
+
+Another point of confusion with many new R users is the idea of an R package. R packages \index{R!packages} extend the functionality of R by providing additional functions, data, and documentation. They are written by a worldwide community of R users and can be downloaded for free from the internet.
+
+For example, among the many packages we will use in this book are the \texttt{ggplot2} package for data visualization in Chapter \ref{viz}\index{R packages!ggplot2}, the \texttt{dplyr} package \citep{R-dplyr} for data wrangling in Chapter \ref{wrangling}\index{R packages!dplyr}, the \texttt{moderndive} package \citep{R-moderndive} that accompanies this book\index{R packages!moderndive}, and the \texttt{infer} package \citep{R-infer} for ``tidy'' and transparent statistical inference in Chapters \ref{confidence-intervals}, \ref{hypothesis-testing}, and \ref{inference-for-regression}\index{R packages!infer}.
+
+A good analogy for R packages \index{R packages} is they are like apps you can download onto a mobile phone:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/shutterstock/R_vs_R_packages} 
+
+}
+
+\caption{Analogy of R versus R packages.}\label{fig:R-vs-R-packages}
+\end{figure}
+
+So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn't have everything. R packages are like the apps you can download onto your phone from Apple's App Store or Android's Google Play.
+
+Let's continue this analogy by considering the Instagram app for editing and sharing pictures. Say you have purchased a new phone and you would like to share a photo you have just taken with friends and family on Instagram. You need to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Install the app}: Since your phone is new and does not include the Instagram app, you need to download the app from either the App Store or Google Play. You do this once and you're set for the time being. You might need to do this again in the future when there is an update to the app.
+\item
+  \emph{Open the app}: After you've installed Instagram, you need to open the app.
+\end{enumerate}
+
+Once Instagram is open on your phone, you can then proceed to share your photo with your friends and family. The process is very similar for using an R package. You need to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Install the package}: This is like installing an app on your phone. Most packages are not installed by default when you install R and RStudio. Thus if you want to use a package for the first time, you need to install it first. Once you've installed a package, you likely won't install it again unless you want to update it to a newer version.
+\item
+  \emph{``Load'' the package}: ``Loading'' a package is like opening an app on your phone. Packages are not ``loaded'' by default when you start RStudio on your computer; you need to ``load'' each package you want to use every time you start RStudio.
+\end{enumerate}
+
+Let's now show you how to perform these two steps for the \texttt{ggplot2} package for data visualization.
+
+\hypertarget{package-installation}{%
+\subsection{Package installation}\label{package-installation}}
+
+\begin{quote}
+\textbf{Note about RStudio Server or RStudio Cloud}: If your instructor has provided you with a link and access to RStudio Server or RStudio Cloud, you might not need to install packages, as they might be preinstalled for you by your instructor. That being said, it is still a good idea to know this process for later on when you are not using RStudio Server or Cloud, but rather RStudio Desktop on your own computer.
+\end{quote}
+
+There are two ways to install an R package: an easy way and a more advanced way. \index{R packages!installation} Let's install the \texttt{ggplot2} package the easy way first as shown in Figure \ref{fig:easy-way-install}. In the Files pane of RStudio:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Click on the ``Packages'' tab.
+\item
+  Click on ``Install'' next to Update.
+\item
+  Type the name of the package under ``Packages (separate multiple with space or comma):'' In this case, type \texttt{ggplot2}.
+\item
+  Click ``Install.''
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=4in]{images/install_packages_easy_way} 
+
+}
+
+\caption{Installing packages in R the easy way.}\label{fig:easy-way-install}
+\end{figure}
+
+An alternative but slightly less convenient way to install a package is by typing \texttt{install.packages("ggplot2")} in the console pane of RStudio and pressing Return/Enter on your keyboard. Note you must include the quotation marks around the name of the package.
+
+Much like an app on your phone, you only have to install a package once. However, if you want to update a previously installed package to a newer version, you need to reinstall it by repeating the earlier steps.
+
+\begin{learncheck}
+\vspace{-0.25in}
+
+\textbf{\emph{Learning check}} \vspace{-0.25in}
+\end{learncheck}
+
+\textbf{(LC1.1)} Repeat the earlier installing steps, but for the \texttt{dplyr}, \texttt{nycflights13}, and \texttt{knitr} packages. This will install the earlier mentioned \texttt{dplyr} package for data wrangling, the \texttt{nycflights13} package containing data on all domestic flights leaving a NYC airport in 2013, and the \texttt{knitr} package for writing reports and generating easy-to-read tables in R. We'll use these packages in the next section.
+
+\begin{learncheck}
+\vspace{-0.25in}
+\vspace{-0.25in}
+\end{learncheck}
+
+Note that if you'd like to match up exactly with what the output looks like throughout the book, you may want to use the exact versions of the packages that we used. You can find a full listing of these packages and their versions in Appendix \ref{appendixE}. This likely won't be relevant for novices, but we included it for reproducibility reasons.
+
+\hypertarget{package-loading}{%
+\subsection{Package loading}\label{package-loading}}
+
+Recall that after you've installed a package, you need to ``load it.'' In other words, you need to ``open it.'' We do this by using the \texttt{library()} command. \index{R packages!loading} For example, to load the \texttt{ggplot2} package, run the following code in the console pane. What do we mean by ``run the following code''? Either type or copy-and-paste the following code into the console pane and then hit the Enter key.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+If after running the earlier code, a blinking cursor returns next to the \texttt{\textgreater{}} ``prompt'' sign, it means you were successful and the \texttt{ggplot2} package is now loaded and ready to use. If, however, you get a red ``error message'' that reads\ldots{} \index{R packages!loading error}
+
+\begin{verbatim}
+Error in library(ggplot2) : there is no package called ‘ggplot2’
+\end{verbatim}
+
+\ldots{} it means that you didn't successfully install it. This is an example of an ``error message'' we discussed in Subsection \ref{messages}. If you get this error message, go back to Subsection \ref{package-installation} on R package installation and make sure to install the \texttt{ggplot2} package before proceeding.
+
+\begin{learncheck}
+\vspace{-0.25in}
+
+\textbf{\emph{Learning check}} \vspace{-0.25in}
+\end{learncheck}
+
+\textbf{(LC1.2)} ``Load'' the \texttt{dplyr}, \texttt{nycflights13}, and \texttt{knitr} packages as well by repeating the earlier steps.
+
+\begin{learncheck}
+\vspace{-0.25in}
+\vspace{-0.25in}
+\end{learncheck}
+
+\hypertarget{package-use}{%
+\subsection{Package use}\label{package-use}}
+
+One very common mistake new R users make when wanting to use particular packages is they forget to ``load'' them first by using the \texttt{library()} command we just saw. Remember: \emph{you have to load each package you want to use every time you start RStudio.} If you don't first ``load'' a package, but attempt to use one of its features, you'll see an error message similar to:
+
+\begin{verbatim}
+Error: could not find function
+\end{verbatim}
+
+This is a different error message than the one you just saw on a package not having been installed yet. R is telling you that you are trying to use a function in a package that has not yet been ``loaded.'' R doesn't know where to find the function you are using. Almost all new users forget to do this when starting out, and it is a little annoying to get used to doing it. However, you'll remember with practice and after some time it will become second nature for you.
+
+\hypertarget{nycflights13}{%
+\section{Explore your first datasets}\label{nycflights13}}
+
+Let's put everything we've learned so far into practice and start exploring some real data! Data comes to us in a variety of formats, from pictures to text to numbers. Throughout this book, we'll focus on datasets that are saved in ``spreadsheet''-type format. This is probably the most common way data are collected and saved in many fields. Remember from Subsection \ref{programming-concepts} that these ``spreadsheet''-type datasets are called \emph{data frames} in R. \index{data frames} We'll focus on working with data saved as data frames throughout this book.
+
+Let's first load all the packages needed for this chapter, assuming you've already installed them. Read Section \ref{packages} for information on how to install and load R packages if you haven't already.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(nycflights13)}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(knitr)}
+\end{Highlighting}
+\end{Shaded}
+
+At the beginning of all subsequent chapters in this book, we'll always have a list of packages that you should have installed and loaded in order to work with that chapter's R code.
+
+\hypertarget{nycflights13-package}{%
+\subsection{\texorpdfstring{\texttt{nycflights13} package}{nycflights13 package}}\label{nycflights13-package}}
+
+Many of us have flown on airplanes or know someone who has. Air travel has become an ever-present aspect of many people's lives. If you look at the Departures flight information board at an airport, you will frequently see that some flights are delayed for a variety of reasons. Are there ways that we can understand the reasons that cause flight delays?
+
+We'd all like to arrive at our destinations on time whenever possible. (Unless you secretly love hanging out at airports. If you are one of these people, pretend for a moment that you are very much anticipating being at your final destination.) Throughout this book, we're going to analyze data related to all 2013 domestic flights departing from one of New York City's three main airports: Newark Liberty International (EWR), John F. Kennedy International (JFK), and LaGuardia Airport (LGA). We'll access this data using the \texttt{nycflights13} \index{R packages!nycflights13} R package which contained five datasets saved in five data frames:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{flights}: Information on all r comma(nrow(nycflights13::flights)) flights.
+\item
+  \texttt{airlines}: A table matching airline names and their two-letter International Air Transport Association (IATA) airline codes (also known as carrier codes) for r nrow(nycflights13::airlines) airline companies. For example, ``DL'' is the two-letter code for Delta Air Lines.
+\item
+  \texttt{planes}: Information about each of the r comma(nrow(nycflights13::planes)) physical aircraft used.
+\item
+  \texttt{weather}: Hourly meteorological data for each of the three NYC airports. This data frame has r comma(nrow(nycflights13::weather)) rows, roughly corresponding to the \(365 \times 24 \times 3 = 26,280\) possible hourly measurements one can observe at three locations over the course of a year.
+\item
+  \texttt{airports}: Airport names, codes, and locations for the ``r comma(nrow(nycflights13::airports))'' domestic destination airports.
+\end{itemize}
+
+\hypertarget{flights-data-frame}{%
+\subsection{\texorpdfstring{\texttt{flights} data frame}{flights data frame}}\label{flights-data-frame}}
+
+We'll begin by exploring the \texttt{flights} data frame and get an idea of its structure. Run the following code in your console, either by typing it or by cutting-and-pasting it. It displays the contents of the \texttt{flights} data frame in your console. Note that depending on the size of your monitor, the output may vary slightly.
+
+Let's unpack this output:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{A\ tibble:\ 336,776\ x\ 19}: A \texttt{tibble} is a specific kind of data frame and is short for ``tidy table'' (we'll discuss what it means for a data frame to be ``tidy'' later on in Section \ref{tidy-data-ex}).\index{tibble} This particular data frame has
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{336,776} rows corresponding to different \emph{observations}. Here, each observation is a flight.
+  \item
+    \texttt{19} columns corresponding to 19 \emph{variables} describing each observation.
+  \end{itemize}
+\item
+  \texttt{year}, \texttt{month}, \texttt{day}, \texttt{dep\_time}, \texttt{sched\_dep\_time}, \texttt{dep\_delay}, and \texttt{arr\_time} are the different columns, in other words, the different variables of this dataset.
+\item
+  We then have a preview of the first 10 rows of observations corresponding to the first 10 flights. R is only showing the first 10 rows, because if it showed all \texttt{336,776} rows, it would overwhelm your screen.
+\item
+  \texttt{...\ with\ 336,766\ more\ rows,\ and\ 11\ more\ variables:} indicating to us that 336,766 more rows of data and 11 more variables could not fit in this screen.
+\end{itemize}
+
+Unfortunately, this output does not allow us to explore the data very well, but it does give a nice preview. Let's look at some different ways to explore data frames.
+
+\hypertarget{exploredataframes}{%
+\subsection{Exploring data frames}\label{exploredataframes}}
+
+There are many ways to get a feel for the data contained in a data frame such as \texttt{flights}. We present three functions that take as their ``argument'' (their input) the data frame in question. We also include a fourth method for exploring one particular column of a data frame:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Using the \texttt{View()} function, which brings up RStudio's built-in spreadsheet viewer.
+\item
+  Using the \texttt{glimpse()} function, which is included in the \texttt{dplyr} package.
+\item
+  Using the \texttt{kable()} function, which is included in the \texttt{knitr} package.
+\item
+  Using the \texttt{\$} ``extraction operator,'' which is used to view a single variable/column in a data frame.
+\end{enumerate}
+
+\textbf{1. \texttt{View()}}:
+
+Run \texttt{View(flights)} \index{R packages!utils!View()} in your console in RStudio, either by typing it or cutting-and-pasting it into the console pane. Explore this data frame in the resulting pop-up viewer. You should get into the habit of viewing any data frames you encounter. Note the uppercase \texttt{V} in \texttt{View}. R is case-sensitive, so you'll get an error message if you run \texttt{view(flights)} instead of \texttt{View(flights)}.
+
+\begin{learncheck}
+\vspace{-0.25in}
+
+\textbf{\emph{Learning check}} \vspace{-0.25in}
+\end{learncheck}
+
+\textbf{(LC1.3)} What does any \emph{ONE} row in this \texttt{flights} dataset refer to?
+
+\begin{itemize}
+\tightlist
+\item
+  A. Data on an airline
+\item
+  B. Data on a flight
+\item
+  C. Data on an airport
+\item
+  D. Data on multiple flights
+\end{itemize}
+
+\begin{learncheck}
+\vspace{-0.25in}
+\vspace{-0.25in}
+\end{learncheck}
+
+By running \texttt{View(flights)}, we can explore the different \emph{variables} listed in the columns. Observe that there are many different types of variables. Some of the variables like \texttt{distance}, \texttt{day}, and \texttt{arr\_delay} are what we will call \emph{quantitative} variables. \index{quantitative} These variables are numerical in nature. Other variables here are \index{categorical} \emph{categorical}.
+
+Note that if you look in the leftmost column of the \texttt{View(flights)} output, you will see a column of numbers. These are the row numbers of the dataset. If you glance across a row with the same number, say row 5, you can get an idea of what each row is representing. This will allow you to identify what object is being described in a given row by taking note of the values of the columns in that specific row. This is often called the \emph{observational unit}.\index{observational unit} The observational unit in this example is an individual flight departing from New York City in 2013. You can identify the observational unit by determining what ``thing'' is being measured or described by each of the variables. We'll talk more about observational units in Subsection \ref{identification-vs-measurement-variables} on \emph{identification} and \emph{measurement} variables.
+
+\textbf{2. \texttt{glimpse()}}:
+
+The second way we'll cover to explore a data frame is using the \texttt{glimpse()} function \index{dplyr!glimpse()} included in the \index{dplyr|seealso{R packages!dplyr}} \texttt{dplyr} package. Thus, you can only use the \texttt{glimpse()} function after you've loaded the \texttt{dplyr} package by running \texttt{library(dplyr)}. This function provides us with an alternative perspective for exploring a data frame than the \texttt{View()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{glimpse}\NormalTok{(flights)}
+\end{Highlighting}
+\end{Shaded}
+
+Observe that \texttt{glimpse()} will give you the first few entries of each variable in a row after the variable name. In addition, the \emph{data type} (see Subsection \ref{programming-concepts}) of the variable is given immediately after each variable's name inside \texttt{\textless{}\ \textgreater{}}. Here, \texttt{int} and \texttt{dbl} refer to ``integer'' and ``double'', which are computer coding terminology for quantitative/numerical variables. ``Doubles'' take up twice the size to store on a computer compared to integers. In contrast, \texttt{chr} refers to ``character'', which is computer terminology for text data. In most forms, text data, such as the \texttt{carrier} or \texttt{origin} of a flight, are categorical variables. The \texttt{time\_hour} variable is another data type: \texttt{dttm}. These types of variables represent date and time combinations. However, we won't work with dates and times in this book; we leave this topic for other data science books like \href{https://ubc-dsci.github.io/introduction-to-datascience/}{``Introduction to Data Science'' by Tiffany-Anne Timbers, Melissa Lee, and Trevor Campbell} or \href{https://r4ds.had.co.nz/dates-and-times.html}{R for Data Science} \citep{rds2016}.
+
+\begin{learncheck}
+\vspace{-0.25in}
+
+\textbf{\emph{Learning check}} \vspace{-0.25in}
+\end{learncheck}
+
+\textbf{(LC1.4)} What are some other examples in this dataset of \emph{categorical} variables? What makes them different than \emph{quantitative} variables?
+
+\begin{learncheck}
+\vspace{-0.25in}
+\vspace{-0.25in}
+\end{learncheck}
+
+\textbf{3. \texttt{kable()}}:
+
+The final way to explore the entirety of a data frame is using the \texttt{kable()} \index{knitr!kable()} function from the \index{knitr|seealso{R packages!knitr}} \texttt{knitr} package. Let's explore the different carrier codes for all the airlines in our dataset two ways. Run both of these lines of code in the console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{airlines}
+\KeywordTok{kable}\NormalTok{(airlines)}
+\end{Highlighting}
+\end{Shaded}
+
+At first glance, it may not appear that there is much difference in the outputs. However, when using tools for producing reproducible reports such as \href{http://rmarkdown.rstudio.com/lesson-1.html}{R Markdown}, the latter code produces output that is much more legible and reader-friendly. You'll see us use this reader-friendly style in many places in the book when we want to print a data frame as a nice table.
+
+\textbf{4. \texttt{\$} operator}
+
+Lastly, the \texttt{\$} operator \index{operators!dollar sign} allows us to extract and then explore a single variable within a data frame. For example, run the following in your console
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{airlines}\OperatorTok{$}\NormalTok{name}
+\end{Highlighting}
+\end{Shaded}
+
+We used the \texttt{\$} operator to extract only the \texttt{name} variable and return it as a vector of length 16\index{vectors}. We'll only be occasionally exploring data frames using the \texttt{\$} operator, instead favoring the \texttt{View()} and \texttt{glimpse()} functions.
+
+\hypertarget{identification-vs-measurement-variables}{%
+\subsection{Identification and measurement variables}\label{identification-vs-measurement-variables}}
+
+There is a subtle difference between the kinds of variables that you will encounter in data frames: \emph{identification variables} and \emph{measurement variables}. For example, let's explore the \texttt{airports} data frame by showing the output of \#\texttt{glimpse(airports)}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{glimpse}\NormalTok{(airports)}
+\end{Highlighting}
+\end{Shaded}
+
+The variables \texttt{faa} and \texttt{name} are what we will call \emph{identification variables}, variables that uniquely identify each observational unit. In this case, the identification variables uniquely identify airports. Such variables are mainly used in practice to uniquely identify each row in a data frame. \texttt{faa} gives the unique code provided by the FAA for that airport, while the \texttt{name} variable gives the longer official name of the airport. The remaining variables (\texttt{lat}, \texttt{lon}, \texttt{alt}, \texttt{tz}, \texttt{dst}, \texttt{tzone}) are often called \emph{measurement} or \emph{characteristic} variables: variables that describe properties of each observational unit. For example, \texttt{lat} and \texttt{long} describe the latitude and longitude of each airport.
+
+Furthermore, sometimes a single variable might not be enough to uniquely identify each observational unit: combinations of variables might be needed. While it is not an absolute rule, for organizational purposes it is considered good practice to have your identification variables in the left-most columns of your data frame.
+
+\begin{learncheck}
+\vspace{-0.25in}
+
+\textbf{\emph{Learning check}} \vspace{-0.25in}
+\end{learncheck}
+
+\textbf{(LC1.5)} What properties of each airport do the variables \texttt{lat}, \texttt{lon}, \texttt{alt}, \texttt{tz}, \texttt{dst}, and \texttt{tzone} describe in the \texttt{airports} data frame? Take your best guess.
+
+\textbf{(LC1.6)} Provide the names of variables in a data frame with at least three variables in which one of them is an identification variable and the other two are not. In other words, create your own tidy data frame that matches these conditions.
+
+\begin{learncheck}
+\vspace{-0.25in}
+\vspace{-0.25in}
+\end{learncheck}
+
+\hypertarget{help-files}{%
+\subsection{Help files}\label{help-files}}
+
+Another nice feature of R are help files, which provide documentation for various functions and datasets. You can bring up help files by adding a \texttt{?} \index{operators!?} before the name of a function or data frame and then run this in the console. You will then be presented with a page showing the corresponding documentation if it exists. For example, let's look at the help file for the \texttt{flights} data frame.
+
+The help file should pop up in the Help pane of RStudio. If you have questions about a function or data frame included in an R package, you should get in the habit of consulting the help file right away.
+
+\begin{learncheck}
+\vspace{-0.25in}
+
+\textbf{\emph{Learning check}} \vspace{-0.25in}
+\end{learncheck}
+
+\textbf{(LC1.7)} Look at the help file for the \texttt{airports} data frame. Revise your earlier guesses about what the variables \texttt{lat}, \texttt{lon}, \texttt{alt}, \texttt{tz}, \texttt{dst}, and \texttt{tzone} each describe. How good were your guesses?
+
+\begin{learncheck}
+\vspace{-0.25in}
+\vspace{-0.25in}
+\end{learncheck}
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+We've given you what we feel is a minimally viable set of tools to explore data in R. Does this chapter contain everything you need to know? Absolutely not. To try to include everything in this chapter would make the chapter so large it wouldn't be useful! As we said earlier, the best way to further add to your toolbox is by actually getting into RStudio and running and writing code as much as possible.
+
+\hypertarget{literature}{%
+\chapter{Literature}\label{literature}}
+
+Here is a review of existing methods.
+
+\hypertarget{mapping-with-r}{%
+\chapter{Mapping with R}\label{mapping-with-r}}
+
+We describe our methods in this chapter.
+
+\hypertarget{mapping-with-r-1}{%
+\chapter{Mapping with R}\label{mapping-with-r-1}}
+
+\bibliography{book.bib,packages.bib}
+
+
+\end{document}

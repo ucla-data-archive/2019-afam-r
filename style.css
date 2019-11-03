@@ -12,3 +12,32 @@ pre {
 pre code {
   white-space: inherit;
 }
+.callout {
+    background-color: #f4fd9c20;
+}
+.callout h2 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    background: linear-gradient(to bottom, #f4fd9c, #f5fda6);
+    border-color: #f4fd9c;
+    margin-top: 0px;
+    margin-left: -5px;
+}
+
+.challenge {
+    background-color: #eec27520;
+}
+
+.challenge h2 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    background: linear-gradient(to bottom, #eec275, #f0c883);
+    border-color: #eec275;
+    margin-top: 0px;
+    margin-left: -5px;
+}
+
+
+}

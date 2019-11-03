@@ -1,5 +1,5 @@
-book_filename: "bookdown-demo"
+book_filename: "afam-188r"
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "R Class "
 delete_merged_file: true
