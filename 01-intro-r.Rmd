@@ -48,6 +48,9 @@ After this lesson, learners will be able to:
 * Inspecting data and doing simple plots
 * Make a map in R, exporting images in R 
 
+Source:  The first part of the lesson is largely taken from the ModerDive book <https://moderndive.com/> 
+Slides: <day1-slides.html>
+
 
 ## What are R and RStudio? {#r-RStudio}
 
@@ -125,38 +128,72 @@ Here are a few useful tips to keep in mind as you learn to program:
 * **The best way to learn to code is by doing**: Rather than learning to code for its own sake, we find that learning to code goes much smoother when you have a goal in mind or when you are working on a particular project, like analyzing data that you are interested in and that is important to you. 
 * **Practice is key**:  Just as the only method to improve your foreign language skills is through lots of practice and speaking, the only method to improving your coding skills is through lots of practice. Don't worry, however, we'll give you plenty of opportunities to do so!
 
-## How to run code/first script
+## How to run code/your first script
 
+* Everyone follow this link to our shared workspace:  <https://rstudio.cloud/spaces/31925/join?access_code=PGkF2YGbM3cWUQ76j%2FYUUJWKv3v6c3fa2jQAoxih>
+* Inside that project is a folder name:  called `in_class_coding.R`
+* Double click on it - this creates your own separate copy of the file. 
+* Inside that file you'll see a number of lines with `#` - these are comments.
+* Add your name where is says `Your Name` - keep the `#` at the start of the line.
+
+### Let's start coding in R 
+
+* Follow along with me as I live code. I will look at your files to make sure you have participated in live-coding. 
 * We can do basic math in R 
-* To run the code we can put our cursor on the line we want to run and click on <kbd>Run</kbd> in the top right of the script pane.
+* To run the code we can put our cursor on the line we want to run and click on <kbd>Run</kbd> and **Run selected line** in the top right of the script pane.
 
 
 ```{r simple-math}
 5 + 3 
 ```
 
-* We can also highlight multiple lines of code and click <kbd>Run</kbd>
-* This is good, but it takes extra time to click and point when you are coding, so RStudio have keyboard shortcuts to let you run code.
-* Use <cmd>+<enter> on Mac and <ctr>+<enter> on windows
-* let's try a few more expressions:
+* We can also use a keyboard shortcut to run the code 
+* Use `<cmd>+<enter>` on Mac and `<ctr>+<enter>` on Windows
 
-```{r}
+```{r simple-math-keyboardshortcut}
+5 + 10
+```
+
+* We can also highlight multiple lines of code and click <kbd>Run</kbd>
+
+```{r highlight-run2}
+5 + 10
+(5 + 10)/2
+```
+
+* The same works with the keyboard shortcut. 
+* You can highlight multiple lines and use `<cmd>+<enter>` on Mac and `<ctr>+<enter>` on Windows
+
+
+```{r highlight-run3}
+5 + 10
+(5 + 10)/2
+```
+
+* These lines of code are sometimes called `expressions` 
+* Let's try a few more expressions:
+
+```{r string}
 #a string or character sequence is like a name or sentence or alpha numberic in R
 "Tim Dennis"
 ```
 
-```{r}
-# we can use arithmetic on strings
-"Your Name"
+* Wait a second what is that line that starts with the `#` symbol? Anyone? 
+* It's called a comment and is very useful for you as a coder to leave notes to yourself or others about what's going on in your code
+* Anything after the `#` will not be evaluated by R, but remains in the code 
+
+```{r ur-name}
+# Use your name instead
+"Your Name" #this comment will also be evaulated in the output
 ```
 
-## Explore your first datasets {#arrests}
+## Explore your first dataset {#arrests}
 
-The data we'll use is in our `data/` folder. Let's look at it - its a CSV? What does that stand for?  
+In R, the main event is usually working with data! So let's do that. The data we'll use is in our `data/` folder. Let's look at it - its a CSV? What does that stand for?  
 
 Data comes to us in a variety of formats, from pictures to text to numbers.  Throughout this class, we'll focus on datasets that are saved in "spreadsheet"-type format. This is probably the most common way data are collected and saved in many fields. But in R, we can read in data in many formats - this means that R will load the data into it's environment and make it ready for R to work with it.
 
-Before we start exploring our `arrests` data in R, let's first load the packages needed for this lesson. What's a package? We haven't talked about those yet? 
+Before we start exploring our `arrests` data in R, let's first load the packages needed for this lesson. We've touched on packages in the slides, let's revisit. 
 
 ## What are Packages 
 
@@ -172,6 +209,10 @@ So R is like a new mobile phone: while it has a certain amount of features when 
 
 What are the steps to doing this? To install a package, click on the Packages tab on the right bottom pane. Now you can click **Install** and start typing the package you want to install and it will download. 
 
+```{r r-packages-install, out.width='70%', echo=FALSE}
+knitr::include_graphics("images/packages.png")
+```
+
 How do you find out about packages? Take a look at [task views](https://cran.r-project.org/web/views/) on the CRAN (Comprehensive R Archive Network). Packages are grouped by topic. For this class, because we are using R Studio Cloud, I've already installed the packages we need. 
 
 Once you install a package you need to tell R you want to use it. We do this with the `library()` function. Ok but what is a function? Anybody know? Right functions perform tasks in R. They take inputs called **arguments** (in this case our csv file) and return some kind of output. `library()` takes a package we want to use in our R code and loads it into our current R environment. Let's try now: 
@@ -185,6 +226,7 @@ library(tidyverse)
 ```{r getting-help-read_csv}
 ?read_csv
 ```
+
 We can also call the help menu by using the `help()` function: 
 
 ```{r using-help}
@@ -199,7 +241,7 @@ Run the the following code:
 read_csv('data/aug6_12_arrest_data.csv')
 ```
 
-Ok, notice we need to quote the file location and name. This is because files paths and names are strings in R. Now when we run it, it outputs the dataset to the console. That's great! We can see our data. Let's get practice running it by running it again. 
+Ok, notice we need to quote the file location and name. This is because files paths and names are strings in R. Strings are a sequence of characters that can be a sentence, names, filepaths, passowrds, anything that conatains characters or alphanumeric characters. Now when we run it, it outputs the dataset to the console. That's great! We can see our data. Let's get practice running it by running it again. 
 
 ```{r read-again-arrests}
 read_csv('data/aug6_12_arrest_data.csv')
@@ -227,16 +269,25 @@ What does the output tell us? How many rows are in our data? Columns? What about
 
 Yes, the last part tells us the type of data R thinks our data is. `age` is a number of double type, `sex` is a character type, `arr_date2` is a date.
 
-This has been helpful, but the problem is we want to do more with our data than outputting  it to the console. In order to save our data and work on it, we need to make it into an object in R. Let's do this now by typing the following and running it:
+This has been helpful, but the problem is we want to do more with our data than outputting it to the console. In order to save our data and work on it, we need to make it into an **object** in R. Let's do this now by typing the following and running it:
 
 ```{r}
 arrests <- read_csv('data/aug6_12_arrest_data.csv')
 ```
 
+Let's look at this. The `<-` symbol is called an assignment operator and you can read it like this. We are assigning what's on the right of 
+`<-` to the object on the left. After we run it, `arrests` will hold our dataset and it becomes an object in R. In R we call this type of object a data frame. You can think of it as what R calls a spreadsheet that is set up to be used in R.
+
+
 ```{block, type='callout'}
 ## Getting data into RStudio Cloud
 
 The data we are using in this class has been provided for us, but what if you want to get data into RStudio Cloud? 
+
+We can use the upload button in the **Files** tab:
+
+![Upload](images/upload-rstudiocloud.png)
+
 ```
 
 
@@ -252,6 +303,14 @@ The below functions take as their "argument" (their input) the data frame.
 1. Using the `str()` function - gives you similar info as `glimpse()`
 1. The functions `head()` and `tail()` also let you inspect the data frame. 
 1. `$` is a symbol that let's us look at one column of a data frame, like so: 
+
+Let's use `glimpse` to look at our data and attributes. 
+
+```{r using-glimps, eval=FALSE}
+glimpse(arrests)
+```
+
+We can look at a single column using the `$` like so:
 
 ```{r dollar-sign, eval=FALSE}
 arrests$race_cat
@@ -276,7 +335,9 @@ Another thing I like to do is see a contingency table of a specific variable:
 table(arrests$race_cat)
 ```
 
-This gives you the tallies by that column in your data frame. Lastly we can view the summary statistics with the `summary()` function:
+This gives you the tallies by that column in your data frame. 
+
+Lastly we can view the summary statistics with the `summary()` function:
 
 ```{r summary-stats}
 summary(arrests)
@@ -285,54 +346,101 @@ This provides you with the `min`, `median`, `mean` quartiles, and `max` all at o
 
 ## Looking at specific variables 
 
-We will often want to look at graphs of specific variables or how they relate to others.  We can use a plotting package for this? The most popular one in R is called `ggplot2` and let's us make publication quality graphics of our data. 
+We will often want to look at graphs of specific variables and how they relate to other variables.  We can use a plotting package for this? The most popular one in R is called `ggplot2` and let's us make publication quality graphics of our data. GGPLOT is part of the `tidyverse` so we do not need to install it or load it. Let's start by looking at a bar chart with `race_cat`. 
 
 ```{r}
+ggplot(arrests, aes(x = race_cat)) +
+  geom_bar()
+```
+
+It creates a bar chart of our `race_cat` and the count of arrests for this period of data we have. But what if we want to add another variable to the bar chart making it a staked bar? We can do this through the `fill` argument. What's an argument again? 
+
+```{r}
+ggplot(arrests, aes(x = race_cat, fill=arrest_type)) +
+  geom_bar()
+```
+
+One thing about stacked bar charts is that it is often hard to tell by sight the proportions represented. Often, it's recommended to use bar charts that are side by side. We can do this via the `position` argument inside the `geom_bar` function. 
+
+
+```{r}
+ggplot(arrests, aes(x = race_cat, fill=arrest_type)) +
+  geom_bar(position = "dodge")
+```
+
+```{block, type='challenge'}
+## Replace the fill with `sex` and run
+
+Replace the fill with `sex` and run the code. 
+```
+
+Ok, good. Let's look at some other plots we can use. 
+
+```{r barchart}
 ggplot(arrests, aes(x = race_cat, fill=sex)) +
   geom_bar(position = "dodge")
 ```
 
-[ask to fill in with sex]:# challenge - ok now you 
-
 ### Variable distribution 
 
-```{r}
+One thing we often want to look at is the distribution of a single variable. This is often visualized via a histogram. Let's look at a histogram of `arrest_time`. 
+
+```{r histogram}
 ggplot(arrests, aes(x=arrest_time)) + geom_histogram()
 ```
 
+Not surprisingly, we see more arrests seems to build up during the day.  One thing to know about a histogram is that you can adjust how the `geom_histogram()` bins the counts using either `binwidth` or `bins` argument. I'll use `bindwidth` below. Notice b/c time is so granular, so many values, you need to pick a big number. 
+
+```{r histogram-binwidth}
+ggplot(arrests, aes(x=arrest_time)) + geom_histogram(binwidth = 500)
+```
+
+
 ### Two variables 
+
+You often want to see the distribution of a variable based on another. Let's use a `boxplot` to generate `arrest_type` by `age` with a boxplot.
 
 ```{r}
 ggplot(arrests, aes(x=arrest_type, y=age)) + geom_boxplot()
 ```
 
+```{block, type='challenge'}
+## Change the x value to another category (sex, race_cat, etc.)
 [todo]:#make a challenge here to fill in for boxplot
+```
+
+```{r}
+ggplot(arrests, aes(x=race_cat, y=age)) + geom_boxplot()
+```
+
 [todo]:#make a challenge here to try violin plot
 
 ### Ggplot map 
 
-How about we make a map with GGPLOT? 
+How about we make a map with GGPLOT? We do this by using our longitude and latitude variables as our x and y mapping. 
 
 ```{r}
 ggplot(arrests, aes(x=longitude, y=latitude)) + geom_point()
 ```
 
-We can see the general shape of LA, but there are limits to what you can do with geospatial data in ggplot. It doesn't know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages gives us this capabilities. 
+We can see the general shape of LA county, but there are limits to what you can do with geospatial data in ggplot. It doesn't know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages gives us these capabilities. 
 
 ## Mapping in R 
 
-The one issue is that we need to tell arrests that it is a spatial object in R. To do that we need to use a few spatial packages. Let's load them. 
+We need a way to tell arrests that it is a spatial object in R. To do that we need to use two spatial packages. Let's load them. 
 
 ```{r}
 library(sf)
 library(tmap)
 ```
 
-`sf` stands for spatial features. `tmap` let's us plot maps like `ggplot`. Ok, first up, let's convert our `arrests` data to a spatial feature. 
+`sf` stands for spatial features. `tmap` let's us plot maps like `ggplot`. Ok, first up, let's convert our `arrests` data to a spatial feature. We need to do this b/c `tmap` will need this information so we can use on a map. I'll create a new data frame called `arrests_sf` and use the `st_as_sf()` that lets us convert our data frame to a `sf` object using the latitude and longitude. 
 
 ```{r}
 arrests_sf <- st_as_sf(arrests, coords = c("longitude", "latitude"), crs = 4326)
 ```
+
+Notice a couple of things you haven't seen before. We have a `coords` argument that we use a `c()` function to **combine** our `latitude` and `longitude` columns. We also tell the function what **Cordinate Refernce System** be are using `4326` is a common one. 
 
 Let's look at this new spatial data frame: 
 
@@ -340,7 +448,7 @@ Let's look at this new spatial data frame:
 View(arrests_sf)
 ```
 
-We now have a column called `geometry` at the end of our data frame. This contains our latitude and longitudes. 
+We now have a column called `geometry` at the end of our data frame. This contains our latitude and longitude. 
 
 One thing nice is that we can use the `plot()` function to plot our spatial data frame. 
 
@@ -373,7 +481,13 @@ la_zips <- st_read(dsn = "data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_C
 la_freeways <- st_read(dsn ="data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp")
 ```
 
-Now let's use the layers. The important thing is we match our shapefile with the geometry type. `tm_polygons()` goes with `#geometry type:  MULTIPOLYGON` and `tm_line()` goes with `#geometry type:  MULTILINESTRING`. 
+Now let's use the layers. The important thing is we match our shapefile with the geometry type. `tm_polygons()` goes with `#geometry type:  MULTIPOLYGON` and `tm_line()` goes with `#geometry type:  MULTILINESTRING`. Let's use this new knowledge to make the map better. 
+
+```{r tmap-mode-plot, echo=FALSE}
+tmap_mode("plot")
+```
+
+
 
 ```{r}
 tm_shape(la_zips) +
@@ -384,6 +498,20 @@ tm_shape(arrests_sf) +
   tm_dots() 
 ```
 
+Ok, that's more like it. Last thing before we break. So far, we've been using `tmap` to produce a static map, but `tmap` lets us create interactive maps by switching it's mode to `view'. We can do this using a single line. 
+
+```{r tmap-mode, echo=FALSE}
+tmap_mode("view")
+```
+
+```{r}
+tm_shape(la_zips) +
+  tm_polygons() +
+tm_shape(la_freeways) +
+  tm_lines() +
+tm_shape(arrests_sf) +
+  tm_dots() 
+```
 []:# #assignment - come up with R script has fill in the blanks challenges 
 []:#maybe an example with tmap 
 []:# assign homework for the primers in dataviz few, boxplot, a couple more
