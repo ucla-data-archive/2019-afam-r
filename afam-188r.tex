@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-10-30}
+    \date{2019-11-04}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -155,11 +155,11 @@ Before the first class on Oct.~4 get a RStudio Cloud account and take thee R pri
   Once logged in, you can navigate to the primers, by clicking the menu toggle icon:
 \end{enumerate}
 
-\includegraphics[width=400pt]{images/rstudio-cloud}
+\includegraphics[width=0.9\linewidth]{images/rstudio-cloud}
 
 Then select the Primers menu item:
 
-\includegraphics[width=400pt]{images/primers}
+\includegraphics[width=0.9\linewidth]{images/primers}
 
 Take the primer ``The Basics'', which has two tutorials named ``Visualization Basics'' and ``Programming Basics''. These will take you about between an 1.5 or 2.0 hours.
 
@@ -193,10 +193,10 @@ After this lesson, learners will be able to:
   Make a map in R, exporting images in R
 \end{itemize}
 
-\hypertarget{r-rstudio}{%
-\section{What are R and RStudio?}\label{r-rstudio}}
+\hypertarget{r-RStudio}{%
+\section{What are R and RStudio?}\label{r-RStudio}}
 
-Throughout this book, we will assume that you are using R via RStudio. First time users often confuse the two. At its simplest, R is like a car's engine\index{R} while RStudio is like a car's dashboard\index{RStudio} as illustrated in Figure \ref{fig:R-vs-RStudio-1}.
+At its simplest, R is like a car's engine while RStudio is like a car's dashboard as illustrated in Figure.
 
 \begin{figure}
 
@@ -207,37 +207,24 @@ Throughout this book, we will assume that you are using R via RStudio. First tim
 \caption{Analogy of difference between R and RStudio.}\label{fig:R-vs-RStudio-1}
 \end{figure}
 
-More precisely, R is a programming language that runs computations, while RStudio is an \emph{integrated development environment (IDE)} that provides an interface by adding many convenient features and tools. So just as the way of having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio's interface makes using R much easier as well.
+More precisely, R is a \textbf{programming language} that runs computations, while RStudio is an \emph{integrated development environment (IDE)} that provides an interface by adding many convenient features and tools. So just as the way of having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio's interface makes using R much easier as well.
 
 \hypertarget{using-r-via-rstudio}{%
 \subsection{Using R via RStudio}\label{using-r-via-rstudio}}
 
-Recall our car analogy from earlier. Much as we don't drive a car by interacting directly with the engine but rather by interacting with elements on the car's dashboard, we won't be using R directly but rather we will use RStudio's interface. After you install R and RStudio on your computer, you'll have two new \emph{programs} (also called \emph{applications}) you can open. We'll always work in RStudio and not in the R application. Figure \ref{fig:R-vs-RStudio-2} shows what icon you should be clicking on your computer.
-
-After you open RStudio, you should see something similar to Figure \ref{fig:RStudio-interface}. (Note that differences might exist if the RStudio interface is updated after 2019 to not be this by default.)
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.93\linewidth]{images/rstudio_screenshots/rstudio} 
-
-}
-
-\caption{RStudio interface to R.}\label{fig:RStudio-interface}
-\end{figure}
-
-Note the three \emph{panes} which are three panels dividing the screen: the \emph{console pane}, the \emph{files pane}, and the \emph{environment pane}. Over the course of this chapter, you'll come to learn what purpose each of these panes serves.
+Recall our car analogy from earlier. Much as we don't drive a car by interacting directly with the engine but rather by interacting with elements on the car's dashboard, we won't be using R directly but rather we will use RStudio's interface.
 
 \hypertarget{code}{%
 \section{How do I code in R?}\label{code}}
 
-Now that you're set up with R and RStudio, you are probably asking yourself ``OK. Now how do I use R?''. The first thing to note is that unlike other statistical software programs like Excel, SPSS, or Minitab that provide \href{https://en.wikipedia.org/wiki/Point_and_click}{point-and-click} interfaces, R is an \href{https://en.wikipedia.org/wiki/Interpreted_language}{interpreted language}. This means you have to type in commands written in \emph{R code}. In other words, you get to code/program in R. Note that we'll use the terms ``coding'' and ``programming'' interchangeably in this book.
+Now that you're set up with R and RStudio in RStudio Cloud, you are probably asking yourself ``OK. Now how do I use R?''. The first thing to note is that unlike other statistical software \& mapping programs like Excel, SPSS, or QGIS that provide \href{https://en.wikipedia.org/wiki/Point_and_click}{point-and-click} interfaces, R is an \href{https://en.wikipedia.org/wiki/Interpreted_language}{interpreted language}. This means you have to type in commands written in \emph{R code}. In other words, you get to code/program in R. Note that we'll use the terms ``coding'' and ``programming'' interchangeably in this book.
 
-While it is not required to be a seasoned coder/computer programmer to use R, there is still a set of basic programming concepts that R users need to understand. Consequently, while this book is not a book on programming, you will still learn just enough of these basic programming concepts needed to explore and analyze data effectively.
+While it is not required to be a seasoned coder/computer programmer to use R, there is still a set of basic programming concepts that R users need to understand. Consequently, while this class is not focused on programming, you will still learn just enough of these basic programming concepts needed to explore and analyze data effectively.
 
 \hypertarget{programming-concepts}{%
 \subsection{Basic programming concepts and terminology}\label{programming-concepts}}
 
-We now introduce some basic programming concepts and terminology. Instead of asking you to learn all these concepts and terminology right now, we'll guide you so that you'll ``learn by doing.'' Note that in this book we will always use a different font to distinguish regular text from \texttt{computer\_code}. The best way to master these topics is, in our opinions, through \href{https://jamesclear.com/deliberate-practice-theory}{deliberate practice} with R and lots of repetition.
+We now introduce some basic programming concepts and terminology. Instead of asking you to learn all these concepts and terminology right now, we'll guide you so that you'll ``learn by doing.'' Note that in lesson we will always use a different font to distinguish regular text from \texttt{computer\_code}. The best way to master these topics is, in our opinions, through \href{https://jamesclear.com/deliberate-practice-theory}{deliberate practice} with R and lots of repetition.
 
 \begin{itemize}
 \tightlist
@@ -260,9 +247,9 @@ We now introduce some basic programming concepts and terminology. Instead of ask
 \item
   \emph{Factors}: \emph{categorical data} are commonly represented in R as factors. \index{factors} Categorical data can also be represented as \emph{strings}. We'll see this difference as we progress through the book.
 \item
-  \emph{Data frames}: rectangular spreadsheets. They are representations of datasets in R where the rows correspond to \emph{observations} and the columns correspond to \emph{variables} that describe the observations. \index{data frames} We'll cover data frames later in Section \ref{nycflights13}.
+  \emph{Data frames}: rectangular spreadsheets. They are representations of datasets in R where the rows correspond to \emph{observations} and the columns correspond to \emph{variables} that describe the observations. \index{data frames} We'll cover data frames later in Section.
 \item
-  \emph{Conditionals}: \index{conditionals}
+  \emph{Conditionals}:
 
   \begin{itemize}
   \tightlist
@@ -271,7 +258,7 @@ We now introduce some basic programming concepts and terminology. Instead of ask
   \item
     Boolean algebra: \texttt{TRUE/FALSE} statements and mathematical operators such as \texttt{\textless{}} (less than), \texttt{\textless{}=} (less than or equal), and \texttt{!=} (not equal to). \index{Boolean algebra} For example, \texttt{4\ +\ 2\ \textgreater{}=\ 3} will return \texttt{TRUE}, but \texttt{3\ +\ 5\ \textless{}=\ 1} will return \texttt{FALSE}.
   \item
-    Logical operators: \texttt{\&} representing ``and'' as well as \texttt{\textbar{}} representing ``or.'' For example, \texttt{(2\ +\ 1\ ==\ 3)\ \&\ (2\ +\ 1\ ==\ 4)} returns \texttt{FALSE} since both clauses are not \texttt{TRUE} (only the first clause is \texttt{TRUE}). On the other hand, \texttt{(2\ +\ 1\ ==\ 3)\ \textbar{}\ (2\ +\ 1\ ==\ 4)} returns \texttt{TRUE} since at least one of the two clauses is \texttt{TRUE}. \index{operators!logical}
+    Logical operators: \texttt{\&} representing ``and'' as well as \texttt{\textbar{}} representing ``or.'' For example, \texttt{(2\ +\ 1\ ==\ 3)\ \&\ (2\ +\ 1\ ==\ 4)} returns \texttt{FALSE} since both clauses are not \texttt{TRUE} (only the first clause is \texttt{TRUE}). On the other hand, \texttt{(2\ +\ 1\ ==\ 3)\ \textbar{}\ (2\ +\ 1\ ==\ 4)} returns \texttt{TRUE} since at least one of the two clauses is \texttt{TRUE}.
   \end{itemize}
 \item
   \emph{Functions}, also called \emph{commands}: Functions perform tasks in R. They take in inputs called \emph{arguments} and return outputs. You can either manually specify a function's arguments or use the function's \emph{default values}. \index{functions}
@@ -297,11 +284,11 @@ R will show red text in the console pane in three different situations:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Errors}: \index{R!errors} When the red text is a legitimate error, it will be prefaced with ``Error in\ldots{}'' and will try to explain what went wrong. Generally when there's an error, the code will not run. For example, we'll see in Subsection \ref{package-use} if you see \texttt{Error\ in\ ggplot(...)\ :\ could\ not\ find\ function\ "ggplot"}, it means that the \texttt{ggplot()} function is not accessible because the package that contains the function (\texttt{ggplot2}) was not loaded with \texttt{library(ggplot2)}. Thus you cannot use the \texttt{ggplot()} function without the \texttt{ggplot2} package being loaded first.
+  \textbf{Errors}: When the red text is a legitimate error, it will be prefaced with ``Error in\ldots{}'' and will try to explain what went wrong. Generally when there's an error, the code will not run. For example, we'll see in Subsection if you see \texttt{Error\ in\ ggplot(...)\ :\ could\ not\ find\ function\ "ggplot"}, it means that the \texttt{ggplot()} function is not accessible because the package that contains the function (\texttt{ggplot2}) was not loaded with \texttt{library(ggplot2)}. Thus you cannot use the \texttt{ggplot()} function without the \texttt{ggplot2} package being loaded first.
 \item
-  \textbf{Warnings}: \index{R!warnings} When the red text is a warning, it will be prefaced with ``Warning:'' and R will try to explain why there's a warning. Generally your code will still work, but with some caveats. For example, you will see in Chapter \ref{viz} if you create a scatterplot based on a dataset where two of the rows of data have missing entries that would be needed to create points in the scatterplot, you will see this warning: \texttt{Warning:\ Removed\ 2\ rows\ containing\ missing\ values\ (geom\_point)}. R will still produce the scatterplot with all the remaining non-missing values, but it is warning you that two of the points aren't there.
+  \textbf{Warnings}: When the red text is a warning, it will be prefaced with ``Warning:'' and R will try to explain why there's a warning. Generally your code will still work, but with some caveats.\\
 \item
-  \textbf{Messages}: \index{R!messages} When the red text doesn't start with either ``Error'' or ``Warning'', it's \emph{just a friendly message}. You'll see these messages when you load \emph{R packages} in the upcoming Subsection \ref{package-loading} or when you read data saved in spreadsheet files with the \texttt{read\_csv()} function as you'll see in Chapter \ref{tidy}. These are helpful diagnostic messages and they don't stop your code from working. Additionally, you'll see these messages when you install packages too using \texttt{install.packages()} as discussed in Subsection \ref{package-installation}.
+  \textbf{Messages}: When the red text doesn't start with either ``Error'' or ``Warning'', it's \emph{just a friendly message}. You'll see these messages when you load \emph{R packages} in the upcoming Subsection or when you read data saved in spreadsheet files with the \texttt{read\_csv()} function. These are helpful diagnostic messages and they don't stop your code from working. Additionally, you'll see these messages when you install packages too using \texttt{install.packages()}.
 \end{itemize}
 
 Remember, when you see red text in the console, \emph{don't panic}. It doesn't necessarily mean anything is wrong. Rather:
@@ -335,14 +322,62 @@ Here are a few useful tips to keep in mind as you learn to program:
   \textbf{Practice is key}: Just as the only method to improve your foreign language skills is through lots of practice and speaking, the only method to improving your coding skills is through lots of practice. Don't worry, however, we'll give you plenty of opportunities to do so!
 \end{itemize}
 
-\hypertarget{packages}{%
-\section{What are R packages?}\label{packages}}
+\hypertarget{how-to-run-codefirst-script}{%
+\section{How to run code/first script}\label{how-to-run-codefirst-script}}
 
-Another point of confusion with many new R users is the idea of an R package. R packages \index{R!packages} extend the functionality of R by providing additional functions, data, and documentation. They are written by a worldwide community of R users and can be downloaded for free from the internet.
+\begin{itemize}
+\tightlist
+\item
+  We can do basic math in R
+\item
+  To run the code we can put our cursor on the line we want to run and click on Run in the top right of the script pane.
+\item
+  We can also highlight multiple lines of code and click Run
+\item
+  This is good, but it takes extra time to click and point when you are coding, so RStudio have keyboard shortcuts to let you run code.
+\item
+  Use + on Mac and + on windows
+\item
+  let's try a few more expressions:
+\end{itemize}
 
-For example, among the many packages we will use in this book are the \texttt{ggplot2} package for data visualization in Chapter \ref{viz}\index{R packages!ggplot2}, the \texttt{dplyr} package \citep{R-dplyr} for data wrangling in Chapter \ref{wrangling}\index{R packages!dplyr}, the \texttt{moderndive} package \citep{R-moderndive} that accompanies this book\index{R packages!moderndive}, and the \texttt{infer} package \citep{R-infer} for ``tidy'' and transparent statistical inference in Chapters \ref{confidence-intervals}, \ref{hypothesis-testing}, and \ref{inference-for-regression}\index{R packages!infer}.
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#a string or character sequence is like a name or sentence or alpha numberic in R}
+\StringTok{"Tim Dennis"}
+\end{Highlighting}
+\end{Shaded}
 
-A good analogy for R packages \index{R packages} is they are like apps you can download onto a mobile phone:
+\begin{verbatim}
+## [1] "Tim Dennis"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# we can use arithmetic on strings}
+\StringTok{"Your Name"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Your Name"
+\end{verbatim}
+
+\hypertarget{arrests}{%
+\section{Explore your first datasets}\label{arrests}}
+
+The data we'll use is in our \texttt{data/} folder. Let's look at it - its a CSV? What does that stand for?
+
+Data comes to us in a variety of formats, from pictures to text to numbers. Throughout this class, we'll focus on datasets that are saved in ``spreadsheet''-type format. This is probably the most common way data are collected and saved in many fields. But in R, we can read in data in many formats - this means that R will load the data into it's environment and make it ready for R to work with it.
+
+Before we start exploring our \texttt{arrests} data in R, let's first load the packages needed for this lesson. What's a package? We haven't talked about those yet?
+
+\hypertarget{what-are-packages}{%
+\section{What are Packages}\label{what-are-packages}}
+
+R packages extend the functionality of R by providing additional functions, data, and documentation. They are written by a worldwide community of R users and can be downloaded for free from the internet.
+
+A good analogy for R packages is they are like apps you can download onto a mobile phone:
 
 \begin{figure}
 
@@ -355,350 +390,773 @@ A good analogy for R packages \index{R packages} is they are like apps you can d
 
 So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn't have everything. R packages are like the apps you can download onto your phone from Apple's App Store or Android's Google Play.
 
-Let's continue this analogy by considering the Instagram app for editing and sharing pictures. Say you have purchased a new phone and you would like to share a photo you have just taken with friends and family on Instagram. You need to:
+What are the steps to doing this? To install a package, click on the Packages tab on the right bottom pane. Now you can click \textbf{Install} and start typing the package you want to install and it will download.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \emph{Install the app}: Since your phone is new and does not include the Instagram app, you need to download the app from either the App Store or Google Play. You do this once and you're set for the time being. You might need to do this again in the future when there is an update to the app.
-\item
-  \emph{Open the app}: After you've installed Instagram, you need to open the app.
-\end{enumerate}
+How do you find out about packages? Take a look at \href{https://cran.r-project.org/web/views/}{task views} on the CRAN (Comprehensive R Archive Network). Packages are grouped by topic. For this class, because we are using R Studio Cloud, I've already installed the packages we need.
 
-Once Instagram is open on your phone, you can then proceed to share your photo with your friends and family. The process is very similar for using an R package. You need to:
+Once you install a package you need to tell R you want to use it. We do this with the \texttt{library()} function. Ok but what is a function? Anybody know? Right functions perform tasks in R. They take inputs called \textbf{arguments} (in this case our csv file) and return some kind of output. \texttt{library()} takes a package we want to use in our R code and loads it into our current R environment. Let's try now:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \emph{Install the package}: This is like installing an app on your phone. Most packages are not installed by default when you install R and RStudio. Thus if you want to use a package for the first time, you need to install it first. Once you've installed a package, you likely won't install it again unless you want to update it to a newer version.
-\item
-  \emph{``Load'' the package}: ``Loading'' a package is like opening an app on your phone. Packages are not ``loaded'' by default when you start RStudio on your computer; you need to ``load'' each package you want to use every time you start RStudio.
-\end{enumerate}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
 
-Let's now show you how to perform these two steps for the \texttt{ggplot2} package for data visualization.
+\texttt{tidyverse} gives us access to a bunch of other functions we can now use after it is loaded. One is called \texttt{read\_csv()}. What if we know we need to use \texttt{read\_csv()} to read in our data, but we don't know how. What would we do? We use R's built in help features to get information on the functions. In R we use a \texttt{?} before the function without the trailing parentheses. Type this code in RStudio and run it:
 
-\hypertarget{package-installation}{%
-\subsection{Package installation}\label{package-installation}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?read_csv}
+\end{Highlighting}
+\end{Shaded}
+
+It opens the help documentation in the \textbf{Help} tab in the bottom right RStudio pane. It contains a description, usage, arguments and at the bottom, examples, for the function. We see the first argument of \texttt{read\_csv()} is a \textbf{file} meaning \texttt{read\_csv()} needs the file location so it can read the file into R. With this information let's read write our \texttt{read\_csv()} function so it knows where our arrests data is. Remember from earlier, the arrests data is in the \texttt{data/} folder in our project.
+
+Run the the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{read_csv}\NormalTok{(}\StringTok{'data/aug6_12_arrest_data.csv'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Ok, notice we need to quote the file location and name. This is because files paths and names are strings in R. Now when we run it, it outputs the dataset to the console. That's great! We can see our data. Let's get practice running it by running it again.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{read_csv}\NormalTok{(}\StringTok{'data/aug6_12_arrest_data.csv'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   latitude = col_double(),
+##   longitude = col_double(),
+##   zipcode = col_double(),
+##   arr_date2 = col_date(format = ""),
+##   arrest_time = col_time(format = ""),
+##   age = col_double(),
+##   sex = col_character(),
+##   race_cat = col_character(),
+##   arrest_type = col_character(),
+##   charge = col_character()
+## )
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 2,368 x 10
+##    latitude longitude zipcode arr_date2  arrest_time   age sex   race_cat
+##       <dbl>     <dbl>   <dbl> <date>     <time>      <dbl> <chr> <chr>   
+##  1     34.0     -118.   90021 2018-08-12 15:00          52 M     LatinX  
+##  2     33.9     -118.   90059 2018-08-12 22:00          37 M     Black   
+##  3     34.1     -118.   90036 2018-08-12 22:20          28 M     Black   
+##  4     34.2     -118.   91605 2018-08-12 18:40          28 M     LatinX  
+##  5     34.0     -118.   90037 2018-08-12 19:30          23 M     LatinX  
+##  6     34.3     -118.   91342 2018-08-12 19:48          36 M     LatinX  
+##  7     34.2     -119.   91324 2018-08-12 01:35          62 M     LatinX  
+##  8     34.2     -118.   91401 2018-08-12 15:00          36 M     Other   
+##  9     34.1     -118.   90046 2018-08-12 15:00          28 M     Black   
+## 10     34.1     -118.   91604 2018-08-12 08:00          53 M     White   
+## # ... with 2,358 more rows, and 2 more variables: arrest_type <chr>,
+## #   charge <chr>
+\end{verbatim}
+
+Look at the output in the console. It gives us some important information about our data frame.
+
+\begin{challenge}
+\hypertarget{inspect-the-console-data-output}{%
+\subsection{Inspect the Console Data
+Output}\label{inspect-the-console-data-output}}
+
+What does the output tell us? How many rows are in our data? Columns?
+What about this part?
 
 \begin{quote}
-\textbf{Note about RStudio Server or RStudio Cloud}: If your instructor has provided you with a link and access to RStudio Server or RStudio Cloud, you might not need to install packages, as they might be preinstalled for you by your instructor. That being said, it is still a good idea to know this process for later on when you are not using RStudio Server or Cloud, but rather RStudio Desktop on your own computer.
+cols( latitude = col\_double(),\\
+longitude = col\_double(),\\
+zipcode = col\_double(),\\
+age = col\_double(),\\
+sex = col\_character(),\\
+race\_cat = col\_character(),\\
+arrest\_type = col\_character(),\\
+arr\_date2 = col\_date(format = "")\\
+)
 \end{quote}
 
-There are two ways to install an R package: an easy way and a more advanced way. \index{R packages!installation} Let's install the \texttt{ggplot2} package the easy way first as shown in Figure \ref{fig:easy-way-install}. In the Files pane of RStudio:
+What is this telling us about our data?
+\end{challenge}
 
-\begin{enumerate}
-\def\labelenumi{\alph{enumi})}
-\tightlist
-\item
-  Click on the ``Packages'' tab.
-\item
-  Click on ``Install'' next to Update.
-\item
-  Type the name of the package under ``Packages (separate multiple with space or comma):'' In this case, type \texttt{ggplot2}.
-\item
-  Click ``Install.''
-\end{enumerate}
+Yes, the last part tells us the type of data R thinks our data is. \texttt{age} is a number of double type, \texttt{sex} is a character type, \texttt{arr\_date2} is a date.
 
-\begin{figure}
-
-{\centering \includegraphics[width=4in]{images/install_packages_easy_way} 
-
-}
-
-\caption{Installing packages in R the easy way.}\label{fig:easy-way-install}
-\end{figure}
-
-An alternative but slightly less convenient way to install a package is by typing \texttt{install.packages("ggplot2")} in the console pane of RStudio and pressing Return/Enter on your keyboard. Note you must include the quotation marks around the name of the package.
-
-Much like an app on your phone, you only have to install a package once. However, if you want to update a previously installed package to a newer version, you need to reinstall it by repeating the earlier steps.
-
-\begin{learncheck}
-\vspace{-0.25in}
-
-\textbf{\emph{Learning check}} \vspace{-0.25in}
-\end{learncheck}
-
-\textbf{(LC1.1)} Repeat the earlier installing steps, but for the \texttt{dplyr}, \texttt{nycflights13}, and \texttt{knitr} packages. This will install the earlier mentioned \texttt{dplyr} package for data wrangling, the \texttt{nycflights13} package containing data on all domestic flights leaving a NYC airport in 2013, and the \texttt{knitr} package for writing reports and generating easy-to-read tables in R. We'll use these packages in the next section.
-
-\begin{learncheck}
-\vspace{-0.25in}
-\vspace{-0.25in}
-\end{learncheck}
-
-Note that if you'd like to match up exactly with what the output looks like throughout the book, you may want to use the exact versions of the packages that we used. You can find a full listing of these packages and their versions in Appendix \ref{appendixE}. This likely won't be relevant for novices, but we included it for reproducibility reasons.
-
-\hypertarget{package-loading}{%
-\subsection{Package loading}\label{package-loading}}
-
-Recall that after you've installed a package, you need to ``load it.'' In other words, you need to ``open it.'' We do this by using the \texttt{library()} command. \index{R packages!loading} For example, to load the \texttt{ggplot2} package, run the following code in the console pane. What do we mean by ``run the following code''? Either type or copy-and-paste the following code into the console pane and then hit the Enter key.
+This has been helpful, but the problem is we want to do more with our data than outputting it to the console. In order to save our data and work on it, we need to make it into an object in R. Let's do this now by typing the following and running it:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(ggplot2)}
+\NormalTok{arrests <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{'data/aug6_12_arrest_data.csv'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-If after running the earlier code, a blinking cursor returns next to the \texttt{\textgreater{}} ``prompt'' sign, it means you were successful and the \texttt{ggplot2} package is now loaded and ready to use. If, however, you get a red ``error message'' that reads\ldots{} \index{R packages!loading error}
-
 \begin{verbatim}
-Error in library(ggplot2) : there is no package called ‘ggplot2’
+## Parsed with column specification:
+## cols(
+##   latitude = col_double(),
+##   longitude = col_double(),
+##   zipcode = col_double(),
+##   arr_date2 = col_date(format = ""),
+##   arrest_time = col_time(format = ""),
+##   age = col_double(),
+##   sex = col_character(),
+##   race_cat = col_character(),
+##   arrest_type = col_character(),
+##   charge = col_character()
+## )
 \end{verbatim}
 
-\ldots{} it means that you didn't successfully install it. This is an example of an ``error message'' we discussed in Subsection \ref{messages}. If you get this error message, go back to Subsection \ref{package-installation} on R package installation and make sure to install the \texttt{ggplot2} package before proceeding.
+\begin{callout}
+\hypertarget{getting-data-into-rstudio-cloud}{%
+\subsection{Getting data into RStudio
+Cloud}\label{getting-data-into-rstudio-cloud}}
 
-\begin{learncheck}
-\vspace{-0.25in}
+The data we are using in this class has been provided for us, but what
+if you want to get data into RStudio Cloud?
+\end{callout}
 
-\textbf{\emph{Learning check}} \vspace{-0.25in}
-\end{learncheck}
+\hypertarget{what-to-do-first-after-you-read-in-your-data}{%
+\section{What to do first after you read in your data?}\label{what-to-do-first-after-you-read-in-your-data}}
 
-\textbf{(LC1.2)} ``Load'' the \texttt{dplyr}, \texttt{nycflights13}, and \texttt{knitr} packages as well by repeating the earlier steps.
+After we run this, notice the top left \textbf{Environment} tab in RStudio. We now see \texttt{arrests} listed under \textbf{Data}. We can click on that to open and look at it in an \texttt{arrests} tab in our main editing window. Take a moment and explore the data via this window? Notice you can filter the data, sort and view the data, but not edit it.
 
-\begin{learncheck}
-\vspace{-0.25in}
-\vspace{-0.25in}
-\end{learncheck}
-
-\hypertarget{package-use}{%
-\subsection{Package use}\label{package-use}}
-
-One very common mistake new R users make when wanting to use particular packages is they forget to ``load'' them first by using the \texttt{library()} command we just saw. Remember: \emph{you have to load each package you want to use every time you start RStudio.} If you don't first ``load'' a package, but attempt to use one of its features, you'll see an error message similar to:
-
-\begin{verbatim}
-Error: could not find function
-\end{verbatim}
-
-This is a different error message than the one you just saw on a package not having been installed yet. R is telling you that you are trying to use a function in a package that has not yet been ``loaded.'' R doesn't know where to find the function you are using. Almost all new users forget to do this when starting out, and it is a little annoying to get used to doing it. However, you'll remember with practice and after some time it will become second nature for you.
-
-\hypertarget{nycflights13}{%
-\section{Explore your first datasets}\label{nycflights13}}
-
-Let's put everything we've learned so far into practice and start exploring some real data! Data comes to us in a variety of formats, from pictures to text to numbers. Throughout this book, we'll focus on datasets that are saved in ``spreadsheet''-type format. This is probably the most common way data are collected and saved in many fields. Remember from Subsection \ref{programming-concepts} that these ``spreadsheet''-type datasets are called \emph{data frames} in R. \index{data frames} We'll focus on working with data saved as data frames throughout this book.
-
-Let's first load all the packages needed for this chapter, assuming you've already installed them. Read Section \ref{packages} for information on how to install and load R packages if you haven't already.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(nycflights13)}
-\KeywordTok{library}\NormalTok{(dplyr)}
-\KeywordTok{library}\NormalTok{(knitr)}
-\end{Highlighting}
-\end{Shaded}
-
-At the beginning of all subsequent chapters in this book, we'll always have a list of packages that you should have installed and loaded in order to work with that chapter's R code.
-
-\hypertarget{nycflights13-package}{%
-\subsection{\texorpdfstring{\texttt{nycflights13} package}{nycflights13 package}}\label{nycflights13-package}}
-
-Many of us have flown on airplanes or know someone who has. Air travel has become an ever-present aspect of many people's lives. If you look at the Departures flight information board at an airport, you will frequently see that some flights are delayed for a variety of reasons. Are there ways that we can understand the reasons that cause flight delays?
-
-We'd all like to arrive at our destinations on time whenever possible. (Unless you secretly love hanging out at airports. If you are one of these people, pretend for a moment that you are very much anticipating being at your final destination.) Throughout this book, we're going to analyze data related to all 2013 domestic flights departing from one of New York City's three main airports: Newark Liberty International (EWR), John F. Kennedy International (JFK), and LaGuardia Airport (LGA). We'll access this data using the \texttt{nycflights13} \index{R packages!nycflights13} R package which contained five datasets saved in five data frames:
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{flights}: Information on all r comma(nrow(nycflights13::flights)) flights.
-\item
-  \texttt{airlines}: A table matching airline names and their two-letter International Air Transport Association (IATA) airline codes (also known as carrier codes) for r nrow(nycflights13::airlines) airline companies. For example, ``DL'' is the two-letter code for Delta Air Lines.
-\item
-  \texttt{planes}: Information about each of the r comma(nrow(nycflights13::planes)) physical aircraft used.
-\item
-  \texttt{weather}: Hourly meteorological data for each of the three NYC airports. This data frame has r comma(nrow(nycflights13::weather)) rows, roughly corresponding to the \(365 \times 24 \times 3 = 26,280\) possible hourly measurements one can observe at three locations over the course of a year.
-\item
-  \texttt{airports}: Airport names, codes, and locations for the ``r comma(nrow(nycflights13::airports))'' domestic destination airports.
-\end{itemize}
-
-\hypertarget{flights-data-frame}{%
-\subsection{\texorpdfstring{\texttt{flights} data frame}{flights data frame}}\label{flights-data-frame}}
-
-We'll begin by exploring the \texttt{flights} data frame and get an idea of its structure. Run the following code in your console, either by typing it or by cutting-and-pasting it. It displays the contents of the \texttt{flights} data frame in your console. Note that depending on the size of your monitor, the output may vary slightly.
-
-Let's unpack this output:
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{A\ tibble:\ 336,776\ x\ 19}: A \texttt{tibble} is a specific kind of data frame and is short for ``tidy table'' (we'll discuss what it means for a data frame to be ``tidy'' later on in Section \ref{tidy-data-ex}).\index{tibble} This particular data frame has
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \texttt{336,776} rows corresponding to different \emph{observations}. Here, each observation is a flight.
-  \item
-    \texttt{19} columns corresponding to 19 \emph{variables} describing each observation.
-  \end{itemize}
-\item
-  \texttt{year}, \texttt{month}, \texttt{day}, \texttt{dep\_time}, \texttt{sched\_dep\_time}, \texttt{dep\_delay}, and \texttt{arr\_time} are the different columns, in other words, the different variables of this dataset.
-\item
-  We then have a preview of the first 10 rows of observations corresponding to the first 10 flights. R is only showing the first 10 rows, because if it showed all \texttt{336,776} rows, it would overwhelm your screen.
-\item
-  \texttt{...\ with\ 336,766\ more\ rows,\ and\ 11\ more\ variables:} indicating to us that 336,766 more rows of data and 11 more variables could not fit in this screen.
-\end{itemize}
-
-Unfortunately, this output does not allow us to explore the data very well, but it does give a nice preview. Let's look at some different ways to explore data frames.
-
-\hypertarget{exploredataframes}{%
-\subsection{Exploring data frames}\label{exploredataframes}}
-
-There are many ways to get a feel for the data contained in a data frame such as \texttt{flights}. We present three functions that take as their ``argument'' (their input) the data frame in question. We also include a fourth method for exploring one particular column of a data frame:
+The below functions take as their ``argument'' (their input) the data frame.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
   Using the \texttt{View()} function, which brings up RStudio's built-in spreadsheet viewer.
-\item
-  Using the \texttt{glimpse()} function, which is included in the \texttt{dplyr} package.
-\item
-  Using the \texttt{kable()} function, which is included in the \texttt{knitr} package.
-\item
-  Using the \texttt{\$} ``extraction operator,'' which is used to view a single variable/column in a data frame.
 \end{enumerate}
-
-\textbf{1. \texttt{View()}}:
-
-Run \texttt{View(flights)} \index{R packages!utils!View()} in your console in RStudio, either by typing it or cutting-and-pasting it into the console pane. Explore this data frame in the resulting pop-up viewer. You should get into the habit of viewing any data frames you encounter. Note the uppercase \texttt{V} in \texttt{View}. R is case-sensitive, so you'll get an error message if you run \texttt{view(flights)} instead of \texttt{View(flights)}.
-
-\begin{learncheck}
-\vspace{-0.25in}
-
-\textbf{\emph{Learning check}} \vspace{-0.25in}
-\end{learncheck}
-
-\textbf{(LC1.3)} What does any \emph{ONE} row in this \texttt{flights} dataset refer to?
 
 \begin{itemize}
 \tightlist
 \item
-  A. Data on an airline
-\item
-  B. Data on a flight
-\item
-  C. Data on an airport
-\item
-  D. Data on multiple flights
+  This is the same as clicking on the data frame in the \textbf{Environment} tab
 \end{itemize}
 
-\begin{learncheck}
-\vspace{-0.25in}
-\vspace{-0.25in}
-\end{learncheck}
-
-By running \texttt{View(flights)}, we can explore the different \emph{variables} listed in the columns. Observe that there are many different types of variables. Some of the variables like \texttt{distance}, \texttt{day}, and \texttt{arr\_delay} are what we will call \emph{quantitative} variables. \index{quantitative} These variables are numerical in nature. Other variables here are \index{categorical} \emph{categorical}.
-
-Note that if you look in the leftmost column of the \texttt{View(flights)} output, you will see a column of numbers. These are the row numbers of the dataset. If you glance across a row with the same number, say row 5, you can get an idea of what each row is representing. This will allow you to identify what object is being described in a given row by taking note of the values of the columns in that specific row. This is often called the \emph{observational unit}.\index{observational unit} The observational unit in this example is an individual flight departing from New York City in 2013. You can identify the observational unit by determining what ``thing'' is being measured or described by each of the variables. We'll talk more about observational units in Subsection \ref{identification-vs-measurement-variables} on \emph{identification} and \emph{measurement} variables.
-
-\textbf{2. \texttt{glimpse()}}:
-
-The second way we'll cover to explore a data frame is using the \texttt{glimpse()} function \index{dplyr!glimpse()} included in the \index{dplyr|seealso{R packages!dplyr}} \texttt{dplyr} package. Thus, you can only use the \texttt{glimpse()} function after you've loaded the \texttt{dplyr} package by running \texttt{library(dplyr)}. This function provides us with an alternative perspective for exploring a data frame than the \texttt{View()} function:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{glimpse}\NormalTok{(flights)}
-\end{Highlighting}
-\end{Shaded}
-
-Observe that \texttt{glimpse()} will give you the first few entries of each variable in a row after the variable name. In addition, the \emph{data type} (see Subsection \ref{programming-concepts}) of the variable is given immediately after each variable's name inside \texttt{\textless{}\ \textgreater{}}. Here, \texttt{int} and \texttt{dbl} refer to ``integer'' and ``double'', which are computer coding terminology for quantitative/numerical variables. ``Doubles'' take up twice the size to store on a computer compared to integers. In contrast, \texttt{chr} refers to ``character'', which is computer terminology for text data. In most forms, text data, such as the \texttt{carrier} or \texttt{origin} of a flight, are categorical variables. The \texttt{time\_hour} variable is another data type: \texttt{dttm}. These types of variables represent date and time combinations. However, we won't work with dates and times in this book; we leave this topic for other data science books like \href{https://ubc-dsci.github.io/introduction-to-datascience/}{``Introduction to Data Science'' by Tiffany-Anne Timbers, Melissa Lee, and Trevor Campbell} or \href{https://r4ds.had.co.nz/dates-and-times.html}{R for Data Science} \citep{rds2016}.
-
-\begin{learncheck}
-\vspace{-0.25in}
-
-\textbf{\emph{Learning check}} \vspace{-0.25in}
-\end{learncheck}
-
-\textbf{(LC1.4)} What are some other examples in this dataset of \emph{categorical} variables? What makes them different than \emph{quantitative} variables?
-
-\begin{learncheck}
-\vspace{-0.25in}
-\vspace{-0.25in}
-\end{learncheck}
-
-\textbf{3. \texttt{kable()}}:
-
-The final way to explore the entirety of a data frame is using the \texttt{kable()} \index{knitr!kable()} function from the \index{knitr|seealso{R packages!knitr}} \texttt{knitr} package. Let's explore the different carrier codes for all the airlines in our dataset two ways. Run both of these lines of code in the console:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Using the \texttt{glimpse()} function, which is included in the \texttt{dplyr} package.
+\item
+  Using the \texttt{str()} function - gives you similar info as \texttt{glimpse()}
+\item
+  The functions \texttt{head()} and \texttt{tail()} also let you inspect the data frame.
+\item
+  \texttt{\$} is a symbol that let's us look at one column of a data frame, like so:
+\end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{airlines}
-\KeywordTok{kable}\NormalTok{(airlines)}
+\NormalTok{arrests}\OperatorTok{$}\NormalTok{race_cat}
 \end{Highlighting}
 \end{Shaded}
 
-At first glance, it may not appear that there is much difference in the outputs. However, when using tools for producing reproducible reports such as \href{http://rmarkdown.rstudio.com/lesson-1.html}{R Markdown}, the latter code produces output that is much more legible and reader-friendly. You'll see us use this reader-friendly style in many places in the book when we want to print a data frame as a nice table.
+\begin{verbatim}
+##    [1] "LatinX" "Black"  "Black"  "LatinX" "LatinX" "LatinX" "LatinX"
+##    [8] "Other"  "Black"  "White"  "White"  "White"  "LatinX" "White" 
+##   [15] "LatinX" "LatinX" "LatinX" "White"  "LatinX" "Black"  "LatinX"
+##   [22] "LatinX" "Other"  "LatinX" "LatinX" "White"  "LatinX" "LatinX"
+##   [29] "Other"  "LatinX" "LatinX" "LatinX" "Black"  "White"  "Black" 
+##   [36] "Other"  "White"  "Black"  "Black"  "Black"  "White"  "White" 
+##   [43] "LatinX" "Black"  "White"  "Black"  "Black"  "LatinX" "LatinX"
+##   [50] "Other"  "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "Black" 
+##   [57] "White"  "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "Other" 
+##   [64] "White"  "LatinX" "White"  "Black"  "Other"  "White"  "LatinX"
+##   [71] "LatinX" "White"  "White"  "LatinX" "LatinX" "LatinX" "Black" 
+##   [78] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "White" 
+##   [85] "LatinX" "LatinX" "LatinX" "Black"  "Black"  "LatinX" "LatinX"
+##   [92] "White"  "Black"  "LatinX" "LatinX" "White"  "LatinX" "LatinX"
+##   [99] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX"
+##  [106] "Black"  "LatinX" "LatinX" "Other"  "LatinX" "LatinX" "LatinX"
+##  [113] "White"  "Black"  "White"  "White"  "White"  "LatinX" "LatinX"
+##  [120] "Black"  "White"  "LatinX" "Other"  "LatinX" "Black"  "LatinX"
+##  [127] "LatinX" "Black"  "White"  "LatinX" "Black"  "LatinX" "LatinX"
+##  [134] "LatinX" "Black"  "White"  "LatinX" "Black"  "White"  "LatinX"
+##  [141] "LatinX" "Black"  "LatinX" "Black"  "White"  "Black"  "LatinX"
+##  [148] "LatinX" "LatinX" "LatinX" "White"  "LatinX" "LatinX" "Black" 
+##  [155] "LatinX" "LatinX" "Black"  "White"  "Other"  "LatinX" "LatinX"
+##  [162] "Other"  "LatinX" "LatinX" "LatinX" "Black"  "Other"  "LatinX"
+##  [169] "LatinX" "White"  "LatinX" "LatinX" "Black"  "Black"  "LatinX"
+##  [176] "White"  "Black"  "Other"  "LatinX" "LatinX" "LatinX" "Black" 
+##  [183] "White"  "White"  "LatinX" "Black"  "LatinX" "LatinX" "LatinX"
+##  [190] "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX"
+##  [197] "Black"  "Black"  "LatinX" "Black"  "Black"  "Black"  "Black" 
+##  [204] "LatinX" "Black"  "Black"  "LatinX" "Black"  "LatinX" "Black" 
+##  [211] "Black"  "LatinX" "White"  "Black"  "LatinX" "LatinX" "LatinX"
+##  [218] "Black"  "LatinX" "White"  "White"  "LatinX" "White"  "LatinX"
+##  [225] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX"
+##  [232] "Black"  "Black"  "LatinX" "LatinX" "Black"  "LatinX" "Black" 
+##  [239] "LatinX" "LatinX" "LatinX" "Black"  "LatinX" "Black"  "LatinX"
+##  [246] "White"  "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "Black" 
+##  [253] "Black"  "White"  "Black"  "LatinX" "LatinX" "White"  "LatinX"
+##  [260] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "Other" 
+##  [267] "Black"  "LatinX" "LatinX" "White"  "White"  "Other"  "LatinX"
+##  [274] "White"  "White"  "LatinX" "Black"  "LatinX" "LatinX" "Black" 
+##  [281] "White"  "LatinX" "White"  "LatinX" "LatinX" "Black"  "LatinX"
+##  [288] "Black"  "LatinX" "Black"  "White"  "White"  "LatinX" "Black" 
+##  [295] "Black"  "LatinX" "Black"  "LatinX" "LatinX" "LatinX" "LatinX"
+##  [302] "LatinX" "LatinX" "Black"  "White"  "LatinX" "Black"  "Black" 
+##  [309] "Black"  "LatinX" "White"  "LatinX" "White"  "LatinX" "Black" 
+##  [316] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "Black"  "White" 
+##  [323] "White"  "Black"  "Black"  "White"  "LatinX" "Black"  "LatinX"
+##  [330] "LatinX" "Black"  "LatinX" "Black"  "Black"  "LatinX" "White" 
+##  [337] "Black"  "LatinX" "LatinX" "Black"  "Black"  "Black"  "LatinX"
+##  [344] "Black"  "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "LatinX"
+##  [351] "White"  "LatinX" "White"  "LatinX" "LatinX" "LatinX" "LatinX"
+##  [358] "White"  "Black"  "Black"  "White"  "White"  "White"  "LatinX"
+##  [365] "LatinX" "LatinX" "LatinX" "Black"  "LatinX" "Black"  "LatinX"
+##  [372] "Black"  "LatinX" "Black"  "LatinX" "LatinX" "Other"  "LatinX"
+##  [379] "Black"  "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "LatinX"
+##  [386] "Black"  "White"  "Black"  "Black"  "LatinX" "Black"  "LatinX"
+##  [393] "LatinX" "Black"  "White"  "Black"  "White"  "Black"  "LatinX"
+##  [400] "Black"  "Black"  "LatinX" "Black"  "Black"  "Black"  "Black" 
+##  [407] "Black"  "White"  "White"  "LatinX" "White"  "LatinX" "LatinX"
+##  [414] "LatinX" "LatinX" "LatinX" "Other"  "LatinX" "LatinX" "Black" 
+##  [421] "Black"  "LatinX" "Black"  "Black"  "Black"  "Other"  "LatinX"
+##  [428] "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "Black"  "Black" 
+##  [435] "LatinX" "LatinX" "Black"  "LatinX" "Black"  "Black"  "LatinX"
+##  [442] "LatinX" "Black"  "Black"  "LatinX" "LatinX" "LatinX" "Other" 
+##  [449] "Black"  "LatinX" "LatinX" "Other"  "LatinX" "LatinX" "Black" 
+##  [456] "Black"  "LatinX" "LatinX" "LatinX" "White"  "LatinX" "White" 
+##  [463] "LatinX" "Other"  "LatinX" "LatinX" "Black"  "LatinX" "White" 
+##  [470] "Black"  "White"  "LatinX" "Other"  "LatinX" "Black"  "White" 
+##  [477] "Black"  "LatinX" "White"  "White"  "LatinX" "LatinX" "LatinX"
+##  [484] "LatinX" "LatinX" "LatinX" "Black"  "LatinX" "LatinX" "LatinX"
+##  [491] "LatinX" "LatinX" "LatinX" "White"  "Black"  "Black"  "Black" 
+##  [498] "LatinX" "LatinX" "LatinX" "Black"  "LatinX" "LatinX" "Black" 
+##  [505] "Black"  "LatinX" "LatinX" "White"  "LatinX" "Black"  "White" 
+##  [512] "Black"  "LatinX" "White"  "White"  "LatinX" "Black"  "LatinX"
+##  [519] "White"  "LatinX" "Black"  "LatinX" "LatinX" "LatinX" "LatinX"
+##  [526] "White"  "LatinX" "LatinX" "LatinX" "LatinX" "Black"  "LatinX"
+##  [533] "LatinX" "Black"  "Black"  "Black"  "White"  "White"  "LatinX"
+##  [540] "Other"  "White"  "LatinX" "Black"  "LatinX" "LatinX" "LatinX"
+##  [547] "White"  "LatinX" "LatinX" "LatinX" "LatinX" "White"  "LatinX"
+##  [554] "Black"  "LatinX" "Black"  "Black"  "Other"  "LatinX" "Other" 
+##  [561] "LatinX" "White"  "Other"  "LatinX" "LatinX" "LatinX" "Black" 
+##  [568] "LatinX" "Other"  "Black"  "LatinX" "Black"  "LatinX" "LatinX"
+##  [575] "LatinX" "LatinX" "Other"  "LatinX" "Black"  "Other"  "LatinX"
+##  [582] "Other"  "LatinX" "LatinX" "White"  "LatinX" "LatinX" "LatinX"
+##  [589] "LatinX" "White"  "LatinX" "Black"  "LatinX" "Black"  "Black" 
+##  [596] "LatinX" "Other"  "LatinX" "LatinX" "LatinX" "Other"  "LatinX"
+##  [603] "LatinX" "White"  "LatinX" "Black"  "White"  "Black"  "Other" 
+##  [610] "LatinX" "LatinX" "Black"  "White"  "Black"  "Black"  "LatinX"
+##  [617] "LatinX" "LatinX" "LatinX" "Other"  "White"  "White"  "LatinX"
+##  [624] "Black"  "White"  "Black"  "LatinX" "White"  "Black"  "LatinX"
+##  [631] "Other"  "White"  "White"  "White"  "LatinX" "LatinX" "Black" 
+##  [638] "LatinX" "LatinX" "LatinX" "White"  "LatinX" "Black"  "LatinX"
+##  [645] "Other"  "Black"  "Black"  "White"  "Other"  "LatinX" "LatinX"
+##  [652] "Black"  "LatinX" "Black"  "Other"  "Black"  "LatinX" "White" 
+##  [659] "White"  "White"  "Black"  "LatinX" "White"  "Black"  "LatinX"
+##  [666] "LatinX" "LatinX" "LatinX" "White"  "Black"  "Black"  "LatinX"
+##  [673] "White"  "LatinX" "LatinX" "Black"  "LatinX" "LatinX" "White" 
+##  [680] "LatinX" "LatinX" "Black"  "Black"  "Black"  "Other"  "White" 
+##  [687] "LatinX" "White"  "LatinX" "LatinX" "Black"  "Black"  "LatinX"
+##  [694] "Black"  "Black"  "Black"  "Black"  "Black"  "White"  "White" 
+##  [701] "LatinX" "LatinX" "White"  "White"  "LatinX" "LatinX" "Black" 
+##  [708] "LatinX" "LatinX" "LatinX" "Other"  "Black"  "White"  "White" 
+##  [715] "Black"  "Other"  "Black"  "LatinX" "LatinX" "LatinX" "LatinX"
+##  [722] "Black"  "Black"  "Black"  "White"  "LatinX" "LatinX" "White" 
+##  [729] "LatinX" "LatinX" "White"  "LatinX" "White"  "White"  "Black" 
+##  [736] "LatinX" "Black"  "Black"  "LatinX" "LatinX" "LatinX" "White" 
+##  [743] "LatinX" "Black"  "LatinX" "LatinX" "Black"  "White"  "LatinX"
+##  [750] "Black"  "Black"  "Black"  "LatinX" "White"  "LatinX" "White" 
+##  [757] "LatinX" "White"  "LatinX" "White"  "LatinX" "Black"  "White" 
+##  [764] "Black"  "LatinX" "Black"  "Black"  "White"  "Black"  "Black" 
+##  [771] "LatinX" "White"  "LatinX" "Black"  "Black"  "White"  "White" 
+##  [778] "White"  "LatinX" "Other"  "LatinX" "White"  "White"  "LatinX"
+##  [785] "LatinX" "LatinX" "White"  "Black"  "Black"  "White"  "Black" 
+##  [792] "White"  "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX"
+##  [799] "Black"  "Black"  "LatinX" "Black"  "LatinX" "LatinX" "Black" 
+##  [806] "White"  "Other"  "LatinX" "LatinX" "White"  "Other"  "LatinX"
+##  [813] "White"  "Other"  "LatinX" "White"  "White"  "LatinX" "LatinX"
+##  [820] "White"  "LatinX" "White"  "Black"  "LatinX" "LatinX" "White" 
+##  [827] "White"  "LatinX" "LatinX" "White"  "Other"  "LatinX" "Black" 
+##  [834] "Black"  "Black"  "LatinX" "LatinX" "LatinX" "Black"  "White" 
+##  [841] "Black"  "Black"  "LatinX" "LatinX" "Black"  "LatinX" "White" 
+##  [848] "LatinX" "LatinX" "LatinX" "White"  "White"  "White"  "White" 
+##  [855] "LatinX" "Black"  "White"  "LatinX" "LatinX" "White"  "Black" 
+##  [862] "White"  "Black"  "LatinX" "Black"  "LatinX" "LatinX" "LatinX"
+##  [869] "Black"  "White"  "White"  "Black"  "LatinX" "White"  "White" 
+##  [876] "Black"  "LatinX" "Black"  "White"  "Black"  "White"  "Black" 
+##  [883] "White"  "LatinX" "LatinX" "Black"  "LatinX" "Black"  "White" 
+##  [890] "LatinX" "White"  "White"  "LatinX" "White"  "LatinX" "LatinX"
+##  [897] "LatinX" "Black"  "Black"  "White"  "Black"  "LatinX" "LatinX"
+##  [904] "White"  "LatinX" "White"  "Black"  "LatinX" "Black"  "Black" 
+##  [911] "Other"  "White"  "LatinX" "White"  "LatinX" "Black"  "LatinX"
+##  [918] "LatinX" "LatinX" "Black"  "LatinX" "Black"  "LatinX" "LatinX"
+##  [925] "White"  "Black"  "White"  "Other"  "Other"  "Black"  "LatinX"
+##  [932] "Black"  "Other"  "LatinX" "LatinX" "Black"  "LatinX" "LatinX"
+##  [939] "Other"  "Black"  "LatinX" "LatinX" "LatinX" "White"  "LatinX"
+##  [946] "Black"  "White"  "LatinX" "LatinX" "Black"  "Black"  "White" 
+##  [953] "Black"  "LatinX" "LatinX" "Black"  "White"  "LatinX" "LatinX"
+##  [960] "LatinX" "LatinX" "LatinX" "LatinX" "Black"  "Black"  "Black" 
+##  [967] "LatinX" "Other"  "Black"  "Black"  "LatinX" "Black"  "Black" 
+##  [974] "White"  "Black"  "White"  "Black"  "Black"  "Black"  "Black" 
+##  [981] "Black"  "Black"  "Other"  "LatinX" "LatinX" "Other"  "LatinX"
+##  [988] "LatinX" "Black"  "White"  "LatinX" "Black"  "Black"  "Other" 
+##  [995] "LatinX" "Black"  "LatinX" "LatinX" "White"  "LatinX" "Black" 
+## [1002] "Black"  "LatinX" "Black"  "Black"  "White"  "Black"  "Other" 
+## [1009] "Black"  "White"  "LatinX" "Other"  "LatinX" "LatinX" "LatinX"
+## [1016] "Other"  "LatinX" "Black"  "LatinX" "Black"  "LatinX" "LatinX"
+## [1023] "LatinX" "LatinX" "LatinX" "Black"  "Other"  "Other"  "White" 
+## [1030] "LatinX" "Other"  "White"  "LatinX" "LatinX" "White"  "LatinX"
+## [1037] "Black"  "Other"  "LatinX" "White"  "White"  "LatinX" "White" 
+## [1044] "LatinX" "Black"  "White"  "White"  "Black"  "LatinX" "Black" 
+## [1051] "LatinX" "LatinX" "White"  "LatinX" "Black"  "Other"  "LatinX"
+## [1058] "Other"  "Black"  "White"  "Black"  "Black"  "Black"  "LatinX"
+## [1065] "LatinX" "Black"  "Other"  "White"  "Black"  "White"  "White" 
+## [1072] "White"  "Black"  "White"  "LatinX" "Black"  "LatinX" "White" 
+## [1079] "LatinX" "Black"  "LatinX" "Black"  "White"  "Black"  "LatinX"
+## [1086] "White"  "White"  "Other"  "Black"  "Other"  "LatinX" "LatinX"
+## [1093] "LatinX" "LatinX" "Black"  "Black"  "White"  "LatinX" "Black" 
+## [1100] "LatinX" "White"  "Black"  "LatinX" "LatinX" "LatinX" "White" 
+## [1107] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "Black" 
+## [1114] "Black"  "LatinX" "LatinX" "LatinX" "Black"  "Black"  "Black" 
+## [1121] "LatinX" "Black"  "Black"  "LatinX" "Black"  "LatinX" "White" 
+## [1128] "Black"  "Black"  "Black"  "Black"  "LatinX" "Black"  "LatinX"
+## [1135] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "Black"  "LatinX"
+## [1142] "Black"  "LatinX" "LatinX" "White"  "Other"  "White"  "LatinX"
+## [1149] "White"  "White"  "LatinX" "Black"  "White"  "LatinX" "Black" 
+## [1156] "LatinX" "Black"  "White"  "Other"  "White"  "Black"  "Black" 
+## [1163] "White"  "Black"  "LatinX" "Black"  "LatinX" "Black"  "Other" 
+## [1170] "Other"  "LatinX" "Black"  "Black"  "Black"  "White"  "White" 
+## [1177] "LatinX" "Black"  "White"  "LatinX" "Black"  "LatinX" "Other" 
+## [1184] "LatinX" "LatinX" "White"  "Black"  "White"  "LatinX" "White" 
+## [1191] "LatinX" "Black"  "White"  "LatinX" "White"  "Black"  "White" 
+## [1198] "LatinX" "LatinX" "Black"  "White"  "Black"  "Other"  "White" 
+## [1205] "LatinX" "White"  "Black"  "White"  "Black"  "LatinX" "Black" 
+## [1212] "LatinX" "Black"  "LatinX" "Black"  "LatinX" "LatinX" "White" 
+## [1219] "LatinX" "LatinX" "White"  "LatinX" "LatinX" "LatinX" "Black" 
+## [1226] "Black"  "Other"  "White"  "Black"  "White"  "Black"  "LatinX"
+## [1233] "LatinX" "Other"  "LatinX" "White"  "White"  "Black"  "Black" 
+## [1240] "LatinX" "LatinX" "White"  "LatinX" "LatinX" "LatinX" "LatinX"
+## [1247] "LatinX" "Other"  "Black"  "White"  "LatinX" "LatinX" "White" 
+## [1254] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "Black" 
+## [1261] "Black"  "LatinX" "Other"  "Other"  "LatinX" "Black"  "LatinX"
+## [1268] "LatinX" "Black"  "LatinX" "Black"  "Black"  "LatinX" "LatinX"
+## [1275] "LatinX" "LatinX" "LatinX" "LatinX" "Black"  "White"  "Black" 
+## [1282] "LatinX" "White"  "LatinX" "Other"  "Black"  "LatinX" "Black" 
+## [1289] "LatinX" "LatinX" "LatinX" "Black"  "White"  "White"  "LatinX"
+## [1296] "LatinX" "Black"  "LatinX" "LatinX" "LatinX" "Black"  "Other" 
+## [1303] "LatinX" "Other"  "Black"  "LatinX" "Black"  "LatinX" "Other" 
+## [1310] "Black"  "Black"  "Black"  "LatinX" "LatinX" "Black"  "White" 
+## [1317] "Other"  "LatinX" "LatinX" "LatinX" "LatinX" "Black"  "White" 
+## [1324] "Black"  "White"  "Black"  "Black"  "LatinX" "Other"  "White" 
+## [1331] "LatinX" "LatinX" "LatinX" "LatinX" "Black"  "Black"  "LatinX"
+## [1338] "White"  "LatinX" "LatinX" "Other"  "Other"  "Black"  "Black" 
+## [1345] "LatinX" "Black"  "Black"  "LatinX" "White"  "LatinX" "LatinX"
+## [1352] "White"  "LatinX" "LatinX" "LatinX" "White"  "Black"  "LatinX"
+## [1359] "LatinX" "Black"  "LatinX" "Black"  "LatinX" "Black"  "LatinX"
+## [1366] "LatinX" "White"  "LatinX" "LatinX" "LatinX" "White"  "White" 
+## [1373] "LatinX" "White"  "White"  "LatinX" "Other"  "White"  "LatinX"
+## [1380] "LatinX" "LatinX" "LatinX" "Black"  "LatinX" "Black"  "White" 
+## [1387] "White"  "Black"  "LatinX" "Black"  "White"  "Black"  "White" 
+## [1394] "Other"  "Black"  "Other"  "Black"  "LatinX" "LatinX" "LatinX"
+## [1401] "Black"  "LatinX" "LatinX" "White"  "LatinX" "LatinX" "Black" 
+## [1408] "Black"  "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "White" 
+## [1415] "LatinX" "LatinX" "Black"  "White"  "Black"  "Other"  "LatinX"
+## [1422] "Black"  "LatinX" "Black"  "LatinX" "LatinX" "Black"  "LatinX"
+## [1429] "LatinX" "LatinX" "Black"  "LatinX" "White"  "Black"  "LatinX"
+## [1436] "LatinX" "LatinX" "White"  "LatinX" "Black"  "White"  "LatinX"
+## [1443] "Black"  "Black"  "LatinX" "White"  "Black"  "Black"  "LatinX"
+## [1450] "White"  "White"  "LatinX" "Black"  "Other"  "Other"  "Black" 
+## [1457] "White"  "Black"  "LatinX" "Black"  "Black"  "Black"  "LatinX"
+## [1464] "LatinX" "Black"  "LatinX" "White"  "LatinX" "LatinX" "LatinX"
+## [1471] "LatinX" "Black"  "LatinX" "Black"  "LatinX" "LatinX" "Black" 
+## [1478] "Black"  "White"  "LatinX" "White"  "LatinX" "LatinX" "Black" 
+## [1485] "LatinX" "LatinX" "LatinX" "Black"  "LatinX" "Black"  "Other" 
+## [1492] "Black"  "LatinX" "LatinX" "Black"  "White"  "Black"  "White" 
+## [1499] "Black"  "Other"  "Other"  "Black"  "LatinX" "White"  "LatinX"
+## [1506] "Black"  "Black"  "Other"  "Black"  "Black"  "Black"  "Black" 
+## [1513] "Black"  "LatinX" "Black"  "Black"  "LatinX" "White"  "LatinX"
+## [1520] "LatinX" "Black"  "LatinX" "LatinX" "Black"  "Black"  "White" 
+## [1527] "Other"  "Black"  "Black"  "LatinX" "LatinX" "LatinX" "Black" 
+## [1534] "Black"  "LatinX" "Other"  "Black"  "LatinX" "Black"  "LatinX"
+## [1541] "Black"  "White"  "Black"  "LatinX" "LatinX" "Black"  "Other" 
+## [1548] "LatinX" "LatinX" "Black"  "LatinX" "Black"  "LatinX" "LatinX"
+## [1555] "Black"  "LatinX" "White"  "LatinX" "Black"  "LatinX" "White" 
+## [1562] "Black"  "Black"  "Black"  "Black"  "White"  "LatinX" "LatinX"
+## [1569] "LatinX" "White"  "LatinX" "Black"  "Black"  "Black"  "White" 
+## [1576] "LatinX" "LatinX" "LatinX" "Black"  "Other"  "LatinX" "Other" 
+## [1583] "LatinX" "Other"  "Other"  "Black"  "Black"  "LatinX" "LatinX"
+## [1590] "Black"  "LatinX" "LatinX" "Black"  "Black"  "Black"  "LatinX"
+## [1597] "LatinX" "Black"  "Black"  "Black"  "LatinX" "Black"  "LatinX"
+## [1604] "Other"  "LatinX" "Black"  "White"  "White"  "Black"  "Black" 
+## [1611] "Black"  "LatinX" "LatinX" "LatinX" "White"  "LatinX" "Other" 
+## [1618] "Black"  "Other"  "Black"  "Black"  "Black"  "Black"  "LatinX"
+## [1625] "LatinX" "Black"  "White"  "LatinX" "White"  "LatinX" "LatinX"
+## [1632] "LatinX" "Black"  "White"  "Other"  "LatinX" "White"  "LatinX"
+## [1639] "LatinX" "White"  "LatinX" "Black"  "LatinX" "LatinX" "White" 
+## [1646] "Other"  "Other"  "LatinX" "LatinX" "Black"  "LatinX" "Black" 
+## [1653] "Black"  "LatinX" "Other"  "LatinX" "LatinX" "LatinX" "Black" 
+## [1660] "LatinX" "Black"  "Black"  "Black"  "Black"  "LatinX" "White" 
+## [1667] "White"  "LatinX" "Other"  "Other"  "LatinX" "LatinX" "White" 
+## [1674] "LatinX" "Black"  "LatinX" "White"  "Black"  "LatinX" "White" 
+## [1681] "Black"  "Other"  "Black"  "Other"  "Black"  "Black"  "LatinX"
+## [1688] "White"  "LatinX" "Black"  "LatinX" "Other"  "Black"  "White" 
+## [1695] "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX"
+## [1702] "Black"  "LatinX" "LatinX" "LatinX" "Black"  "Other"  "LatinX"
+## [1709] "Black"  "LatinX" "LatinX" "White"  "Black"  "LatinX" "Black" 
+## [1716] "Black"  "LatinX" "Black"  "Black"  "Black"  "LatinX" "LatinX"
+## [1723] "Black"  "White"  "LatinX" "LatinX" "White"  "Black"  "White" 
+## [1730] "LatinX" "LatinX" "LatinX" "Black"  "LatinX" "LatinX" "Black" 
+## [1737] "Black"  "LatinX" "LatinX" "Black"  "Black"  "Other"  "LatinX"
+## [1744] "Black"  "White"  "LatinX" "LatinX" "LatinX" "Black"  "LatinX"
+## [1751] "White"  "White"  "LatinX" "White"  "LatinX" "White"  "Black" 
+## [1758] "LatinX" "LatinX" "LatinX" "Black"  "LatinX" "Black"  "Black" 
+## [1765] "LatinX" "LatinX" "Black"  "LatinX" "Black"  "LatinX" "Other" 
+## [1772] "Black"  "LatinX" "Black"  "Black"  "Black"  "LatinX" "White" 
+## [1779] "LatinX" "Black"  "LatinX" "White"  "LatinX" "Black"  "White" 
+## [1786] "White"  "LatinX" "Black"  "LatinX" "Black"  "LatinX" "White" 
+## [1793] "White"  "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX"
+## [1800] "White"  "LatinX" "LatinX" "Black"  "Black"  "Black"  "White" 
+## [1807] "LatinX" "LatinX" "White"  "White"  "LatinX" "LatinX" "LatinX"
+## [1814] "LatinX" "Black"  "LatinX" "LatinX" "Black"  "LatinX" "White" 
+## [1821] "Black"  "Black"  "LatinX" "LatinX" "Black"  "LatinX" "Black" 
+## [1828] "Black"  "Black"  "LatinX" "Black"  "Black"  "Black"  "LatinX"
+## [1835] "Black"  "Black"  "Black"  "White"  "LatinX" "Black"  "Black" 
+## [1842] "LatinX" "White"  "Black"  "Black"  "Black"  "LatinX" "Black" 
+## [1849] "Black"  "White"  "LatinX" "LatinX" "LatinX" "LatinX" "White" 
+## [1856] "LatinX" "Black"  "White"  "Black"  "LatinX" "LatinX" "Other" 
+## [1863] "White"  "White"  "White"  "LatinX" "White"  "White"  "White" 
+## [1870] "LatinX" "Black"  "White"  "White"  "LatinX" "Other"  "White" 
+## [1877] "White"  "LatinX" "White"  "White"  "White"  "Black"  "LatinX"
+## [1884] "White"  "LatinX" "Other"  "White"  "Black"  "LatinX" "White" 
+## [1891] "Other"  "White"  "White"  "Other"  "Black"  "LatinX" "Other" 
+## [1898] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX"
+## [1905] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "White" 
+## [1912] "LatinX" "LatinX" "LatinX" "Other"  "LatinX" "Other"  "White" 
+## [1919] "LatinX" "LatinX" "LatinX" "White"  "Black"  "LatinX" "LatinX"
+## [1926] "LatinX" "LatinX" "Black"  "Other"  "Black"  "LatinX" "Black" 
+## [1933] "LatinX" "LatinX" "Black"  "Black"  "Black"  "LatinX" "Black" 
+## [1940] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "White" 
+## [1947] "Other"  "Black"  "LatinX" "Other"  "White"  "LatinX" "Black" 
+## [1954] "LatinX" "Black"  "Black"  "White"  "LatinX" "LatinX" "LatinX"
+## [1961] "White"  "LatinX" "LatinX" "White"  "LatinX" "LatinX" "Black" 
+## [1968] "White"  "LatinX" "LatinX" "LatinX" "Black"  "Black"  "LatinX"
+## [1975] "LatinX" "White"  "White"  "LatinX" "Other"  "Black"  "White" 
+## [1982] "LatinX" "Black"  "White"  "White"  "Other"  "LatinX" "White" 
+## [1989] "Black"  "LatinX" "White"  "Black"  "Black"  "Black"  "LatinX"
+## [1996] "Black"  "LatinX" "Black"  "White"  "LatinX" "White"  "Black" 
+## [2003] "LatinX" "Other"  "LatinX" "White"  "LatinX" "LatinX" "LatinX"
+## [2010] "LatinX" "White"  "Black"  "Other"  "Black"  "White"  "White" 
+## [2017] "LatinX" "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "White" 
+## [2024] "Black"  "LatinX" "LatinX" "LatinX" "Black"  "Black"  "Other" 
+## [2031] "Black"  "LatinX" "LatinX" "LatinX" "White"  "LatinX" "LatinX"
+## [2038] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "White" 
+## [2045] "Other"  "Black"  "Black"  "Black"  "LatinX" "LatinX" "LatinX"
+## [2052] "LatinX" "Black"  "White"  "LatinX" "LatinX" "LatinX" "Black" 
+## [2059] "LatinX" "Other"  "LatinX" "Black"  "LatinX" "Black"  "Black" 
+## [2066] "Black"  "LatinX" "LatinX" "Black"  "White"  "Other"  "Other" 
+## [2073] "LatinX" "LatinX" "Black"  "LatinX" "Black"  "Other"  "LatinX"
+## [2080] "LatinX" "LatinX" "LatinX" "White"  "LatinX" "LatinX" "White" 
+## [2087] "White"  "Black"  "Other"  "LatinX" "Black"  "Black"  "LatinX"
+## [2094] "LatinX" "LatinX" "Other"  "LatinX" "White"  "Other"  "LatinX"
+## [2101] "Other"  "White"  "White"  "Black"  "LatinX" "Black"  "LatinX"
+## [2108] "LatinX" "Black"  "LatinX" "LatinX" "Black"  "White"  "White" 
+## [2115] "LatinX" "Black"  "Black"  "LatinX" "White"  "Other"  "LatinX"
+## [2122] "LatinX" "LatinX" "LatinX" "Black"  "LatinX" "Black"  "LatinX"
+## [2129] "Black"  "LatinX" "LatinX" "White"  "White"  "Other"  "Black" 
+## [2136] "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "White"  "LatinX"
+## [2143] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "Black" 
+## [2150] "LatinX" "Black"  "Other"  "White"  "White"  "LatinX" "Black" 
+## [2157] "LatinX" "Black"  "Black"  "LatinX" "Black"  "LatinX" "White" 
+## [2164] "White"  "LatinX" "Other"  "Black"  "LatinX" "Black"  "LatinX"
+## [2171] "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "Black" 
+## [2178] "LatinX" "Black"  "LatinX" "White"  "Black"  "Other"  "LatinX"
+## [2185] "LatinX" "Black"  "White"  "LatinX" "LatinX" "LatinX" "LatinX"
+## [2192] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "White" 
+## [2199] "LatinX" "White"  "Black"  "LatinX" "LatinX" "LatinX" "LatinX"
+## [2206] "White"  "Other"  "Black"  "White"  "Black"  "Black"  "White" 
+## [2213] "Black"  "LatinX" "LatinX" "Black"  "White"  "Black"  "White" 
+## [2220] "Black"  "Other"  "White"  "Black"  "Black"  "LatinX" "Black" 
+## [2227] "LatinX" "Black"  "LatinX" "LatinX" "LatinX" "LatinX" "Black" 
+## [2234] "White"  "LatinX" "LatinX" "Black"  "White"  "LatinX" "LatinX"
+## [2241] "Black"  "LatinX" "White"  "Black"  "LatinX" "Black"  "White" 
+## [2248] "Other"  "LatinX" "LatinX" "Black"  "Black"  "White"  "Black" 
+## [2255] "Black"  "Black"  "Black"  "White"  "Other"  "White"  "LatinX"
+## [2262] "Black"  "Black"  "LatinX" "LatinX" "White"  "White"  "LatinX"
+## [2269] "LatinX" "White"  "White"  "Other"  "LatinX" "LatinX" "White" 
+## [2276] "LatinX" "White"  "White"  "LatinX" "Black"  "Other"  "LatinX"
+## [2283] "Black"  "LatinX" "LatinX" "LatinX" "Black"  "Black"  "LatinX"
+## [2290] "Black"  "LatinX" "LatinX" "LatinX" "White"  "Black"  "White" 
+## [2297] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "White"  "Black" 
+## [2304] "LatinX" "Black"  "LatinX" "Black"  "White"  "White"  "LatinX"
+## [2311] "Black"  "White"  "White"  "LatinX" "White"  "Black"  "Black" 
+## [2318] "LatinX" "LatinX" "LatinX" "LatinX" "LatinX" "Black"  "Black" 
+## [2325] "LatinX" "White"  "LatinX" "White"  "LatinX" "LatinX" "LatinX"
+## [2332] "Black"  "White"  "Black"  "Black"  "LatinX" "LatinX" "Black" 
+## [2339] "Other"  "White"  "LatinX" "LatinX" "LatinX" "Black"  "Black" 
+## [2346] "White"  "Black"  "Black"  "Black"  "Black"  "LatinX" "White" 
+## [2353] "LatinX" "Black"  "Black"  "LatinX" "LatinX" "Black"  "Black" 
+## [2360] "Other"  "LatinX" "LatinX" "Black"  "White"  "White"  "LatinX"
+## [2367] "Black"  "Black"
+\end{verbatim}
 
-\textbf{4. \texttt{\$} operator}
+\hypertarget{ways-to-get-an-overview-of-your-data}{%
+\subsection{Ways to get an overview of your data}\label{ways-to-get-an-overview-of-your-data}}
 
-Lastly, the \texttt{\$} operator \index{operators!dollar sign} allows us to extract and then explore a single variable within a data frame. For example, run the following in your console
+Often we want to see counts or summary statistics of our data. One easy way is to use the package \texttt{DataExplorer} to create a report on our data frame. Let's see how it works:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{airlines}\OperatorTok{$}\NormalTok{name}
+\CommentTok{#remember we need to tell r we want to use DataExplorer}
+\KeywordTok{library}\NormalTok{(DataExplorer)}
+\CommentTok{#DataExplorer has a function called create_report()}
+\KeywordTok{create_report}\NormalTok{(arrests)}
 \end{Highlighting}
 \end{Shaded}
 
-We used the \texttt{\$} operator to extract only the \texttt{name} variable and return it as a vector of length 16\index{vectors}. We'll only be occasionally exploring data frames using the \texttt{\$} operator, instead favoring the \texttt{View()} and \texttt{glimpse()} functions.
+This gives us a webpage with a bunch of information on our report. Consider this a 10,000 foot view of the data.
 
-\hypertarget{identification-vs-measurement-variables}{%
-\subsection{Identification and measurement variables}\label{identification-vs-measurement-variables}}
-
-There is a subtle difference between the kinds of variables that you will encounter in data frames: \emph{identification variables} and \emph{measurement variables}. For example, let's explore the \texttt{airports} data frame by showing the output of \#\texttt{glimpse(airports)}:
+Another thing I like to do is see a contingency table of a specific variable:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{glimpse}\NormalTok{(airports)}
+\KeywordTok{table}\NormalTok{(arrests}\OperatorTok{$}\NormalTok{race_cat)}
 \end{Highlighting}
 \end{Shaded}
 
-The variables \texttt{faa} and \texttt{name} are what we will call \emph{identification variables}, variables that uniquely identify each observational unit. In this case, the identification variables uniquely identify airports. Such variables are mainly used in practice to uniquely identify each row in a data frame. \texttt{faa} gives the unique code provided by the FAA for that airport, while the \texttt{name} variable gives the longer official name of the airport. The remaining variables (\texttt{lat}, \texttt{lon}, \texttt{alt}, \texttt{tz}, \texttt{dst}, \texttt{tzone}) are often called \emph{measurement} or \emph{characteristic} variables: variables that describe properties of each observational unit. For example, \texttt{lat} and \texttt{long} describe the latitude and longitude of each airport.
+\begin{verbatim}
+## 
+##  Black LatinX  Other  White 
+##    683   1101    156    428
+\end{verbatim}
 
-Furthermore, sometimes a single variable might not be enough to uniquely identify each observational unit: combinations of variables might be needed. While it is not an absolute rule, for organizational purposes it is considered good practice to have your identification variables in the left-most columns of your data frame.
+This gives you the tallies by that column in your data frame. Lastly we can view the summary statistics with the \texttt{summary()} function:
 
-\begin{learncheck}
-\vspace{-0.25in}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(arrests)}
+\end{Highlighting}
+\end{Shaded}
 
-\textbf{\emph{Learning check}} \vspace{-0.25in}
-\end{learncheck}
+\begin{verbatim}
+##     latitude      longitude       zipcode        arr_date2         
+##  Min.   :33.7   Min.   :-119   Min.   :90001   Min.   :2018-08-06  
+##  1st Qu.:34.0   1st Qu.:-118   1st Qu.:90017   1st Qu.:2018-08-08  
+##  Median :34.1   Median :-118   Median :90041   Median :2018-08-09  
+##  Mean   :34.1   Mean   :-118   Mean   :90414   Mean   :2018-08-09  
+##  3rd Qu.:34.2   3rd Qu.:-118   3rd Qu.:91303   3rd Qu.:2018-08-11  
+##  Max.   :34.3   Max.   :-118   Max.   :91607   Max.   :2018-08-12  
+##                                NA's   :5                           
+##  arrest_time            age           sex              race_cat        
+##  Length:2368       Min.   : 1.0   Length:2368        Length:2368       
+##  Class1:hms        1st Qu.:25.0   Class :character   Class :character  
+##  Class2:difftime   Median :33.0   Mode  :character   Mode  :character  
+##  Mode  :numeric    Mean   :35.9                                        
+##                    3rd Qu.:45.0                                        
+##                    Max.   :87.0                                        
+##                                                                        
+##  arrest_type           charge         
+##  Length:2368        Length:2368       
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character  
+##                                       
+##                                       
+##                                       
+## 
+\end{verbatim}
 
-\textbf{(LC1.5)} What properties of each airport do the variables \texttt{lat}, \texttt{lon}, \texttt{alt}, \texttt{tz}, \texttt{dst}, and \texttt{tzone} describe in the \texttt{airports} data frame? Take your best guess.
+This provides you with the \texttt{min}, \texttt{median}, \texttt{mean} quartiles, and \texttt{max} all at once.
 
-\textbf{(LC1.6)} Provide the names of variables in a data frame with at least three variables in which one of them is an identification variable and the other two are not. In other words, create your own tidy data frame that matches these conditions.
+\hypertarget{looking-at-specific-variables}{%
+\section{Looking at specific variables}\label{looking-at-specific-variables}}
 
-\begin{learncheck}
-\vspace{-0.25in}
-\vspace{-0.25in}
-\end{learncheck}
+We will often want to look at graphs of specific variables or how they relate to others. We can use a plotting package for this? The most popular one in R is called \texttt{ggplot2} and let's us make publication quality graphics of our data.
 
-\hypertarget{help-files}{%
-\subsection{Help files}\label{help-files}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(arrests, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ race_cat, }\DataTypeTok{fill=}\NormalTok{sex)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-Another nice feature of R are help files, which provide documentation for various functions and datasets. You can bring up help files by adding a \texttt{?} \index{operators!?} before the name of a function or data frame and then run this in the console. You will then be presented with a page showing the corresponding documentation if it exists. For example, let's look at the help file for the \texttt{flights} data frame.
+\begin{center}\includegraphics[width=\textwidth]{afam-188r_files/figure-latex/unnamed-chunk-9-1} \end{center}
 
-The help file should pop up in the Help pane of RStudio. If you have questions about a function or data frame included in an R package, you should get in the habit of consulting the help file right away.
+\hypertarget{variable-distribution}{%
+\subsection{Variable distribution}\label{variable-distribution}}
 
-\begin{learncheck}
-\vspace{-0.25in}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(arrests, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{arrest_time)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
 
-\textbf{\emph{Learning check}} \vspace{-0.25in}
-\end{learncheck}
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
 
-\textbf{(LC1.7)} Look at the help file for the \texttt{airports} data frame. Revise your earlier guesses about what the variables \texttt{lat}, \texttt{lon}, \texttt{alt}, \texttt{tz}, \texttt{dst}, and \texttt{tzone} each describe. How good were your guesses?
+\begin{center}\includegraphics[width=\textwidth]{afam-188r_files/figure-latex/unnamed-chunk-10-1} \end{center}
 
-\begin{learncheck}
-\vspace{-0.25in}
-\vspace{-0.25in}
-\end{learncheck}
+\hypertarget{two-variables}{%
+\subsection{Two variables}\label{two-variables}}
 
-\hypertarget{conclusion}{%
-\section{Conclusion}\label{conclusion}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(arrests, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{arrest_type, }\DataTypeTok{y=}\NormalTok{age)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
 
-We've given you what we feel is a minimally viable set of tools to explore data in R. Does this chapter contain everything you need to know? Absolutely not. To try to include everything in this chapter would make the chapter so large it wouldn't be useful! As we said earlier, the best way to further add to your toolbox is by actually getting into RStudio and running and writing code as much as possible.
+\begin{center}\includegraphics[width=\textwidth]{afam-188r_files/figure-latex/unnamed-chunk-11-1} \end{center}
 
-\hypertarget{literature}{%
-\chapter{Literature}\label{literature}}
+\hypertarget{ggplot-map}{%
+\subsection{Ggplot map}\label{ggplot-map}}
 
-Here is a review of existing methods.
+How about we make a map with GGPLOT?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(arrests, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{longitude, }\DataTypeTok{y=}\NormalTok{latitude)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=\textwidth]{afam-188r_files/figure-latex/unnamed-chunk-12-1} \end{center}
+
+We can see the general shape of LA, but there are limits to what you can do with geospatial data in ggplot. It doesn't know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages gives us this capabilities.
+
+\hypertarget{mapping-in-r}{%
+\section{Mapping in R}\label{mapping-in-r}}
+
+The one issue is that we need to tell arrests that it is a spatial object in R. To do that we need to use a few spatial packages. Let's load them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(sf)}
+\KeywordTok{library}\NormalTok{(tmap)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{sf} stands for spatial features. \texttt{tmap} let's us plot maps like \texttt{ggplot}. Ok, first up, let's convert our \texttt{arrests} data to a spatial feature.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{arrests_sf <-}\StringTok{ }\KeywordTok{st_as_sf}\NormalTok{(arrests, }\DataTypeTok{coords =} \KeywordTok{c}\NormalTok{(}\StringTok{"longitude"}\NormalTok{, }\StringTok{"latitude"}\NormalTok{), }\DataTypeTok{crs =} \DecValTok{4326}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Let's look at this new spatial data frame:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{View}\NormalTok{(arrests_sf)}
+\end{Highlighting}
+\end{Shaded}
+
+We now have a column called \texttt{geometry} at the end of our data frame. This contains our latitude and longitudes.
+
+One thing nice is that we can use the \texttt{plot()} function to plot our spatial data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(arrests_sf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=\textwidth]{afam-188r_files/figure-latex/unnamed-chunk-16-1} \end{center}
+
+But the problem is that we still have no context for our points. We need the layers of polygons we had in QGIS to let us know this is LA. Let's look at this in a package called \texttt{tmaps} (thematic maps).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tm_shape}\NormalTok{(arrests_sf) }\OperatorTok{+}\StringTok{ }\KeywordTok{tm_dots}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=\textwidth]{afam-188r_files/figure-latex/unnamed-chunk-17-1} \end{center}
+
+Nice, but again, we lack geographic boundaries and other shapes. Just like in QGIS, however, we can read in various shapefiles -- the ones ending in \texttt{.shp} -- to provide our map some boundaries. We do this by using the function \texttt{st\_read}. Let's look at our help documentation on \texttt{st\_read}.
+
+Inside our \texttt{data/} folder we have the shape files we used in our \texttt{QGIS} part of the class plus an new one on the LA county boundaries. Let's read them in individually and note the output, especially the \texttt{geometry\ type}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#geometry type:  MULTILINESTRING}
+\NormalTok{la_county <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\DataTypeTok{dsn =}\StringTok{"data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `DRP_COUNTY_BOUNDARY' from data source `/Users/timdennis/instruction/afam188/afam188-r/data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 2 features and 2 fields
+## geometry type:  MULTILINESTRING
+## dimension:      XY
+## bbox:           xmin: 6280000 ymin: 1380000 xmax: 6670000 ymax: 2120000
+## epsg (SRID):    2229
+## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#geometry type:  MULTIPOLYGON}
+\NormalTok{la_zips <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\DataTypeTok{dsn =} \StringTok{"data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `Los_Angeles_City_Zip_Codes' from data source `/Users/timdennis/instruction/afam188/afam188-r/data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 157 features and 7 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -119 ymin: 33.7 xmax: -118 ymax: 34.3
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#geometry type:  MULTILINESTRING}
+\NormalTok{la_freeways <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\DataTypeTok{dsn =}\StringTok{"data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `CAMS_FREEWAY_SHIELDS' from data source `/Users/timdennis/instruction/afam188/afam188-r/data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 45 features and 4 fields
+## geometry type:  MULTILINESTRING
+## dimension:      XY
+## bbox:           xmin: 6280000 ymin: 1720000 xmax: 6670000 ymax: 2120000
+## epsg (SRID):    2229
+## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs
+\end{verbatim}
+
+Now let's use the layers. The important thing is we match our shapefile with the geometry type. \texttt{tm\_polygons()} goes with \texttt{\#geometry\ type:\ \ MULTIPOLYGON} and \texttt{tm\_line()} goes with \texttt{\#geometry\ type:\ \ MULTILINESTRING}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tm_shape}\NormalTok{(la_zips) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{tm_polygons}\NormalTok{() }\OperatorTok{+}
+\KeywordTok{tm_shape}\NormalTok{(la_freeways) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{tm_lines}\NormalTok{() }\OperatorTok{+}
+\KeywordTok{tm_shape}\NormalTok{(arrests_sf) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{tm_dots}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=\textwidth]{afam-188r_files/figure-latex/unnamed-chunk-18-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tm_shape}\NormalTok{(arrests_sf) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{tm_polygons}\NormalTok{(la_county) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{tm_dots}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{mapping-in-r-tmaps-continued}{%
+\chapter{Mapping in R: tmaps continued}\label{mapping-in-r-tmaps-continued}}
+
+Class 2, Nov.~18.
 
 \hypertarget{mapping-with-r}{%
 \chapter{Mapping with R}\label{mapping-with-r}}

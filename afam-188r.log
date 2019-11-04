@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  30 OCT 2019 15:25
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  4 NOV 2019 08:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -895,17 +895,8 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 File: images/rstudio-cloud.png Graphic file (type QTm)
 <use  "images/rstudio-cloud.png" >
-Overfull \hbox (55.00494pt too wide) in paragraph at lines 158--159
-[][] 
- []
-
 File: images/primers.png Graphic file (type QTm)
 <use  "images/primers.png" >
-Overfull \hbox (55.01677pt too wide) in paragraph at lines 162--163
-[][] 
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [5]
@@ -922,106 +913,117 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 Chapter 2.
-
-LaTeX Warning: Reference `fig:R-vs-RStudio-1' on page 9 undefined on input line
- 199.
-
 File: images/shutterstock/R_vs_RStudio_1.png Graphic file (type QTm)
-<use  "images/shutterstock/R_vs_RStudio_1.png" >
-
-LaTeX Warning: Reference `fig:R-vs-RStudio-2' on page 9 undefined on input line
- 215.
-
-[9]
-
-LaTeX Warning: Reference `fig:RStudio-interface' on page 10 undefined on input 
-line 217.
-
-File: images/rstudio_screenshots/rstudio.png Graphic file (type QTm)
-<use  "images/rstudio_screenshots/rstudio.png" > [10] [11]
-
-LaTeX Warning: Reference `nycflights13' on page 12 undefined on input line 263.
-
-
-
+<use  "images/shutterstock/R_vs_RStudio_1.png" > [9] [10]
 Underfull \vbox (badness 2698) has occurred while \output is active []
 
-[12]
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 289--291
 
-LaTeX Warning: Reference `package-use' on page 13 undefined on input line 300.
+ []
 
-
-LaTeX Warning: Reference `viz' on page 13 undefined on input line 302.
-
-
-LaTeX Warning: Reference `package-loading' on page 13 undefined on input line 3
-04.
-
-
-LaTeX Warning: Reference `tidy' on page 13 undefined on input line 304.
-
-
-LaTeX Warning: Reference `package-installation' on page 13 undefined on input l
-ine 304.
-
-[13]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[12] [13]
+Underfull \vbox (badness 1038) has occurred while \output is active []
 
 [14]
-
-LaTeX Warning: Reference `viz' on page 15 undefined on input line 343.
-
-
-Package natbib Warning: Citation `R-dplyr' on page 15 undefined on input line 3
-43.
-
-
-LaTeX Warning: Reference `wrangling' on page 15 undefined on input line 343.
-
-
-Package natbib Warning: Citation `R-moderndive' on page 15 undefined on input l
-ine 343.
-
-
-Package natbib Warning: Citation `R-infer' on page 15 undefined on input line 3
-43.
-
-
-LaTeX Warning: Reference `confidence-intervals' on page 15 undefined on input l
-ine 343.
-
-
-LaTeX Warning: Reference `hypothesis-testing' on page 15 undefined on input lin
-e 343.
-
-
-LaTeX Warning: Reference `inference-for-regression' on page 15 undefined on inp
-ut line 343.
-
 File: images/shutterstock/R_vs_R_packages.png Graphic file (type QTm)
-<use  "images/shutterstock/R_vs_R_packages.png" > [15]
+<use  "images/shutterstock/R_vs_R_packages.png" >
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 401.
+[15]
+Overfull \hbox (54.0pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##    latitude longitude zipcode arr_date2  arrest_time   age
+ sex   race_cat[] 
+ []
 
-LaTeX Warning: Reference `fig:easy-way-install' on page 16 undefined on input l
-ine 389.
 
-File: images/install_packages_easy_way.png Graphic file (type QTm)
-<use  "images/install_packages_easy_way.png" >
+Overfull \hbox (38.25pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##       <dbl>     <dbl>   <dbl> <date>     <time>      <dbl>
+ <chr> <chr>[] 
+ []
 
-! LaTeX Error: Environment learncheck undefined.
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##  1     34.0     -118.   90021 2018-08-12 15:00          52
+ M     LatinX[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##  2     33.9     -118.   90059 2018-08-12 22:00          37
+ M     Black[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##  3     34.1     -118.   90036 2018-08-12 22:20          28
+ M     Black[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##  4     34.2     -118.   91605 2018-08-12 18:40          28
+ M     LatinX[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##  5     34.0     -118.   90037 2018-08-12 19:30          23
+ M     LatinX[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##  6     34.3     -118.   91342 2018-08-12 19:48          36
+ M     LatinX[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##  7     34.2     -119.   91324 2018-08-12 01:35          62
+ M     LatinX[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##  8     34.2     -118.   91401 2018-08-12 15:00          36
+ M     Other[] 
+ []
+
+[16]
+Overfull \hbox (38.25pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ##  9     34.1     -118.   90046 2018-08-12 15:00          28
+ M     Black[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ## 10     34.1     -118.   91604 2018-08-12 08:00          53
+ M     White[] 
+ []
+
+
+Overfull \hbox (27.75pt too wide) in paragraph at lines 463--463
+[]\TU/lmtt/m/n/10 ## # ... with 2,358 more rows, and 2 more variables: arrest_t
+ype <chr>,[] 
+ []
+
+
+! LaTeX Error: Environment challenge undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.417 \begin{learncheck}
-                         
+l.467 \begin{challenge}
+                        
 Here is how much of TeX's memory you used:
- 21405 strings out of 493005
- 392249 string characters out of 6134596
- 505947 words of memory out of 5000000
- 25145 multiletter control sequences out of 15000+600000
- 16367 words of font info for 45 fonts, out of 8000000 for 9000
+ 21392 strings out of 493005
+ 391997 string characters out of 6134596
+ 506947 words of memory out of 5000000
+ 25131 multiletter control sequences out of 15000+600000
+ 16383 words of font info for 47 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 41i,6n,54p,10407b,450s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,6n,54p,10407b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on afam-188r.pdf (15 pages).
+Output written on afam-188r.pdf (16 pages).

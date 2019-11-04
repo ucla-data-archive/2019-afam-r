@@ -1,3 +1,3 @@
-# Literature
+# Mapping in R: tmaps continued
 
-Here is a review of existing methods.
+Class 2, Nov. 18. 

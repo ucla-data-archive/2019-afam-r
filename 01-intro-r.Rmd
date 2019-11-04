@@ -49,7 +49,7 @@ After this lesson, learners will be able to:
 * Make a map in R, exporting images in R 
 
 
-## What are R and RStudio? {#r-rstudio}
+## What are R and RStudio? {#r-RStudio}
 
 At its simplest, R is like a car's engine while RStudio is like a car's dashboard as illustrated in Figure.
 
@@ -84,11 +84,11 @@ We now introduce some basic programming concepts and terminology. Instead of ask
     + *Data types*: integers, doubles/numerics, logicals, and characters. \index{data types} Integers are values like -1, 0, 2, 4092. Doubles or numerics are a larger set of values containing both the integers but also fractions and decimal values like -24.932 and 0.8. Logicals are either `TRUE` or `FALSE` and characters are text such as "cabbage", "The Wire", and "This ramen is delicious." Note that characters are often denoted with the quotation marks around them.
 * *Vectors*: a series of values. These are created using the `c()` function, where `c()` stands for "combine" or "concatenate." For example, `c(6, 11, 13, 31, 90, 92)` creates a six element series of positive integer values \index{vectors}.
 * *Factors*: *categorical data* are commonly represented in R as factors. \index{factors} Categorical data can also be represented as *strings*. We'll see this difference as we progress through the book.
-* *Data frames*: rectangular spreadsheets. They are representations of datasets in R where the rows correspond to *observations* and the columns correspond to *variables* that describe the observations. \index{data frames} We'll cover data frames later in Section \@ref(nycflights13).
-* *Conditionals*: \index{conditionals}
+* *Data frames*: rectangular spreadsheets. They are representations of datasets in R where the rows correspond to *observations* and the columns correspond to *variables* that describe the observations. \index{data frames} We'll cover data frames later in Section.
+* *Conditionals*: 
   + Testing for equality in R using `==` (and not `=`, which is typically used for assignment). For example, `2 + 1 == 3` compares `2 + 1` to `3` and is correct R code, while `2 + 1 = 3` will return an error.
   + Boolean algebra: `TRUE/FALSE` statements and mathematical operators such as `<` (less than), `<=` (less than or equal), and `!=` (not equal to). \index{Boolean algebra} For example, `4 + 2 >= 3` will return `TRUE`, but `3 + 5 <= 1` will return `FALSE`.
-  + Logical operators: `&` representing "and" as well as `|` representing "or." For example, `(2 + 1 == 3) & (2 + 1 == 4)` returns `FALSE` since both clauses are not `TRUE` (only the first clause is `TRUE`). On the other hand, `(2 + 1 == 3) | (2 + 1 == 4)` returns `TRUE` since at least one of the two clauses is `TRUE`. \index{operators!logical}
+  + Logical operators: `&` representing "and" as well as `|` representing "or." For example, `(2 + 1 == 3) & (2 + 1 == 4)` returns `FALSE` since both clauses are not `TRUE` (only the first clause is `TRUE`). On the other hand, `(2 + 1 == 3) | (2 + 1 == 4)` returns `TRUE` since at least one of the two clauses is `TRUE`. 
 * *Functions*, also called *commands*: Functions perform tasks in R. They take in inputs called *arguments* and return outputs. You can either manually specify a function's arguments or use the function's *default values*. \index{functions} 
   + For example, the function `seq()` in R generates a sequence of numbers. If you just run `seq()` it will return the value 1. That doesn't seem very useful! This is because the default arguments are set as `seq(from = 1, to = 1)`. Thus, if you don't pass in different values for `from` and `to` to change this behavior, R just assumes all you want is the number 1. You can change the argument values by updating the values after the `=` sign. If we try out `seq(from = 2, to = 5)` we get the result `2 3 4 5` that we might expect. 
   + We'll work with functions a lot throughout this book and you'll get lots of practice in understanding their behaviors. To further assist you in understanding when a function is mentioned in the book, we'll also include the `()` after them as we did with `seq()` above.
@@ -129,7 +129,7 @@ Here are a few useful tips to keep in mind as you learn to program:
 
 * We can do basic math in R 
 * To run the code we can put our cursor on the line we want to run and click on <kbd>Run</kbd> in the top right of the script pane.
-* We can also highlight multiple lines of code and clicke <kbd>Run</kbd>
+* We can also highlight multiple lines of code and click <kbd>Run</kbd>
 * This is good, but it takes extra time to click and point when you are coding, so RStudio have keyboard shortcuts to let you run code.
 * Use <cmd>+<enter> on Mac and <ctr>+<enter> on windows
 * let's try a few more expressions:
@@ -180,7 +180,7 @@ library(tidyverse)
 ?read_csv
 ```
 
-It opens the help documentation in the **Help** tab in the bottom right RStudioe pane. It contains a description, usage, arguements and at the bottom, examples, for the function.  We see the first argument of `read_csv()` is a **file** meaning `read_csv()` needs the file location so it can read the file into R. With this information let's read write our `read_csv()` function so it knows where our arrrests data is. Remember from ealier, the arrests data is in the `data/` folder in our project. 
+It opens the help documentation in the **Help** tab in the bottom right RStudio pane. It contains a description, usage, arguments and at the bottom, examples, for the function.  We see the first argument of `read_csv()` is a **file** meaning `read_csv()` needs the file location so it can read the file into R. With this information let's read write our `read_csv()` function so it knows where our arrests data is. Remember from earlier, the arrests data is in the `data/` folder in our project. 
 
 Run the the following code: 
 
@@ -194,7 +194,7 @@ Ok, notice we need to quote the file location and name. This is because files pa
 read_csv('data/aug6_12_arrest_data.csv')
 ```
 
-Look at the output in the console. It gives us some important information about our dataframe. 
+Look at the output in the console. It gives us some important information about our data frame. 
 
 ```{block, type='challenge'}
 ## Inspect the Console Data Output
@@ -216,7 +216,7 @@ What does the output tell us? How many rows are in our data? Columns? What about
 
 Yes, the last part tells us the type of data R thinks our data is. `age` is a number of double type, `sex` is a character type, `arr_date2` is a date.
 
-This has been helpful, but the problem is we want to do more with our data than outputing  it to the console. In order to save our data and work on it, we need to make it into an object in R. Let's do this now by typing the following and running it:
+This has been helpful, but the problem is we want to do more with our data than outputting  it to the console. In order to save our data and work on it, we need to make it into an object in R. Let's do this now by typing the following and running it:
 
 ```{r}
 arrests <- read_csv('data/aug6_12_arrest_data.csv')
@@ -226,7 +226,6 @@ arrests <- read_csv('data/aug6_12_arrest_data.csv')
 ## Getting data into RStudio Cloud
 
 The data we are using in this class has been provided for us, but what if you want to get data into RStudio Cloud? 
-
 ```
 
 
@@ -234,42 +233,155 @@ The data we are using in this class has been provided for us, but what if you wa
 
 After we run this, notice the top left **Environment** tab in RStudio. We now see  `arrests` listed under **Data**. We can click on that to open and look at it in an `arrests` tab in our main editing window. Take a moment and explore the data via this window? Notice you can filter the data, sort and view the data, but not edit it. 
 
-
-
-
-
-### `arrests` data
-
-
-Arrests data: 
-
-* var names 
-
-
-### Exploring data frames {#exploredataframes}
-
-There are many ways to get a feel for the data contained in a data frame such as `flights`. We present three functions that take as their "argument" (their input) the data frame in question. We also include a fourth method for exploring one particular column of a data frame:
+The below functions take as their "argument" (their input) the data frame. 
 
 1. Using the `View()` function, which brings up RStudio's built-in spreadsheet viewer.
+  * This is the same as clicking on the data frame in the **Environment** tab
 1. Using the `glimpse()` function, which is included in the `dplyr` package.
+1. Using the `str()` function - gives you similar info as `glimpse()`
+1. The functions `head()` and `tail()` also let you inspect the data frame. 
+1. `$` is a symbol that let's us look at one column of a data frame, like so: 
+
+```{r dollar-sign}
+arrests$race_cat
+```
+
+### Ways to get an overview of your data
+
+Often we want to see counts or summary statistics of our data. One easy way is to use the package `DataExplorer` to create a report on our data frame. Let's see how it works:
+
+```{r data-explorer, eval=FALSE}
+#remember we need to tell r we want to use DataExplorer
+library(DataExplorer)
+#DataExplorer has a function called create_report()
+create_report(arrests)
+```
+
+This gives us a webpage with a bunch of information on our report. Consider this a 10,000 foot view of the data.
+
+Another thing I like to do is see a contingency table of a specific variable: 
+
+```{r table-var}
+table(arrests$race_cat)
+```
+
+This gives you the tallies by that column in your data frame. Lastly we can view the summary statistics with the `summary()` function:
+
+```{r summary-stats}
+summary(arrests)
+```
+This provides you with the `min`, `median`, `mean` quartiles, and `max` all at once.
+
+## Looking at specific variables 
+
+We will often want to look at graphs of specific variables or how they relate to others.  We can use a plotting package for this? The most popular one in R is called `ggplot2` and let's us make publication quality graphics of our data. 
+
+```{r}
+ggplot(arrests, aes(x = race_cat, fill=sex)) +
+  geom_bar(position = "dodge")
+```
+
+[ask to fill in with sex]:# challenge - ok now you 
+
+### Variable distribution 
+
+```{r}
+ggplot(arrests, aes(x=arrest_time)) + geom_histogram()
+```
+
+### Two variables 
+
+```{r}
+ggplot(arrests, aes(x=arrest_type, y=age)) + geom_boxplot()
+```
+
+[todo]:#make a challenge here to fill in for boxplot
+[todo]:#make a challenge here to try violin plot
+
+### Ggplot map 
+
+How about we make a map with GGPLOT? 
+
+```{r}
+ggplot(arrests, aes(x=longitude, y=latitude)) + geom_point()
+```
+
+We can see the general shape of LA, but there are limits to what you can do with geospatial data in ggplot. It doesn't know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages gives us this capabilities. 
+
+## Mapping in R 
+
+The one issue is that we need to tell arrests that it is a spatial object in R. To do that we need to use a few spatial packages. Let's load them. 
+
+```{r}
+library(sf)
+library(tmap)
+```
+
+`sf` stands for spatial features. `tmap` let's us plot maps like `ggplot`. Ok, first up, let's convert our `arrests` data to a spatial feature. 
+
+```{r}
+arrests_sf <- st_as_sf(arrests, coords = c("longitude", "latitude"), crs = 4326)
+```
+
+Let's look at this new spatial data frame: 
+
+```{r, eval=FALSE}
+View(arrests_sf)
+```
+
+We now have a column called `geometry` at the end of our data frame. This contains our latitude and longitudes. 
+
+One thing nice is that we can use the `plot()` function to plot our spatial data frame. 
+
+```{r}
+plot(arrests_sf)
+```
+
+But the problem is that we still have no context for our points. We need the layers of polygons we had in QGIS to let us know this is LA. Let's look at this in a package called `tmaps` (thematic maps). 
+
+```{r}
+tm_shape(arrests_sf) + tm_dots()
+```
+
+Nice, but again, we lack geographic boundaries and other shapes. Just like in QGIS, however, we can read in various shapefiles -- the ones ending in `.shp` -- to provide our map some boundaries. We do this by using the function `st_read`. Let's look at our help documentation on `st_read`. 
+
+Inside our `data/` folder we have the shape files we used in our `QGIS` part of the class plus an new one on the LA county boundaries. Let's read them in individually and note the output, especially the `geometry type`. 
+
+```{r la_county}
+#geometry type:  MULTILINESTRING
+la_county <- st_read(dsn ="data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp")
+```
+
+```{r la_zips}
+#geometry type:  MULTIPOLYGON
+la_zips <- st_read(dsn = "data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp")
+```
+
+```{r la_freeways}
+#geometry type:  MULTILINESTRING
+la_freeways <- st_read(dsn ="data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp")
+```
+
+Now let's use the layers. The important thing is we match our shapefile with the geometry type. `tm_polygons()` goes with `#geometry type:  MULTIPOLYGON` and `tm_line()` goes with `#geometry type:  MULTILINESTRING`. 
+
+```{r}
+tm_shape(la_zips) +
+  tm_polygons() +
+tm_shape(la_freeways) +
+  tm_lines() +
+tm_shape(arrests_sf) +
+  tm_dots() 
+```
 
 
+```{r, eval=FALSE}
+tm_shape(arrests_sf) +
+  tm_polygons(la_county) +
+  tm_dots()
+```
 
-[]:#table(arrests$race_cat)
-[]:#lets use a package called DataExplorer 
-[]:#library(DataExplorer)
-[]:#create_report(arrests)
-[]:#that's a 10,000 foot view of the data, now we can do other plot of specific variables 
-[]:#What would you like to see? 
-[]:# ggplot2 - let's create a custom graph
-[]:#ask a question and try to answer with a graph
 
-[]:# challenge - ok now you 
-[]:#make arrest data spatial object 
+[todo]:#make arrest data spatial object 
 []:# #assignment - come up with R script has fill in the blanks challenges 
-[]:# mostly graphing in ggplot 
 []:#maybe an example with tmap 
 []:# assign homework for the primers in dataviz few, boxplot, a couple more
-[]:# poss. dplyr 
-
-
