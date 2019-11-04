@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>R Class 2 Getting Started with Data in R | African American Studies 188: Intro to R &amp; Mapping in R</title>
+  <meta name="description" content="This is ." />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="R Class 2 Getting Started with Data in R | African American Studies 188: Intro to R &amp; Mapping in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is ." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Class 2 Getting Started with Data in R | African American Studies 188: Intro to R &amp; Mapping in R" />
+  
+  <meta name="twitter:description" content="This is ." />
+  
+
+<meta name="author" content="Tim Dennis" />
+
+
+<meta name="date" content="2019-11-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="mapping-in-r-tmaps-continued.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>2</b> Getting Started with Data in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="getting-started.html"><a href="getting-started.html#learn-objectives"><i class="fa fa-check"></i><b>2.1</b> Learn Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-started.html"><a href="getting-started.html#r-RStudio"><i class="fa fa-check"></i><b>2.2</b> What are R and RStudio?</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="getting-started.html"><a href="getting-started.html#using-r-via-rstudio"><i class="fa fa-check"></i><b>2.2.1</b> Using R via RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="getting-started.html"><a href="getting-started.html#code"><i class="fa fa-check"></i><b>2.3</b> How do I code in R?</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="getting-started.html"><a href="getting-started.html#programming-concepts"><i class="fa fa-check"></i><b>2.3.1</b> Basic programming concepts and terminology</a></li>
+<li class="chapter" data-level="2.3.2" data-path="getting-started.html"><a href="getting-started.html#messages"><i class="fa fa-check"></i><b>2.3.2</b> Errors, warnings, and messages</a></li>
+<li class="chapter" data-level="2.3.3" data-path="getting-started.html"><a href="getting-started.html#tips-code"><i class="fa fa-check"></i><b>2.3.3</b> Tips on learning to code</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="getting-started.html"><a href="getting-started.html#how-to-run-codefirst-script"><i class="fa fa-check"></i><b>2.4</b> How to run code/first script</a></li>
+<li class="chapter" data-level="2.5" data-path="getting-started.html"><a href="getting-started.html#arrests"><i class="fa fa-check"></i><b>2.5</b> Explore your first datasets</a></li>
+<li class="chapter" data-level="2.6" data-path="getting-started.html"><a href="getting-started.html#what-are-packages"><i class="fa fa-check"></i><b>2.6</b> What are Packages</a></li>
+<li class="chapter" data-level="2.7" data-path="getting-started.html"><a href="getting-started.html#what-to-do-first-after-you-read-in-your-data"><i class="fa fa-check"></i><b>2.7</b> What to do first after you read in your data?</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="getting-started.html"><a href="getting-started.html#ways-to-get-an-overview-of-your-data"><i class="fa fa-check"></i><b>2.7.1</b> Ways to get an overview of your data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="getting-started.html"><a href="getting-started.html#looking-at-specific-variables"><i class="fa fa-check"></i><b>2.8</b> Looking at specific variables</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="getting-started.html"><a href="getting-started.html#variable-distribution"><i class="fa fa-check"></i><b>2.8.1</b> Variable distribution</a></li>
+<li class="chapter" data-level="2.8.2" data-path="getting-started.html"><a href="getting-started.html#two-variables"><i class="fa fa-check"></i><b>2.8.2</b> Two variables</a></li>
+<li class="chapter" data-level="2.8.3" data-path="getting-started.html"><a href="getting-started.html#ggplot-map"><i class="fa fa-check"></i><b>2.8.3</b> Ggplot map</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="getting-started.html"><a href="getting-started.html#mapping-in-r"><i class="fa fa-check"></i><b>2.9</b> Mapping in R</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="mapping-in-r-tmaps-continued.html"><a href="mapping-in-r-tmaps-continued.html"><i class="fa fa-check"></i><b>3</b> Mapping in R: tmaps continued</a></li>
+<li class="chapter" data-level="4" data-path="mapping-with-r.html"><a href="mapping-with-r.html"><i class="fa fa-check"></i><b>4</b> Mapping with R</a></li>
+<li class="chapter" data-level="5" data-path="mapping-with-r-1.html"><a href="mapping-with-r-1.html"><i class="fa fa-check"></i><b>5</b> Mapping with R</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">African American Studies 188: Intro to R &amp; Mapping in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getting-started" class="section level1">
+<h1><span class="header-section-number">R Class 2</span> Getting Started with Data in R</h1>
+<div id="learn-objectives" class="section level2">
+<h2><span class="header-section-number">2.1</span> Learn Objectives</h2>
+<p>After this lesson, learners will be able to:</p>
+<ul>
+<li>Describe the purpose and use of each pane in the RStudio IDE</li>
+<li>Locate buttons and options in the RStudio IDE</li>
+<li>Know how to run code in R</li>
+<li>How to save things to an object in R</li>
+<li>Call functions</li>
+<li>What packages are and where to install and load them</li>
+<li>Inspecting data and doing simple plots</li>
+<li>Make a map in R, exporting images in R</li>
+</ul>
+</div>
+<div id="r-RStudio" class="section level2">
+<h2><span class="header-section-number">2.2</span> What are R and RStudio?</h2>
+<p>At its simplest, R is like a car’s engine while RStudio is like a car’s dashboard as illustrated in Figure.</p>
+<div class="figure" style="text-align: center"><span id="fig:R-vs-RStudio-1"></span>
+<img src="images/shutterstock/R_vs_RStudio_1.png" alt="Analogy of difference between R and RStudio." width="95%" />
+<p class="caption">
+Figure 2.1: Analogy of difference between R and RStudio.
+</p>
+</div>
+<p>More precisely, R is a <strong>programming language</strong> that runs computations, while RStudio is an <em>integrated development environment (IDE)</em> that provides an interface by adding many convenient features and tools. So just as the way of having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio’s interface makes using R much easier as well.</p>
+<div id="using-r-via-rstudio" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Using R via RStudio</h3>
+<p>Recall our car analogy from earlier. Much as we don’t drive a car by interacting directly with the engine but rather by interacting with elements on the car’s dashboard, we won’t be using R directly but rather we will use RStudio’s interface.</p>
+</div>
+</div>
+<div id="code" class="section level2">
+<h2><span class="header-section-number">2.3</span> How do I code in R?</h2>
+<p>Now that you’re set up with R and RStudio in RStudio Cloud, you are probably asking yourself “OK. Now how do I use R?”. The first thing to note is that unlike other statistical software &amp; mapping programs like Excel, SPSS, or QGIS that provide <a href="https://en.wikipedia.org/wiki/Point_and_click">point-and-click</a> interfaces, R is an <a href="https://en.wikipedia.org/wiki/Interpreted_language">interpreted language</a>. This means you have to type in commands written in <em>R code</em>. In other words, you get to code/program in R. Note that we’ll use the terms “coding” and “programming” interchangeably in this book.</p>
+<p>While it is not required to be a seasoned coder/computer programmer to use R, there is still a set of basic programming concepts that R users need to understand. Consequently, while this class is not focused on programming, you will still learn just enough of these basic programming concepts needed to explore and analyze data effectively.</p>
+<div id="programming-concepts" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Basic programming concepts and terminology</h3>
+<p>We now introduce some basic programming concepts and terminology. Instead of asking you to learn all these concepts and terminology right now, we’ll guide you so that you’ll “learn by doing.” Note that in lesson we will always use a different font to distinguish regular text from <code>computer_code</code>. The best way to master these topics is, in our opinions, through <a href="https://jamesclear.com/deliberate-practice-theory">deliberate practice</a> with R and lots of repetition.</p>
+<ul>
+<li>Basics: 
+<ul>
+<li><em>Console</em>: where you enter in commands. </li>
+<li><em>Running code</em>: the act of telling R to perform an act by giving it commands in the console.</li>
+<li><em>Objects</em>: where values are saved in R. We’ll show you how to <em>assign</em> values to objects and how to display the contents of objects. </li>
+<li><em>Data types</em>: integers, doubles/numerics, logicals, and characters.  Integers are values like -1, 0, 2, 4092. Doubles or numerics are a larger set of values containing both the integers but also fractions and decimal values like -24.932 and 0.8. Logicals are either <code>TRUE</code> or <code>FALSE</code> and characters are text such as “cabbage”, “The Wire”, and “This ramen is delicious.” Note that characters are often denoted with the quotation marks around them.</li>
+</ul></li>
+<li><em>Vectors</em>: a series of values. These are created using the <code>c()</code> function, where <code>c()</code> stands for “combine” or “concatenate.” For example, <code>c(6, 11, 13, 31, 90, 92)</code> creates a six element series of positive integer values .</li>
+<li><em>Factors</em>: <em>categorical data</em> are commonly represented in R as factors.  Categorical data can also be represented as <em>strings</em>. We’ll see this difference as we progress through the book.</li>
+<li><em>Data frames</em>: rectangular spreadsheets. They are representations of datasets in R where the rows correspond to <em>observations</em> and the columns correspond to <em>variables</em> that describe the observations.  We’ll cover data frames later in Section.</li>
+<li><em>Conditionals</em>:
+<ul>
+<li>Testing for equality in R using <code>==</code> (and not <code>=</code>, which is typically used for assignment). For example, <code>2 + 1 == 3</code> compares <code>2 + 1</code> to <code>3</code> and is correct R code, while <code>2 + 1 = 3</code> will return an error.</li>
+<li>Boolean algebra: <code>TRUE/FALSE</code> statements and mathematical operators such as <code>&lt;</code> (less than), <code>&lt;=</code> (less than or equal), and <code>!=</code> (not equal to).  For example, <code>4 + 2 &gt;= 3</code> will return <code>TRUE</code>, but <code>3 + 5 &lt;= 1</code> will return <code>FALSE</code>.</li>
+<li>Logical operators: <code>&amp;</code> representing “and” as well as <code>|</code> representing “or.” For example, <code>(2 + 1 == 3) &amp; (2 + 1 == 4)</code> returns <code>FALSE</code> since both clauses are not <code>TRUE</code> (only the first clause is <code>TRUE</code>). On the other hand, <code>(2 + 1 == 3) | (2 + 1 == 4)</code> returns <code>TRUE</code> since at least one of the two clauses is <code>TRUE</code>.</li>
+</ul></li>
+<li><em>Functions</em>, also called <em>commands</em>: Functions perform tasks in R. They take in inputs called <em>arguments</em> and return outputs. You can either manually specify a function’s arguments or use the function’s <em>default values</em>. 
+<ul>
+<li>For example, the function <code>seq()</code> in R generates a sequence of numbers. If you just run <code>seq()</code> it will return the value 1. That doesn’t seem very useful! This is because the default arguments are set as <code>seq(from = 1, to = 1)</code>. Thus, if you don’t pass in different values for <code>from</code> and <code>to</code> to change this behavior, R just assumes all you want is the number 1. You can change the argument values by updating the values after the <code>=</code> sign. If we try out <code>seq(from = 2, to = 5)</code> we get the result <code>2 3 4 5</code> that we might expect.</li>
+<li>We’ll work with functions a lot throughout this book and you’ll get lots of practice in understanding their behaviors. To further assist you in understanding when a function is mentioned in the book, we’ll also include the <code>()</code> after them as we did with <code>seq()</code> above.</li>
+</ul></li>
+</ul>
+<p>This list is by no means an exhaustive list of all the programming concepts and terminology needed to become a savvy R user; such a list would be so large it wouldn’t be very useful, especially for novices. Rather, we feel this is a minimally viable list of programming concepts and terminology you need to know before getting started. We feel that you can learn the rest as you go. Remember that your mastery of all of these concepts and terminology will build as you practice more and more.</p>
+</div>
+<div id="messages" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Errors, warnings, and messages</h3>
+<p>One thing that intimidates new R and RStudio users is how it reports <em>errors</em>, <em>warnings</em>, and <em>messages</em>. R reports errors, warnings, and messages in a glaring red font, which makes it seem like it is scolding you. However, seeing red text in the console is not always bad.</p>
+<p>R will show red text in the console pane in three different situations:</p>
+<ul>
+<li><strong>Errors</strong>: When the red text is a legitimate error, it will be prefaced with “Error in…” and will try to explain what went wrong. Generally when there’s an error, the code will not run. For example, we’ll see in Subsection if you see <code>Error in ggplot(...) : could not find function "ggplot"</code>, it means that the <code>ggplot()</code> function is not accessible because the package that contains the function (<code>ggplot2</code>) was not loaded with <code>library(ggplot2)</code>. Thus you cannot use the <code>ggplot()</code> function without the <code>ggplot2</code> package being loaded first.</li>
+<li><strong>Warnings</strong>: When the red text is a warning, it will be prefaced with “Warning:” and R will try to explain why there’s a warning. Generally your code will still work, but with some caveats.<br />
+</li>
+<li><strong>Messages</strong>: When the red text doesn’t start with either “Error” or “Warning”, it’s <em>just a friendly message</em>. You’ll see these messages when you load <em>R packages</em> in the upcoming Subsection or when you read data saved in spreadsheet files with the <code>read_csv()</code> function. These are helpful diagnostic messages and they don’t stop your code from working. Additionally, you’ll see these messages when you install packages too using <code>install.packages()</code>.</li>
+</ul>
+<p>Remember, when you see red text in the console, <em>don’t panic</em>. It doesn’t necessarily mean anything is wrong. Rather:</p>
+<ul>
+<li>If the text starts with “Error”, figure out what’s causing it. <span style="color:red">Think of errors as a red traffic light: something is wrong!</span></li>
+<li>If the text starts with “Warning”, figure out if it’s something to worry about. For instance, if you get a warning about missing values in a scatterplot and you know there are missing values, you’re fine. If that’s surprising, look at your data and see what’s missing. <span style="color:gold">Think of warnings as a yellow traffic light: everything is working fine, but watch out/pay attention.</span></li>
+<li>Otherwise, the text is just a message. Read it, wave back at R, and thank it for talking to you. <span style="color:green">Think of messages as a green traffic light: everything is working fine and keep on going!</span></li>
+</ul>
+</div>
+<div id="tips-code" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Tips on learning to code</h3>
+<p>Learning to code/program is quite similar to learning a foreign language. It can be daunting and frustrating at first. Such frustrations are common and it is normal to feel discouraged as you learn. However, just as with learning a foreign language, if you put in the effort and are not afraid to make mistakes, anybody can learn and improve.</p>
+<p>Here are a few useful tips to keep in mind as you learn to program:</p>
+<ul>
+<li><strong>Remember that computers are not actually that smart</strong>: You may think your computer or smartphone is “smart,” but really people spent a lot of time and energy designing them to appear “smart.” In reality, you have to tell a computer everything it needs to do. Furthermore, the instructions you give your computer can’t have any mistakes in them, nor can they be ambiguous in any way.</li>
+<li><strong>Take the “copy, paste, and tweak” approach</strong>: Especially when you learn your first programming language or you need to understand particularly complicated code, it is often much easier to take existing code that you know works and modify it to suit your ends. This is as opposed to trying to type out the code from scratch. We call this the <em>“copy, paste, and tweak”</em> approach. So early on, we suggest not trying to write code from memory, but rather take existing examples we have provided you, then copy, paste, and tweak them to suit your goals. After you start feeling more confident, you can slowly move away from this approach. Think of the “copy, paste, and tweak” approach as training wheels for a child learning to ride a bike. After getting comfortable, they won’t need them anymore.</li>
+<li><strong>The best way to learn to code is by doing</strong>: Rather than learning to code for its own sake, we find that learning to code goes much smoother when you have a goal in mind or when you are working on a particular project, like analyzing data that you are interested in and that is important to you.</li>
+<li><strong>Practice is key</strong>: Just as the only method to improve your foreign language skills is through lots of practice and speaking, the only method to improving your coding skills is through lots of practice. Don’t worry, however, we’ll give you plenty of opportunities to do so!</li>
+</ul>
+</div>
+</div>
+<div id="how-to-run-codefirst-script" class="section level2">
+<h2><span class="header-section-number">2.4</span> How to run code/first script</h2>
+<ul>
+<li>We can do basic math in R</li>
+<li>To run the code we can put our cursor on the line we want to run and click on <kbd>Run</kbd> in the top right of the script pane.</li>
+<li>We can also highlight multiple lines of code and click <kbd>Run</kbd></li>
+<li>This is good, but it takes extra time to click and point when you are coding, so RStudio have keyboard shortcuts to let you run code.</li>
+<li>Use <cmd>+<enter> on Mac and <ctr>+<enter> on windows</li>
+<li>let’s try a few more expressions:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="getting-started.html#cb1-1"></a><span class="co">#a string or character sequence is like a name or sentence or alpha numberic in R</span></span>
+<span id="cb1-2"><a href="getting-started.html#cb1-2"></a><span class="st">&quot;Tim Dennis&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;Tim Dennis&quot;</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="getting-started.html#cb3-1"></a><span class="co"># we can use arithmetic on strings</span></span>
+<span id="cb3-2"><a href="getting-started.html#cb3-2"></a><span class="st">&quot;Your Name&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;Your Name&quot;</code></pre>
+</div>
+<div id="arrests" class="section level2">
+<h2><span class="header-section-number">2.5</span> Explore your first datasets</h2>
+<p>The data we’ll use is in our <code>data/</code> folder. Let’s look at it - its a CSV? What does that stand for?</p>
+<p>Data comes to us in a variety of formats, from pictures to text to numbers. Throughout this class, we’ll focus on datasets that are saved in “spreadsheet”-type format. This is probably the most common way data are collected and saved in many fields. But in R, we can read in data in many formats - this means that R will load the data into it’s environment and make it ready for R to work with it.</p>
+<p>Before we start exploring our <code>arrests</code> data in R, let’s first load the packages needed for this lesson. What’s a package? We haven’t talked about those yet?</p>
+</div>
+<div id="what-are-packages" class="section level2">
+<h2><span class="header-section-number">2.6</span> What are Packages</h2>
+<p>R packages extend the functionality of R by providing additional functions, data, and documentation. They are written by a worldwide community of R users and can be downloaded for free from the internet.</p>
+<p>A good analogy for R packages is they are like apps you can download onto a mobile phone:</p>
+<div class="figure" style="text-align: center"><span id="fig:R-vs-R-packages"></span>
+<img src="images/shutterstock/R_vs_R_packages.png" alt="Analogy of R versus R packages." width="70%" />
+<p class="caption">
+Figure 2.2: Analogy of R versus R packages.
+</p>
+</div>
+<p>So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn’t have everything. R packages are like the apps you can download onto your phone from Apple’s App Store or Android’s Google Play.</p>
+<p>What are the steps to doing this? To install a package, click on the Packages tab on the right bottom pane. Now you can click <strong>Install</strong> and start typing the package you want to install and it will download.</p>
+<p>How do you find out about packages? Take a look at <a href="https://cran.r-project.org/web/views/">task views</a> on the CRAN (Comprehensive R Archive Network). Packages are grouped by topic. For this class, because we are using R Studio Cloud, I’ve already installed the packages we need.</p>
+<p>Once you install a package you need to tell R you want to use it. We do this with the <code>library()</code> function. Ok but what is a function? Anybody know? Right functions perform tasks in R. They take inputs called <strong>arguments</strong> (in this case our csv file) and return some kind of output. <code>library()</code> takes a package we want to use in our R code and loads it into our current R environment. Let’s try now:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="getting-started.html#cb5-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<p><code>tidyverse</code> gives us access to a bunch of other functions we can now use after it is loaded. One is called <code>read_csv()</code>. What if we know we need to use <code>read_csv()</code> to read in our data, but we don’t know how. What would we do? We use R’s built in help features to get information on the functions. In R we use a <code>?</code> before the function without the trailing parentheses. Type this code in RStudio and run it:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="getting-started.html#cb6-1"></a>?read_csv</span></code></pre></div>
+<p>It opens the help documentation in the <strong>Help</strong> tab in the bottom right RStudio pane. It contains a description, usage, arguments and at the bottom, examples, for the function. We see the first argument of <code>read_csv()</code> is a <strong>file</strong> meaning <code>read_csv()</code> needs the file location so it can read the file into R. With this information let’s read write our <code>read_csv()</code> function so it knows where our arrests data is. Remember from earlier, the arrests data is in the <code>data/</code> folder in our project.</p>
+<p>Run the the following code:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="getting-started.html#cb7-1"></a><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
+<p>Ok, notice we need to quote the file location and name. This is because files paths and names are strings in R. Now when we run it, it outputs the dataset to the console. That’s great! We can see our data. Let’s get practice running it by running it again.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="getting-started.html#cb8-1"></a><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   latitude = col_double(),
+##   longitude = col_double(),
+##   zipcode = col_double(),
+##   arr_date2 = col_date(format = &quot;&quot;),
+##   arrest_time = col_time(format = &quot;&quot;),
+##   age = col_double(),
+##   sex = col_character(),
+##   race_cat = col_character(),
+##   arrest_type = col_character(),
+##   charge = col_character()
+## )</code></pre>
+<pre><code>## # A tibble: 2,368 x 10
+##    latitude longitude zipcode arr_date2  arrest_time   age sex   race_cat
+##       &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;     &lt;time&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   
+##  1     34.0     -118.   90021 2018-08-12 15:00          52 M     LatinX  
+##  2     33.9     -118.   90059 2018-08-12 22:00          37 M     Black   
+##  3     34.1     -118.   90036 2018-08-12 22:20          28 M     Black   
+##  4     34.2     -118.   91605 2018-08-12 18:40          28 M     LatinX  
+##  5     34.0     -118.   90037 2018-08-12 19:30          23 M     LatinX  
+##  6     34.3     -118.   91342 2018-08-12 19:48          36 M     LatinX  
+##  7     34.2     -119.   91324 2018-08-12 01:35          62 M     LatinX  
+##  8     34.2     -118.   91401 2018-08-12 15:00          36 M     Other   
+##  9     34.1     -118.   90046 2018-08-12 15:00          28 M     Black   
+## 10     34.1     -118.   91604 2018-08-12 08:00          53 M     White   
+## # … with 2,358 more rows, and 2 more variables: arrest_type &lt;chr&gt;,
+## #   charge &lt;chr&gt;</code></pre>
+<p>Look at the output in the console. It gives us some important information about our data frame.</p>
+<div class="challenge">
+<h2 id="inspect-the-console-data-output">
+Inspect the Console Data Output
+</h2>
+<p>
+What does the output tell us? How many rows are in our data? Columns? What about this part?
+</p>
+<blockquote>
+<p>
+cols( latitude = col_double(),<br />
+longitude = col_double(),<br />
+zipcode = col_double(),<br />
+age = col_double(),<br />
+sex = col_character(),<br />
+race_cat = col_character(),<br />
+arrest_type = col_character(),<br />
+arr_date2 = col_date(format = "")<br />
+)
+</p>
+</blockquote>
+<p>
+What is this telling us about our data?
+</p>
+</div>
+<p>Yes, the last part tells us the type of data R thinks our data is. <code>age</code> is a number of double type, <code>sex</code> is a character type, <code>arr_date2</code> is a date.</p>
+<p>This has been helpful, but the problem is we want to do more with our data than outputting it to the console. In order to save our data and work on it, we need to make it into an object in R. Let’s do this now by typing the following and running it:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="getting-started.html#cb11-1"></a>arrests &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   latitude = col_double(),
+##   longitude = col_double(),
+##   zipcode = col_double(),
+##   arr_date2 = col_date(format = &quot;&quot;),
+##   arrest_time = col_time(format = &quot;&quot;),
+##   age = col_double(),
+##   sex = col_character(),
+##   race_cat = col_character(),
+##   arrest_type = col_character(),
+##   charge = col_character()
+## )</code></pre>
+<div class="callout">
+<h2 id="getting-data-into-rstudio-cloud">
+Getting data into RStudio Cloud
+</h2>
+<p>
+The data we are using in this class has been provided for us, but what if you want to get data into RStudio Cloud?
+</p>
+</div>
+</div>
+<div id="what-to-do-first-after-you-read-in-your-data" class="section level2">
+<h2><span class="header-section-number">2.7</span> What to do first after you read in your data?</h2>
+<p>After we run this, notice the top left <strong>Environment</strong> tab in RStudio. We now see <code>arrests</code> listed under <strong>Data</strong>. We can click on that to open and look at it in an <code>arrests</code> tab in our main editing window. Take a moment and explore the data via this window? Notice you can filter the data, sort and view the data, but not edit it.</p>
+<p>The below functions take as their “argument” (their input) the data frame.</p>
+<ol style="list-style-type: decimal">
+<li>Using the <code>View()</code> function, which brings up RStudio’s built-in spreadsheet viewer.</li>
+</ol>
+<ul>
+<li>This is the same as clicking on the data frame in the <strong>Environment</strong> tab</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Using the <code>glimpse()</code> function, which is included in the <code>dplyr</code> package.</li>
+<li>Using the <code>str()</code> function - gives you similar info as <code>glimpse()</code></li>
+<li>The functions <code>head()</code> and <code>tail()</code> also let you inspect the data frame.</li>
+<li><code>$</code> is a symbol that let’s us look at one column of a data frame, like so:</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="getting-started.html#cb13-1"></a>arrests<span class="op">$</span>race_cat</span></code></pre></div>
+<pre><code>##    [1] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##    [8] &quot;Other&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot; 
+##   [15] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##   [22] &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##   [29] &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot; 
+##   [36] &quot;Other&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot; 
+##   [43] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##   [50] &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##   [57] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot; 
+##   [64] &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;White&quot;  &quot;LatinX&quot;
+##   [71] &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##   [78] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+##   [85] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##   [92] &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##   [99] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [106] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [113] &quot;White&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [120] &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##  [127] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [134] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot;
+##  [141] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [148] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [155] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [162] &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+##  [169] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [176] &quot;White&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [183] &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [190] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [197] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot; 
+##  [204] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+##  [211] &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [218] &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot;
+##  [225] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [232] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+##  [239] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##  [246] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [253] &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot;
+##  [260] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot; 
+##  [267] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+##  [274] &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [281] &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##  [288] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+##  [295] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [302] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+##  [309] &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+##  [316] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+##  [323] &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##  [330] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+##  [337] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [344] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [351] &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [358] &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot;
+##  [365] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##  [372] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot;
+##  [379] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [386] &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##  [393] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [400] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot; 
+##  [407] &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [414] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [421] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+##  [428] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+##  [435] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [442] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot; 
+##  [449] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [456] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot; 
+##  [463] &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+##  [470] &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+##  [477] &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [484] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [491] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot; 
+##  [498] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [505] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+##  [512] &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##  [519] &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [526] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##  [533] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot;
+##  [540] &quot;Other&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [547] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot;
+##  [554] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;Other&quot; 
+##  [561] &quot;LatinX&quot; &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [568] &quot;LatinX&quot; &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [575] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+##  [582] &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [589] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+##  [596] &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot;
+##  [603] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Other&quot; 
+##  [610] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [617] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot;
+##  [624] &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [631] &quot;Other&quot;  &quot;White&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [638] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##  [645] &quot;Other&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [652] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+##  [659] &quot;White&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [666] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [673] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+##  [680] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;White&quot; 
+##  [687] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [694] &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot; 
+##  [701] &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [708] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot; 
+##  [715] &quot;Black&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [722] &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+##  [729] &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;Black&quot; 
+##  [736] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+##  [743] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot;
+##  [750] &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot; 
+##  [757] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+##  [764] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot; 
+##  [771] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot; 
+##  [778] &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot;
+##  [785] &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot; 
+##  [792] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [799] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+##  [806] &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+##  [813] &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [820] &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+##  [827] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+##  [834] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+##  [841] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+##  [848] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;White&quot;  &quot;White&quot; 
+##  [855] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot; 
+##  [862] &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+##  [869] &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot; 
+##  [876] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot; 
+##  [883] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+##  [890] &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [897] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [904] &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+##  [911] &quot;Other&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+##  [918] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [925] &quot;White&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+##  [932] &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [939] &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot;
+##  [946] &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot; 
+##  [953] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+##  [960] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot; 
+##  [967] &quot;LatinX&quot; &quot;Other&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+##  [974] &quot;White&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot; 
+##  [981] &quot;Black&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot;
+##  [988] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Other&quot; 
+##  [995] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1002] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Other&quot; 
+## [1009] &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [1016] &quot;Other&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [1023] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;Other&quot;  &quot;White&quot; 
+## [1030] &quot;LatinX&quot; &quot;Other&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot;
+## [1037] &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1044] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1051] &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+## [1058] &quot;Other&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1065] &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot; 
+## [1072] &quot;White&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1079] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1086] &quot;White&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [1093] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1100] &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [1107] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [1114] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot; 
+## [1121] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1128] &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [1135] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [1142] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Other&quot;  &quot;White&quot;  &quot;LatinX&quot;
+## [1149] &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1156] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot; 
+## [1163] &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot; 
+## [1170] &quot;Other&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot; 
+## [1177] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Other&quot; 
+## [1184] &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1191] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [1198] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;White&quot; 
+## [1205] &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1212] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [1219] &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [1226] &quot;Black&quot;  &quot;Other&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1233] &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot; 
+## [1240] &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [1247] &quot;LatinX&quot; &quot;Other&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [1254] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [1261] &quot;Black&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [1268] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [1275] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot; 
+## [1282] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1289] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot;
+## [1296] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot; 
+## [1303] &quot;LatinX&quot; &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Other&quot; 
+## [1310] &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+## [1317] &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+## [1324] &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;White&quot; 
+## [1331] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1338] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;Black&quot; 
+## [1345] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [1352] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1359] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [1366] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot; 
+## [1373] &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;White&quot;  &quot;LatinX&quot;
+## [1380] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+## [1387] &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [1394] &quot;Other&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [1401] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [1408] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [1415] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+## [1422] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [1429] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1436] &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot;
+## [1443] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1450] &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;Other&quot;  &quot;Black&quot; 
+## [1457] &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1464] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [1471] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [1478] &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [1485] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot; 
+## [1492] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [1499] &quot;Black&quot;  &quot;Other&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot;
+## [1506] &quot;Black&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot; 
+## [1513] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot;
+## [1520] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [1527] &quot;Other&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [1534] &quot;Black&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [1541] &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot; 
+## [1548] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [1555] &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1562] &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [1569] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [1576] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;Other&quot; 
+## [1583] &quot;LatinX&quot; &quot;Other&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [1590] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1597] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [1604] &quot;Other&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot; 
+## [1611] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot; 
+## [1618] &quot;Black&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1625] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [1632] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot;
+## [1639] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [1646] &quot;Other&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1653] &quot;Black&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [1660] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1667] &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [1674] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1681] &quot;Black&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1688] &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [1695] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [1702] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+## [1709] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1716] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [1723] &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [1730] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [1737] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+## [1744] &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [1751] &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot; 
+## [1758] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+## [1765] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Other&quot; 
+## [1772] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1779] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+## [1786] &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1793] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [1800] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [1807] &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [1814] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1821] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1828] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1835] &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+## [1842] &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1849] &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [1856] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot; 
+## [1863] &quot;White&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;White&quot; 
+## [1870] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;White&quot; 
+## [1877] &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1884] &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1891] &quot;Other&quot;  &quot;White&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Other&quot; 
+## [1898] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [1905] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [1912] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;White&quot; 
+## [1919] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [1926] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1933] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1940] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [1947] &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [1954] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [1961] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [1968] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1975] &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [1982] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [1989] &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [1996] &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot; 
+## [2003] &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [2010] &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;White&quot; 
+## [2017] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [2024] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;Other&quot; 
+## [2031] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [2038] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [2045] &quot;Other&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [2052] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [2059] &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+## [2066] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;Other&quot; 
+## [2073] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+## [2080] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [2087] &quot;White&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [2094] &quot;LatinX&quot; &quot;LatinX&quot; &quot;Other&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+## [2101] &quot;Other&quot;  &quot;White&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [2108] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;White&quot; 
+## [2115] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+## [2122] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [2129] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;Black&quot; 
+## [2136] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot;
+## [2143] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [2150] &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [2157] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [2164] &quot;White&quot;  &quot;LatinX&quot; &quot;Other&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot;
+## [2171] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [2178] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+## [2185] &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [2192] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [2199] &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [2206] &quot;White&quot;  &quot;Other&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [2213] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [2220] &quot;Black&quot;  &quot;Other&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot; 
+## [2227] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [2234] &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot;
+## [2241] &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot; 
+## [2248] &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot; 
+## [2255] &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;White&quot;  &quot;LatinX&quot;
+## [2262] &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot;
+## [2269] &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot; 
+## [2276] &quot;LatinX&quot; &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;Other&quot;  &quot;LatinX&quot;
+## [2283] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot;
+## [2290] &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;White&quot; 
+## [2297] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot; 
+## [2304] &quot;LatinX&quot; &quot;Black&quot;  &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot;
+## [2311] &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot; 
+## [2318] &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+## [2325] &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot;
+## [2332] &quot;Black&quot;  &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot; 
+## [2339] &quot;Other&quot;  &quot;White&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+## [2346] &quot;White&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;White&quot; 
+## [2353] &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;Black&quot; 
+## [2360] &quot;Other&quot;  &quot;LatinX&quot; &quot;LatinX&quot; &quot;Black&quot;  &quot;White&quot;  &quot;White&quot;  &quot;LatinX&quot;
+## [2367] &quot;Black&quot;  &quot;Black&quot;</code></pre>
+<div id="ways-to-get-an-overview-of-your-data" class="section level3">
+<h3><span class="header-section-number">2.7.1</span> Ways to get an overview of your data</h3>
+<p>Often we want to see counts or summary statistics of our data. One easy way is to use the package <code>DataExplorer</code> to create a report on our data frame. Let’s see how it works:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="getting-started.html#cb15-1"></a><span class="co">#remember we need to tell r we want to use DataExplorer</span></span>
+<span id="cb15-2"><a href="getting-started.html#cb15-2"></a><span class="kw">library</span>(DataExplorer)</span>
+<span id="cb15-3"><a href="getting-started.html#cb15-3"></a><span class="co">#DataExplorer has a function called create_report()</span></span>
+<span id="cb15-4"><a href="getting-started.html#cb15-4"></a><span class="kw">create_report</span>(arrests)</span></code></pre></div>
+<p>This gives us a webpage with a bunch of information on our report. Consider this a 10,000 foot view of the data.</p>
+<p>Another thing I like to do is see a contingency table of a specific variable:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="getting-started.html#cb16-1"></a><span class="kw">table</span>(arrests<span class="op">$</span>race_cat)</span></code></pre></div>
+<pre><code>## 
+##  Black LatinX  Other  White 
+##    683   1101    156    428</code></pre>
+<p>This gives you the tallies by that column in your data frame. Lastly we can view the summary statistics with the <code>summary()</code> function:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="getting-started.html#cb18-1"></a><span class="kw">summary</span>(arrests)</span></code></pre></div>
+<pre><code>##     latitude      longitude       zipcode        arr_date2         
+##  Min.   :33.7   Min.   :-119   Min.   :90001   Min.   :2018-08-06  
+##  1st Qu.:34.0   1st Qu.:-118   1st Qu.:90017   1st Qu.:2018-08-08  
+##  Median :34.1   Median :-118   Median :90041   Median :2018-08-09  
+##  Mean   :34.1   Mean   :-118   Mean   :90414   Mean   :2018-08-09  
+##  3rd Qu.:34.2   3rd Qu.:-118   3rd Qu.:91303   3rd Qu.:2018-08-11  
+##  Max.   :34.3   Max.   :-118   Max.   :91607   Max.   :2018-08-12  
+##                                NA&#39;s   :5                           
+##  arrest_time            age           sex              race_cat        
+##  Length:2368       Min.   : 1.0   Length:2368        Length:2368       
+##  Class1:hms        1st Qu.:25.0   Class :character   Class :character  
+##  Class2:difftime   Median :33.0   Mode  :character   Mode  :character  
+##  Mode  :numeric    Mean   :35.9                                        
+##                    3rd Qu.:45.0                                        
+##                    Max.   :87.0                                        
+##                                                                        
+##  arrest_type           charge         
+##  Length:2368        Length:2368       
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character  
+##                                       
+##                                       
+##                                       
+## </code></pre>
+<p>This provides you with the <code>min</code>, <code>median</code>, <code>mean</code> quartiles, and <code>max</code> all at once.</p>
+</div>
+</div>
+<div id="looking-at-specific-variables" class="section level2">
+<h2><span class="header-section-number">2.8</span> Looking at specific variables</h2>
+<p>We will often want to look at graphs of specific variables or how they relate to others. We can use a plotting package for this? The most popular one in R is called <code>ggplot2</code> and let’s us make publication quality graphics of our data.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="getting-started.html#cb20-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>sex)) <span class="op">+</span></span>
+<span id="cb20-2"><a href="getting-started.html#cb20-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-9-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<div id="variable-distribution" class="section level3">
+<h3><span class="header-section-number">2.8.1</span> Variable distribution</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="getting-started.html#cb21-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>arrest_time)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-10-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+</div>
+<div id="two-variables" class="section level3">
+<h3><span class="header-section-number">2.8.2</span> Two variables</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="getting-started.html#cb23-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>arrest_type, <span class="dt">y=</span>age)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-11-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ggplot-map" class="section level3">
+<h3><span class="header-section-number">2.8.3</span> Ggplot map</h3>
+<p>How about we make a map with GGPLOT?</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="getting-started.html#cb24-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>longitude, <span class="dt">y=</span>latitude)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-12-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>We can see the general shape of LA, but there are limits to what you can do with geospatial data in ggplot. It doesn’t know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages gives us this capabilities.</p>
+</div>
+</div>
+<div id="mapping-in-r" class="section level2">
+<h2><span class="header-section-number">2.9</span> Mapping in R</h2>
+<p>The one issue is that we need to tell arrests that it is a spatial object in R. To do that we need to use a few spatial packages. Let’s load them.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="getting-started.html#cb25-1"></a><span class="kw">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.7.2, GDAL 2.4.2, PROJ 5.2.0</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="getting-started.html#cb27-1"></a><span class="kw">library</span>(tmap)</span></code></pre></div>
+<p><code>sf</code> stands for spatial features. <code>tmap</code> let’s us plot maps like <code>ggplot</code>. Ok, first up, let’s convert our <code>arrests</code> data to a spatial feature.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="getting-started.html#cb28-1"></a>arrests_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(arrests, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
+<p>Let’s look at this new spatial data frame:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="getting-started.html#cb29-1"></a><span class="kw">View</span>(arrests_sf)</span></code></pre></div>
+<p>We now have a column called <code>geometry</code> at the end of our data frame. This contains our latitude and longitudes.</p>
+<p>One thing nice is that we can use the <code>plot()</code> function to plot our spatial data frame.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="getting-started.html#cb30-1"></a><span class="kw">plot</span>(arrests_sf)</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-16-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>But the problem is that we still have no context for our points. We need the layers of polygons we had in QGIS to let us know this is LA. Let’s look at this in a package called <code>tmaps</code> (thematic maps).</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="getting-started.html#cb31-1"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span><span class="st"> </span><span class="kw">tm_dots</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-17-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Nice, but again, we lack geographic boundaries and other shapes. Just like in QGIS, however, we can read in various shapefiles – the ones ending in <code>.shp</code> – to provide our map some boundaries. We do this by using the function <code>st_read</code>. Let’s look at our help documentation on <code>st_read</code>.</p>
+<p>Inside our <code>data/</code> folder we have the shape files we used in our <code>QGIS</code> part of the class plus an new one on the LA county boundaries. Let’s read them in individually and note the output, especially the <code>geometry type</code>.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="getting-started.html#cb32-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
+<span id="cb32-2"><a href="getting-started.html#cb32-2"></a>la_county &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `DRP_COUNTY_BOUNDARY&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 2 features and 2 fields
+## geometry type:  MULTILINESTRING
+## dimension:      XY
+## bbox:           xmin: 6280000 ymin: 1380000 xmax: 6670000 ymax: 2120000
+## epsg (SRID):    2229
+## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="getting-started.html#cb34-1"></a><span class="co">#geometry type:  MULTIPOLYGON</span></span>
+<span id="cb34-2"><a href="getting-started.html#cb34-2"></a>la_zips &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span> <span class="st">&quot;data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `Los_Angeles_City_Zip_Codes&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 157 features and 7 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -119 ymin: 33.7 xmax: -118 ymax: 34.3
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="getting-started.html#cb36-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
+<span id="cb36-2"><a href="getting-started.html#cb36-2"></a>la_freeways &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `CAMS_FREEWAY_SHIELDS&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 45 features and 4 fields
+## geometry type:  MULTILINESTRING
+## dimension:      XY
+## bbox:           xmin: 6280000 ymin: 1720000 xmax: 6670000 ymax: 2120000
+## epsg (SRID):    2229
+## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
+<p>Now let’s use the layers. The important thing is we match our shapefile with the geometry type. <code>tm_polygons()</code> goes with <code>#geometry type:  MULTIPOLYGON</code> and <code>tm_line()</code> goes with <code>#geometry type:  MULTILINESTRING</code>.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="getting-started.html#cb38-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb38-2"><a href="getting-started.html#cb38-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
+<span id="cb38-3"><a href="getting-started.html#cb38-3"></a><span class="kw">tm_shape</span>(la_freeways) <span class="op">+</span></span>
+<span id="cb38-4"><a href="getting-started.html#cb38-4"></a><span class="st">  </span><span class="kw">tm_lines</span>() <span class="op">+</span></span>
+<span id="cb38-5"><a href="getting-started.html#cb38-5"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb38-6"><a href="getting-started.html#cb38-6"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-18-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="getting-started.html#cb39-1"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb39-2"><a href="getting-started.html#cb39-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>(la_county) <span class="op">+</span></span>
+<span id="cb39-3"><a href="getting-started.html#cb39-3"></a><span class="st">  </span><span class="kw">tm_dots</span>()</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mapping-in-r-tmaps-continued.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro-r.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["afam-188r.pdf", "afam-188r.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
