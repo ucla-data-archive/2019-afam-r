@@ -129,6 +129,12 @@ Here are a few useful tips to keep in mind as you learn to program:
 
 * We can do basic math in R 
 * To run the code we can put our cursor on the line we want to run and click on <kbd>Run</kbd> in the top right of the script pane.
+
+
+```{r simple-math}
+5 + 3 
+```
+
 * We can also highlight multiple lines of code and click <kbd>Run</kbd>
 * This is good, but it takes extra time to click and point when you are coding, so RStudio have keyboard shortcuts to let you run code.
 * Use <cmd>+<enter> on Mac and <ctr>+<enter> on windows
