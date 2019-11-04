@@ -185,6 +185,11 @@ library(tidyverse)
 ```{r getting-help-read_csv}
 ?read_csv
 ```
+We can also call the help menu by using the `help()` function: 
+
+```{r using-help}
+help(read_csv)
+```
 
 It opens the help documentation in the **Help** tab in the bottom right RStudio pane. It contains a description, usage, arguments and at the bottom, examples, for the function.  We see the first argument of `read_csv()` is a **file** meaning `read_csv()` needs the file location so it can read the file into R. With this information let's read write our `read_csv()` function so it knows where our arrests data is. Remember from earlier, the arrests data is in the `data/` folder in our project. 
 
@@ -248,7 +253,7 @@ The below functions take as their "argument" (their input) the data frame.
 1. The functions `head()` and `tail()` also let you inspect the data frame. 
 1. `$` is a symbol that let's us look at one column of a data frame, like so: 
 
-```{r dollar-sign}
+```{r dollar-sign, eval=FALSE}
 arrests$race_cat
 ```
 
@@ -379,15 +384,6 @@ tm_shape(arrests_sf) +
   tm_dots() 
 ```
 
-
-```{r, eval=FALSE}
-tm_shape(arrests_sf) +
-  tm_polygons(la_county) +
-  tm_dots()
-```
-
-
-[todo]:#make arrest data spatial object 
 []:# #assignment - come up with R script has fill in the blanks challenges 
 []:#maybe an example with tmap 
 []:# assign homework for the primers in dataviz few, boxplot, a couple more

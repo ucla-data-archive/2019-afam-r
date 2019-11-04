@@ -66,6 +66,21 @@ Tips on learning to code
 * **The best way to learn to code is by doing**
 * **Practice is key**
 
+R Packages
+===========================================================
+R packages extend the functionality of R by providing additional functions, data, and documentation. They are written by a worldwide community of R users and can be downloaded for free from the internet. They are essential features of R - we will be using packages in this class.
+
+A good analogy for R packages is they are like apps you can download onto a mobile phone:
+
+<img src="images/shutterstock/R_vs_R_packages.png" title="Analogy of R versus R packages." alt="Analogy of R versus R packages." width="70%" style="display: block; margin: auto;" />
+
+R Packages
+==========================================================
+
+* We first install packages to our machine. You can use the **Packages** menu on the right bottome pane.
+
+<img src="images/packages.png" title="plot of chunk r-packages-install" alt="plot of chunk r-packages-install" width="70%" />
+
 How the class works
 ========================================================
 
