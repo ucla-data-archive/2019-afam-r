@@ -144,7 +144,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="getting-started.html"><a href="getting-started.html#messages"><i class="fa fa-check"></i><b>2.3.2</b> Errors, warnings, and messages</a></li>
 <li class="chapter" data-level="2.3.3" data-path="getting-started.html"><a href="getting-started.html#tips-code"><i class="fa fa-check"></i><b>2.3.3</b> Tips on learning to code</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="getting-started.html"><a href="getting-started.html#how-to-run-codeyour-first-script"><i class="fa fa-check"></i><b>2.4</b> How to run code/your first script</a></li>
+<li class="chapter" data-level="2.4" data-path="getting-started.html"><a href="getting-started.html#how-to-run-codeyour-first-script"><i class="fa fa-check"></i><b>2.4</b> How to run code/your first script</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="getting-started.html"><a href="getting-started.html#lets-start-coding-in-r"><i class="fa fa-check"></i><b>2.4.1</b> Let’s start coding in R</a></li>
+</ul></li>
 <li class="chapter" data-level="2.5" data-path="getting-started.html"><a href="getting-started.html#arrests"><i class="fa fa-check"></i><b>2.5</b> Explore your first dataset</a></li>
 <li class="chapter" data-level="2.6" data-path="getting-started.html"><a href="getting-started.html#what-are-packages"><i class="fa fa-check"></i><b>2.6</b> What are Packages</a></li>
 <li class="chapter" data-level="2.7" data-path="getting-started.html"><a href="getting-started.html#what-to-do-first-after-you-read-in-your-data"><i class="fa fa-check"></i><b>2.7</b> What to do first after you read in your data?</a><ul>
@@ -195,6 +197,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Inspecting data and doing simple plots</li>
 <li>Make a map in R, exporting images in R</li>
 </ul>
+<p>Source: The first part of the lesson is largely taken from the ModerDive book <a href="https://moderndive.com/" class="uri">https://moderndive.com/</a>
+Slides: &lt;day1-slides.html&gt;</p>
 </div>
 <div id="r-RStudio" class="section level2">
 <h2><span class="header-section-number">2.2</span> What are R and RStudio?</h2>
@@ -275,29 +279,64 @@ Figure 2.1: Analogy of difference between R and RStudio.
 <div id="how-to-run-codeyour-first-script" class="section level2">
 <h2><span class="header-section-number">2.4</span> How to run code/your first script</h2>
 <ul>
+<li>Everyone follow this link to our shared workspace: <a href="https://rstudio.cloud/spaces/31925/join?access_code=PGkF2YGbM3cWUQ76j%2FYUUJWKv3v6c3fa2jQAoxih" class="uri">https://rstudio.cloud/spaces/31925/join?access_code=PGkF2YGbM3cWUQ76j%2FYUUJWKv3v6c3fa2jQAoxih</a></li>
+<li>Inside that project is a folder name: called <code>in_class_coding.R</code></li>
+<li>Double click on it - this creates your own separate copy of the file.</li>
+<li>Inside that file you’ll see a number of lines with <code>#</code> - these are comments.</li>
+<li>Add your name where is says <code>Your Name</code> - keep the <code>#</code> at the start of the line.</li>
+</ul>
+<div id="lets-start-coding-in-r" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Let’s start coding in R</h3>
+<ul>
+<li>Follow along with me as I live code. I will look at your files to make sure you have participated in live-coding.</li>
 <li>We can do basic math in R</li>
-<li>To run the code we can put our cursor on the line we want to run and click on <kbd>Run</kbd> in the top right of the script pane.</li>
+<li>To run the code we can put our cursor on the line we want to run and click on <kbd>Run</kbd> and <strong>Run selected line</strong> in the top right of the script pane.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="getting-started.html#cb1-1"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> </span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <ul>
-<li>We can also highlight multiple lines of code and click <kbd>Run</kbd></li>
-<li>This is good, but it takes extra time to click and point when you are coding, so RStudio have keyboard shortcuts to let you run code.</li>
-<li>Use <code>&lt;cmd&gt;+&lt;enter&gt;</code> on Mac and <code>&lt;ctr&gt;+&lt;enter&gt;</code> on windows</li>
-<li>let’s try a few more expressions:</li>
+<li>We can also use a keyboard shortcut to run the code</li>
+<li>Use <code>&lt;cmd&gt;+&lt;enter&gt;</code> on Mac and <code>&lt;ctr&gt;+&lt;enter&gt;</code> on Windows</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="getting-started.html#cb3-1"></a><span class="co">#a string or character sequence is like a name or sentence or alpha numberic in R</span></span>
-<span id="cb3-2"><a href="getting-started.html#cb3-2"></a><span class="st">&quot;Tim Dennis&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="getting-started.html#cb3-1"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<ul>
+<li>We can also highlight multiple lines of code and click <kbd>Run</kbd></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="getting-started.html#cb5-1"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="getting-started.html#cb7-1"></a>(<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">10</span>)<span class="op">/</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 7.5</code></pre>
+<ul>
+<li>The same works with the keyboard shortcut.</li>
+<li>You can highlight multiple lines and use <code>&lt;cmd&gt;+&lt;enter&gt;</code> on Mac and <code>&lt;ctr&gt;+&lt;enter&gt;</code> on Windows</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="getting-started.html#cb9-1"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="getting-started.html#cb11-1"></a>(<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">10</span>)<span class="op">/</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 7.5</code></pre>
+<ul>
+<li>These lines of code are sometimes called <code>expressions</code></li>
+<li>Let’s try a few more expressions:</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="getting-started.html#cb13-1"></a><span class="co">#a string or character sequence is like a name or sentence or alpha numberic in R</span></span>
+<span id="cb13-2"><a href="getting-started.html#cb13-2"></a><span class="st">&quot;Tim Dennis&quot;</span></span></code></pre></div>
 <pre><code>## [1] &quot;Tim Dennis&quot;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="getting-started.html#cb5-1"></a><span class="co"># we can use arithmetic on strings</span></span>
-<span id="cb5-2"><a href="getting-started.html#cb5-2"></a><span class="st">&quot;Your Name&quot;</span></span></code></pre></div>
+<ul>
+<li>Wait a second what is that line that starts with the <code>#</code> symbol? Anyone?</li>
+<li>It’s called a comment and is very useful for you as a coder to leave notes to yourself or others about what’s going on in your code</li>
+<li>Anything after the <code>#</code> will not be evaluated by R, but remains in the code</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="getting-started.html#cb15-1"></a><span class="co"># Use your name instead</span></span>
+<span id="cb15-2"><a href="getting-started.html#cb15-2"></a><span class="st">&quot;Your Name&quot;</span> <span class="co">#this comment will also be evaulated in the output</span></span></code></pre></div>
 <pre><code>## [1] &quot;Your Name&quot;</code></pre>
+</div>
 </div>
 <div id="arrests" class="section level2">
 <h2><span class="header-section-number">2.5</span> Explore your first dataset</h2>
-<p>The data we’ll use is in our <code>data/</code> folder. Let’s look at it - its a CSV? What does that stand for?</p>
+<p>In R, the main event is usually working with data! So let’s do that. The data we’ll use is in our <code>data/</code> folder. Let’s look at it - its a CSV? What does that stand for?</p>
 <p>Data comes to us in a variety of formats, from pictures to text to numbers. Throughout this class, we’ll focus on datasets that are saved in “spreadsheet”-type format. This is probably the most common way data are collected and saved in many fields. But in R, we can read in data in many formats - this means that R will load the data into it’s environment and make it ready for R to work with it.</p>
-<p>Before we start exploring our <code>arrests</code> data in R, let’s first load the packages needed for this lesson. What’s a package? We haven’t talked about those yet?</p>
+<p>Before we start exploring our <code>arrests</code> data in R, let’s first load the packages needed for this lesson. We’ve touched on packages in the slides, let’s revisit.</p>
 </div>
 <div id="what-are-packages" class="section level2">
 <h2><span class="header-section-number">2.6</span> What are Packages</h2>
@@ -311,18 +350,19 @@ Figure 2.2: Analogy of R versus R packages.
 </div>
 <p>So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn’t have everything. R packages are like the apps you can download onto your phone from Apple’s App Store or Android’s Google Play.</p>
 <p>What are the steps to doing this? To install a package, click on the Packages tab on the right bottom pane. Now you can click <strong>Install</strong> and start typing the package you want to install and it will download.</p>
+<p><img src="images/packages.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>How do you find out about packages? Take a look at <a href="https://cran.r-project.org/web/views/">task views</a> on the CRAN (Comprehensive R Archive Network). Packages are grouped by topic. For this class, because we are using R Studio Cloud, I’ve already installed the packages we need.</p>
 <p>Once you install a package you need to tell R you want to use it. We do this with the <code>library()</code> function. Ok but what is a function? Anybody know? Right functions perform tasks in R. They take inputs called <strong>arguments</strong> (in this case our csv file) and return some kind of output. <code>library()</code> takes a package we want to use in our R code and loads it into our current R environment. Let’s try now:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="getting-started.html#cb7-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="getting-started.html#cb17-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p><code>tidyverse</code> gives us access to a bunch of other functions we can now use after it is loaded. One is called <code>read_csv()</code>. What if we know we need to use <code>read_csv()</code> to read in our data, but we don’t know how. What would we do? We use R’s built in help features to get information on the functions. In R we use a <code>?</code> before the function without the trailing parentheses. Type this code in RStudio and run it:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="getting-started.html#cb8-1"></a>?read_csv</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="getting-started.html#cb18-1"></a>?read_csv</span></code></pre></div>
 <p>We can also call the help menu by using the <code>help()</code> function:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="getting-started.html#cb9-1"></a><span class="kw">help</span>(read_csv)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="getting-started.html#cb19-1"></a><span class="kw">help</span>(read_csv)</span></code></pre></div>
 <p>It opens the help documentation in the <strong>Help</strong> tab in the bottom right RStudio pane. It contains a description, usage, arguments and at the bottom, examples, for the function. We see the first argument of <code>read_csv()</code> is a <strong>file</strong> meaning <code>read_csv()</code> needs the file location so it can read the file into R. With this information let’s read write our <code>read_csv()</code> function so it knows where our arrests data is. Remember from earlier, the arrests data is in the <code>data/</code> folder in our project.</p>
 <p>Run the the following code:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="getting-started.html#cb10-1"></a><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
-<p>Ok, notice we need to quote the file location and name. This is because files paths and names are strings in R. Now when we run it, it outputs the dataset to the console. That’s great! We can see our data. Let’s get practice running it by running it again.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="getting-started.html#cb11-1"></a><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="getting-started.html#cb20-1"></a><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
+<p>Ok, notice we need to quote the file location and name. This is because files paths and names are strings in R. Strings are a sequence of characters that can be a sentence, names, filepaths, passowrds, anything that conatains characters or alphanumeric characters. Now when we run it, it outputs the dataset to the console. That’s great! We can see our data. Let’s get practice running it by running it again.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="getting-started.html#cb21-1"></a><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   latitude = col_double(),
@@ -377,8 +417,8 @@ What is this telling us about our data?
 </p>
 </div>
 <p>Yes, the last part tells us the type of data R thinks our data is. <code>age</code> is a number of double type, <code>sex</code> is a character type, <code>arr_date2</code> is a date.</p>
-<p>This has been helpful, but the problem is we want to do more with our data than outputting it to the console. In order to save our data and work on it, we need to make it into an object in R. Let’s do this now by typing the following and running it:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="getting-started.html#cb14-1"></a>arrests &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
+<p>This has been helpful, but the problem is we want to do more with our data than outputting it to the console. In order to save our data and work on it, we need to make it into an <strong>object</strong> in R. Let’s do this now by typing the following and running it:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="getting-started.html#cb24-1"></a>arrests &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   latitude = col_double(),
@@ -392,6 +432,8 @@ What is this telling us about our data?
 ##   arrest_type = col_character(),
 ##   charge = col_character()
 ## )</code></pre>
+<p>Let’s look at this. The <code>&lt;-</code> symbol is called an assignment operator and you can read it like this. We are assigning what’s on the right of
+<code>&lt;-</code> to the object on the left. After we run it, <code>arrests</code> will hold our dataset and it becomes an object in R. In R we call this type of object a data frame. You can think of it as what R calls a spreadsheet that is set up to be used in R.</p>
 <div class="callout">
 <h2 id="getting-data-into-rstudio-cloud">
 Getting data into RStudio Cloud
@@ -399,6 +441,15 @@ Getting data into RStudio Cloud
 <p>
 The data we are using in this class has been provided for us, but what if you want to get data into RStudio Cloud?
 </p>
+<p>
+We can use the upload button in the <strong>Files</strong> tab:
+</p>
+<div class="figure">
+<img src="images/upload-rstudiocloud.png" alt="" />
+<p class="caption">
+Upload
+</p>
+</div>
 </div>
 </div>
 <div id="what-to-do-first-after-you-read-in-your-data" class="section level2">
@@ -417,22 +468,26 @@ The data we are using in this class has been provided for us, but what if you wa
 <li>The functions <code>head()</code> and <code>tail()</code> also let you inspect the data frame.</li>
 <li><code>$</code> is a symbol that let’s us look at one column of a data frame, like so:</li>
 </ol>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="getting-started.html#cb16-1"></a>arrests<span class="op">$</span>race_cat</span></code></pre></div>
+<p>Let’s use <code>glimpse</code> to look at our data and attributes.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="getting-started.html#cb26-1"></a><span class="kw">glimpse</span>(arrests)</span></code></pre></div>
+<p>We can look at a single column using the <code>$</code> like so:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="getting-started.html#cb27-1"></a>arrests<span class="op">$</span>race_cat</span></code></pre></div>
 <div id="ways-to-get-an-overview-of-your-data" class="section level3">
 <h3><span class="header-section-number">2.7.1</span> Ways to get an overview of your data</h3>
 <p>Often we want to see counts or summary statistics of our data. One easy way is to use the package <code>DataExplorer</code> to create a report on our data frame. Let’s see how it works:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="getting-started.html#cb17-1"></a><span class="co">#remember we need to tell r we want to use DataExplorer</span></span>
-<span id="cb17-2"><a href="getting-started.html#cb17-2"></a><span class="kw">library</span>(DataExplorer)</span>
-<span id="cb17-3"><a href="getting-started.html#cb17-3"></a><span class="co">#DataExplorer has a function called create_report()</span></span>
-<span id="cb17-4"><a href="getting-started.html#cb17-4"></a><span class="kw">create_report</span>(arrests)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="getting-started.html#cb28-1"></a><span class="co">#remember we need to tell r we want to use DataExplorer</span></span>
+<span id="cb28-2"><a href="getting-started.html#cb28-2"></a><span class="kw">library</span>(DataExplorer)</span>
+<span id="cb28-3"><a href="getting-started.html#cb28-3"></a><span class="co">#DataExplorer has a function called create_report()</span></span>
+<span id="cb28-4"><a href="getting-started.html#cb28-4"></a><span class="kw">create_report</span>(arrests)</span></code></pre></div>
 <p>This gives us a webpage with a bunch of information on our report. Consider this a 10,000 foot view of the data.</p>
 <p>Another thing I like to do is see a contingency table of a specific variable:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="getting-started.html#cb18-1"></a><span class="kw">table</span>(arrests<span class="op">$</span>race_cat)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="getting-started.html#cb29-1"></a><span class="kw">table</span>(arrests<span class="op">$</span>race_cat)</span></code></pre></div>
 <pre><code>## 
 ##  Black LatinX  Other  White 
 ##    683   1101    156    428</code></pre>
-<p>This gives you the tallies by that column in your data frame. Lastly we can view the summary statistics with the <code>summary()</code> function:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="getting-started.html#cb20-1"></a><span class="kw">summary</span>(arrests)</span></code></pre></div>
+<p>This gives you the tallies by that column in your data frame.</p>
+<p>Lastly we can view the summary statistics with the <code>summary()</code> function:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="getting-started.html#cb31-1"></a><span class="kw">summary</span>(arrests)</span></code></pre></div>
 <pre><code>##     latitude      longitude       zipcode        arr_date2         
 ##  Min.   :33.7   Min.   :-119   Min.   :90001   Min.   :2018-08-06  
 ##  1st Qu.:34.0   1st Qu.:-118   1st Qu.:90017   1st Qu.:2018-08-08  
@@ -462,50 +517,83 @@ The data we are using in this class has been provided for us, but what if you wa
 </div>
 <div id="looking-at-specific-variables" class="section level2">
 <h2><span class="header-section-number">2.8</span> Looking at specific variables</h2>
-<p>We will often want to look at graphs of specific variables or how they relate to others. We can use a plotting package for this? The most popular one in R is called <code>ggplot2</code> and let’s us make publication quality graphics of our data.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="getting-started.html#cb22-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>sex)) <span class="op">+</span></span>
-<span id="cb22-2"><a href="getting-started.html#cb22-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<p>We will often want to look at graphs of specific variables and how they relate to other variables. We can use a plotting package for this? The most popular one in R is called <code>ggplot2</code> and let’s us make publication quality graphics of our data. GGPLOT is part of the <code>tidyverse</code> so we do not need to install it or load it. Let’s start by looking at a bar chart with <code>race_cat</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="getting-started.html#cb33-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat)) <span class="op">+</span></span>
+<span id="cb33-2"><a href="getting-started.html#cb33-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-7-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>It creates a bar chart of our <code>race_cat</code> and the count of arrests for this period of data we have. But what if we want to add another variable to the bar chart making it a staked bar? We can do this through the <code>fill</code> argument. What’s an argument again?</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="getting-started.html#cb34-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>arrest_type)) <span class="op">+</span></span>
+<span id="cb34-2"><a href="getting-started.html#cb34-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-8-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>One thing about stacked bar charts is that it is often hard to tell by sight the proportions represented. Often, it’s recommended to use bar charts that are side by side. We can do this via the <code>position</code> argument inside the <code>geom_bar</code> function.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="getting-started.html#cb35-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>arrest_type)) <span class="op">+</span></span>
+<span id="cb35-2"><a href="getting-started.html#cb35-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
 <p><img src="afam-188r_files/figure-html/unnamed-chunk-9-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<div class="challenge">
+<h2 id="replace-the-fill-with-sex-and-run">
+Replace the fill with <code>sex</code> and run
+</h2>
+<p>
+Replace the fill with <code>sex</code> and run the code.
+</p>
+</div>
+<p>Ok, good. Let’s look at some other plots we can use.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="getting-started.html#cb36-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>sex)) <span class="op">+</span></span>
+<span id="cb36-2"><a href="getting-started.html#cb36-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/barchart-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <div id="variable-distribution" class="section level3">
 <h3><span class="header-section-number">2.8.1</span> Variable distribution</h3>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="getting-started.html#cb23-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>arrest_time)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
+<p>One thing we often want to look at is the distribution of a single variable. This is often visualized via a histogram. Let’s look at a histogram of <code>arrest_time</code>.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="getting-started.html#cb37-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>arrest_time)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-10-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="afam-188r_files/figure-html/histogram-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Not surprisingly, we see more arrests seems to build up during the day. One thing to know about a histogram is that you can adjust how the <code>geom_histogram()</code> bins the counts using either <code>binwidth</code> or <code>bins</code> argument. I’ll use <code>bindwidth</code> below. Notice b/c time is so granular, so many values, you need to pick a big number.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="getting-started.html#cb39-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>arrest_time)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">500</span>)</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/histogram-binwidth-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 </div>
 <div id="two-variables" class="section level3">
 <h3><span class="header-section-number">2.8.2</span> Two variables</h3>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="getting-started.html#cb25-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>arrest_type, <span class="dt">y=</span>age)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<p>You often want to see the distribution of a variable based on another. Let’s use a <code>boxplot</code> to generate <code>arrest_type</code> by <code>age</code> with a boxplot.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="getting-started.html#cb40-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>arrest_type, <span class="dt">y=</span>age)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="afam-188r_files/figure-html/unnamed-chunk-11-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<div class="challenge">
+<h2 id="change-the-x-value-to-another-category-sex-race_cat-etc.">
+Change the x value to another category (sex, race_cat, etc.)
+</h2>
+</div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="getting-started.html#cb41-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>race_cat, <span class="dt">y=</span>age)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-13-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 </div>
 <div id="ggplot-map" class="section level3">
 <h3><span class="header-section-number">2.8.3</span> Ggplot map</h3>
-<p>How about we make a map with GGPLOT?</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="getting-started.html#cb26-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>longitude, <span class="dt">y=</span>latitude)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-12-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
-<p>We can see the general shape of LA, but there are limits to what you can do with geospatial data in ggplot. It doesn’t know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages gives us this capabilities.</p>
+<p>How about we make a map with GGPLOT? We do this by using our longitude and latitude variables as our x and y mapping.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="getting-started.html#cb42-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>longitude, <span class="dt">y=</span>latitude)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-14-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>We can see the general shape of LA county, but there are limits to what you can do with geospatial data in ggplot. It doesn’t know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages gives us these capabilities.</p>
 </div>
 </div>
 <div id="mapping-in-r" class="section level2">
 <h2><span class="header-section-number">2.9</span> Mapping in R</h2>
-<p>The one issue is that we need to tell arrests that it is a spatial object in R. To do that we need to use a few spatial packages. Let’s load them.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="getting-started.html#cb27-1"></a><span class="kw">library</span>(sf)</span></code></pre></div>
+<p>We need a way to tell arrests that it is a spatial object in R. To do that we need to use two spatial packages. Let’s load them.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="getting-started.html#cb43-1"></a><span class="kw">library</span>(sf)</span></code></pre></div>
 <pre><code>## Linking to GEOS 3.7.2, GDAL 2.4.2, PROJ 5.2.0</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="getting-started.html#cb29-1"></a><span class="kw">library</span>(tmap)</span></code></pre></div>
-<p><code>sf</code> stands for spatial features. <code>tmap</code> let’s us plot maps like <code>ggplot</code>. Ok, first up, let’s convert our <code>arrests</code> data to a spatial feature.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="getting-started.html#cb30-1"></a>arrests_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(arrests, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="getting-started.html#cb45-1"></a><span class="kw">library</span>(tmap)</span></code></pre></div>
+<p><code>sf</code> stands for spatial features. <code>tmap</code> let’s us plot maps like <code>ggplot</code>. Ok, first up, let’s convert our <code>arrests</code> data to a spatial feature. We need to do this b/c <code>tmap</code> will need this information so we can use on a map. I’ll create a new data frame called <code>arrests_sf</code> and use the <code>st_as_sf()</code> that lets us convert our data frame to a <code>sf</code> object using the latitude and longitude.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="getting-started.html#cb46-1"></a>arrests_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(arrests, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
+<p>Notice a couple of things you haven’t seen before. We have a <code>coords</code> argument that we use a <code>c()</code> function to <strong>combine</strong> our <code>latitude</code> and <code>longitude</code> columns. We also tell the function what <strong>Cordinate Refernce System</strong> be are using <code>4326</code> is a common one.</p>
 <p>Let’s look at this new spatial data frame:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="getting-started.html#cb31-1"></a><span class="kw">View</span>(arrests_sf)</span></code></pre></div>
-<p>We now have a column called <code>geometry</code> at the end of our data frame. This contains our latitude and longitudes.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="getting-started.html#cb47-1"></a><span class="kw">View</span>(arrests_sf)</span></code></pre></div>
+<p>We now have a column called <code>geometry</code> at the end of our data frame. This contains our latitude and longitude.</p>
 <p>One thing nice is that we can use the <code>plot()</code> function to plot our spatial data frame.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="getting-started.html#cb32-1"></a><span class="kw">plot</span>(arrests_sf)</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-16-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="getting-started.html#cb48-1"></a><span class="kw">plot</span>(arrests_sf)</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-18-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>But the problem is that we still have no context for our points. We need the layers of polygons we had in QGIS to let us know this is LA. Let’s look at this in a package called <code>tmaps</code> (thematic maps).</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="getting-started.html#cb33-1"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span><span class="st"> </span><span class="kw">tm_dots</span>()</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-17-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="getting-started.html#cb49-1"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span><span class="st"> </span><span class="kw">tm_dots</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-19-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>Nice, but again, we lack geographic boundaries and other shapes. Just like in QGIS, however, we can read in various shapefiles – the ones ending in <code>.shp</code> – to provide our map some boundaries. We do this by using the function <code>st_read</code>. Let’s look at our help documentation on <code>st_read</code>.</p>
 <p>Inside our <code>data/</code> folder we have the shape files we used in our <code>QGIS</code> part of the class plus an new one on the LA county boundaries. Let’s read them in individually and note the output, especially the <code>geometry type</code>.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="getting-started.html#cb34-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
-<span id="cb34-2"><a href="getting-started.html#cb34-2"></a>la_county &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="getting-started.html#cb50-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
+<span id="cb50-2"><a href="getting-started.html#cb50-2"></a>la_county &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `DRP_COUNTY_BOUNDARY&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 2 features and 2 fields
 ## geometry type:  MULTILINESTRING
@@ -513,8 +601,8 @@ The data we are using in this class has been provided for us, but what if you wa
 ## bbox:           xmin: 6280000 ymin: 1380000 xmax: 6670000 ymax: 2120000
 ## epsg (SRID):    2229
 ## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="getting-started.html#cb36-1"></a><span class="co">#geometry type:  MULTIPOLYGON</span></span>
-<span id="cb36-2"><a href="getting-started.html#cb36-2"></a>la_zips &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span> <span class="st">&quot;data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="getting-started.html#cb52-1"></a><span class="co">#geometry type:  MULTIPOLYGON</span></span>
+<span id="cb52-2"><a href="getting-started.html#cb52-2"></a>la_zips &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span> <span class="st">&quot;data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `Los_Angeles_City_Zip_Codes&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 157 features and 7 fields
 ## geometry type:  MULTIPOLYGON
@@ -522,8 +610,8 @@ The data we are using in this class has been provided for us, but what if you wa
 ## bbox:           xmin: -119 ymin: 33.7 xmax: -118 ymax: 34.3
 ## epsg (SRID):    4326
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="getting-started.html#cb38-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
-<span id="cb38-2"><a href="getting-started.html#cb38-2"></a>la_freeways &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="getting-started.html#cb54-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
+<span id="cb54-2"><a href="getting-started.html#cb54-2"></a>la_freeways &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `CAMS_FREEWAY_SHIELDS&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 45 features and 4 fields
 ## geometry type:  MULTILINESTRING
@@ -531,14 +619,23 @@ The data we are using in this class has been provided for us, but what if you wa
 ## bbox:           xmin: 6280000 ymin: 1720000 xmax: 6670000 ymax: 2120000
 ## epsg (SRID):    2229
 ## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
-<p>Now let’s use the layers. The important thing is we match our shapefile with the geometry type. <code>tm_polygons()</code> goes with <code>#geometry type:  MULTIPOLYGON</code> and <code>tm_line()</code> goes with <code>#geometry type:  MULTILINESTRING</code>.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="getting-started.html#cb40-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
-<span id="cb40-2"><a href="getting-started.html#cb40-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
-<span id="cb40-3"><a href="getting-started.html#cb40-3"></a><span class="kw">tm_shape</span>(la_freeways) <span class="op">+</span></span>
-<span id="cb40-4"><a href="getting-started.html#cb40-4"></a><span class="st">  </span><span class="kw">tm_lines</span>() <span class="op">+</span></span>
-<span id="cb40-5"><a href="getting-started.html#cb40-5"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
-<span id="cb40-6"><a href="getting-started.html#cb40-6"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-18-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Now let’s use the layers. The important thing is we match our shapefile with the geometry type. <code>tm_polygons()</code> goes with <code>#geometry type:  MULTIPOLYGON</code> and <code>tm_line()</code> goes with <code>#geometry type:  MULTILINESTRING</code>. Let’s use this new knowledge to make the map better.</p>
+<pre><code>## tmap mode set to plotting</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="getting-started.html#cb57-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb57-2"><a href="getting-started.html#cb57-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
+<span id="cb57-3"><a href="getting-started.html#cb57-3"></a><span class="kw">tm_shape</span>(la_freeways) <span class="op">+</span></span>
+<span id="cb57-4"><a href="getting-started.html#cb57-4"></a><span class="st">  </span><span class="kw">tm_lines</span>() <span class="op">+</span></span>
+<span id="cb57-5"><a href="getting-started.html#cb57-5"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb57-6"><a href="getting-started.html#cb57-6"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-20-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Ok, that’s more like it. Last thing before we break. So far, we’ve been using <code>tmap</code> to produce a static map, but <code>tmap</code> lets us create interactive maps by switching it’s mode to `view’. We can do this using a single line.</p>
+<pre><code>## tmap mode set to interactive viewing</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="getting-started.html#cb59-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb59-2"><a href="getting-started.html#cb59-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
+<span id="cb59-3"><a href="getting-started.html#cb59-3"></a><span class="kw">tm_shape</span>(la_freeways) <span class="op">+</span></span>
+<span id="cb59-4"><a href="getting-started.html#cb59-4"></a><span class="st">  </span><span class="kw">tm_lines</span>() <span class="op">+</span></span>
+<span id="cb59-5"><a href="getting-started.html#cb59-5"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb59-6"><a href="getting-started.html#cb59-6"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span></code></pre></div>
 
 </div>
 </div>

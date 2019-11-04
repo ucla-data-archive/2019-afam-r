@@ -504,7 +504,7 @@ Ok, that's more like it. Last thing before we break. So far, we've been using `t
 tmap_mode("view")
 ```
 
-```{r}
+```{r tmap-view, eval=FALSE}
 tm_shape(la_zips) +
   tm_polygons() +
 tm_shape(la_freeways) +
@@ -512,6 +512,6 @@ tm_shape(la_freeways) +
 tm_shape(arrests_sf) +
   tm_dots() 
 ```
-[]:# #assignment - come up with R script has fill in the blanks challenges 
+[]:# - come up with R script has fill in the blanks challenges 
 []:#maybe an example with tmap 
 []:# assign homework for the primers in dataviz few, boxplot, a couple more
