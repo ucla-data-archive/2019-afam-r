@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="getting-started.html"/>
-
+<link rel="next" href="mapping-in-r-tmaps-continued.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -155,9 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.8" data-path="getting-started.html"><a href="getting-started.html#looking-at-specific-variables"><i class="fa fa-check"></i><b>2.8</b> Looking at specific variables</a><ul>
 <li class="chapter" data-level="2.8.1" data-path="getting-started.html"><a href="getting-started.html#variable-distribution"><i class="fa fa-check"></i><b>2.8.1</b> Variable distribution</a></li>
 <li class="chapter" data-level="2.8.2" data-path="getting-started.html"><a href="getting-started.html#two-variables"><i class="fa fa-check"></i><b>2.8.2</b> Two variables</a></li>
-<li class="chapter" data-level="2.8.3" data-path="getting-started.html"><a href="getting-started.html#ggplot-map"><i class="fa fa-check"></i><b>2.8.3</b> Ggplot map</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="getting-started.html"><a href="getting-started.html#mapping-in-r"><i class="fa fa-check"></i><b>2.9</b> Mapping in R</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="r-assignment-1.html"><a href="r-assignment-1.html"><i class="fa fa-check"></i><b>3</b> R Assignment 1</a><ul>
 <li class="chapter" data-level="3.0.1" data-path="r-assignment-1.html"><a href="r-assignment-1.html#instructions"><i class="fa fa-check"></i><b>3.0.1</b> Instructions</a></li>
@@ -169,6 +167,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.0.7" data-path="r-assignment-1.html"><a href="r-assignment-1.html#performing-summary-against-our-data-frame."><i class="fa fa-check"></i><b>3.0.7</b> 6. Performing <code>summary()</code> against our data frame.</a></li>
 <li class="chapter" data-level="3.0.8" data-path="r-assignment-1.html"><a href="r-assignment-1.html#creating-a-web-report-on-your-data-using-create_report"><i class="fa fa-check"></i><b>3.0.8</b> 7. Creating a web report on your data using <code>create_report()</code></a></li>
 <li class="chapter" data-level="3.0.9" data-path="r-assignment-1.html"><a href="r-assignment-1.html#creating-plots-with-ggplot2"><i class="fa fa-check"></i><b>3.0.9</b> 8 Creating plots with <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mapping-in-r-tmaps-continued.html"><a href="mapping-in-r-tmaps-continued.html"><i class="fa fa-check"></i><b>4</b> Mapping in R: tmaps continued</a><ul>
+<li class="chapter" data-level="4.1" data-path="mapping-in-r-tmaps-continued.html"><a href="mapping-in-r-tmaps-continued.html#ggplot-map"><i class="fa fa-check"></i><b>4.1</b> GGPLOT map</a></li>
+<li class="chapter" data-level="4.2" data-path="mapping-in-r-tmaps-continued.html"><a href="mapping-in-r-tmaps-continued.html#mapping-in-r"><i class="fa fa-check"></i><b>4.2</b> Mapping in R</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -204,94 +206,94 @@ assignment is worth 32 points or 4 points per question.</p>
 <div id="running-r-code" class="section level3">
 <h3><span class="header-section-number">3.0.2</span> 1. Running R code</h3>
 <p>Replace “Your name” to your own name and run the blow code.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="r-assignment-1.html#cb60-1"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span></span>
-<span id="cb60-2"><a href="r-assignment-1.html#cb60-2"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">10</span>  </span>
-<span id="cb60-3"><a href="r-assignment-1.html#cb60-3"></a><span class="st">&quot;Your name&quot;</span> </span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="r-assignment-1.html#cb42-1"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb42-2"><a href="r-assignment-1.html#cb42-2"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">10</span>  </span>
+<span id="cb42-3"><a href="r-assignment-1.html#cb42-3"></a><span class="st">&quot;Your name&quot;</span> </span></code></pre></div>
 </div>
 <div id="loading-the-installed-package-tidyverse." class="section level3">
 <h3><span class="header-section-number">3.0.3</span> 2. Loading the installed package <code>tidyverse</code>.</h3>
 <p>In class, we used the function <code>library()</code> to load the package <code>tidyverse</code>.
 Below fill in the blank below that that loads <code>tidyverse</code> and run the code:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="r-assignment-1.html#cb61-1"></a><span class="co">#load the tidyverse below</span></span>
-<span id="cb61-2"><a href="r-assignment-1.html#cb61-2"></a><span class="kw">library</span>(_____)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="r-assignment-1.html#cb43-1"></a><span class="co">#load the tidyverse below</span></span>
+<span id="cb43-2"><a href="r-assignment-1.html#cb43-2"></a><span class="kw">library</span>(_____)</span></code></pre></div>
 </div>
 <div id="getting-help-in-r" class="section level3">
 <h3><span class="header-section-number">3.0.4</span> 3. Getting help in R</h3>
 <p><code>tidyverse</code> provides us with a function called <code>read_csv</code>.<br />
 Run the command below to get help on <code>read_csv</code> and answer the question below:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="r-assignment-1.html#cb62-1"></a>?read_csv</span>
-<span id="cb62-2"><a href="r-assignment-1.html#cb62-2"></a><span class="kw">help</span>(read_csv)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="r-assignment-1.html#cb44-1"></a>?read_csv</span>
+<span id="cb44-2"><a href="r-assignment-1.html#cb44-2"></a><span class="kw">help</span>(read_csv)</span></code></pre></div>
 <p>What is the first argument for <code>read_csv()</code>?</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="r-assignment-1.html#cb63-1"></a><span class="co">#Answer:</span></span>
-<span id="cb63-2"><a href="r-assignment-1.html#cb63-2"></a><span class="co">#</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-assignment-1.html#cb45-1"></a><span class="co">#Answer:</span></span>
+<span id="cb45-2"><a href="r-assignment-1.html#cb45-2"></a><span class="co">#</span></span></code></pre></div>
 </div>
 <div id="reading-in-a-csv-into-r" class="section level3">
 <h3><span class="header-section-number">3.0.5</span> 4. Reading in a <code>csv</code> into R</h3>
 <p>Our <code>aug6_12_arrest_data.csv</code> data is in the <code>data/</code> folder in our workspace. Fill in
 the blanks in the below command to read the data into R and assign it to an object
 called <code>arrests</code>. (Run the code after you fill in the blank to assure the data is loaded.)</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="r-assignment-1.html#cb64-1"></a>____ &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;__________&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="r-assignment-1.html#cb46-1"></a>____ &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;__________&#39;</span>)</span></code></pre></div>
 </div>
 <div id="inspecting-a-data-frame-in-r" class="section level3">
 <h3><span class="header-section-number">3.0.6</span> 5. Inspecting a data frame in R</h3>
 <p>Once we have data as a <code>data frame</code> in R, we can inspect it to find out more information
 about it. Functions that provide ways to inspect your data are <code>View()</code>, <code>glimpse()</code>,
 <code>head()</code>, &amp; <code>tail()</code>. and the <code>$</code>. Run each command below and answer the questions:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="r-assignment-1.html#cb65-1"></a><span class="kw">View</span>(arrests)</span>
-<span id="cb65-2"><a href="r-assignment-1.html#cb65-2"></a><span class="co"># what is the first column name in the arrests data frame</span></span>
-<span id="cb65-3"><a href="r-assignment-1.html#cb65-3"></a><span class="co"># Answer: </span></span>
-<span id="cb65-4"><a href="r-assignment-1.html#cb65-4"></a></span>
-<span id="cb65-5"><a href="r-assignment-1.html#cb65-5"></a><span class="kw">glimpse</span>(arrests)</span>
-<span id="cb65-6"><a href="r-assignment-1.html#cb65-6"></a><span class="co"># how many columns are in the data frame arrests</span></span>
-<span id="cb65-7"><a href="r-assignment-1.html#cb65-7"></a><span class="co"># Answer: </span></span>
-<span id="cb65-8"><a href="r-assignment-1.html#cb65-8"></a></span>
-<span id="cb65-9"><a href="r-assignment-1.html#cb65-9"></a><span class="kw">head</span>(arrests)</span>
-<span id="cb65-10"><a href="r-assignment-1.html#cb65-10"></a><span class="co">#what is the race for the arrest in row 6 (e.g. Black, LatinX, Other, White)</span></span>
-<span id="cb65-11"><a href="r-assignment-1.html#cb65-11"></a><span class="co">#Answer: </span></span>
-<span id="cb65-12"><a href="r-assignment-1.html#cb65-12"></a></span>
-<span id="cb65-13"><a href="r-assignment-1.html#cb65-13"></a><span class="kw">tail</span>(arrests)</span>
-<span id="cb65-14"><a href="r-assignment-1.html#cb65-14"></a><span class="co">#what is the race for the arrest in row 6 (e.g. Black, LatinX, Other, White)</span></span>
-<span id="cb65-15"><a href="r-assignment-1.html#cb65-15"></a><span class="co">#Answer: </span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="r-assignment-1.html#cb47-1"></a><span class="kw">View</span>(arrests)</span>
+<span id="cb47-2"><a href="r-assignment-1.html#cb47-2"></a><span class="co"># what is the first column name in the arrests data frame</span></span>
+<span id="cb47-3"><a href="r-assignment-1.html#cb47-3"></a><span class="co"># Answer: </span></span>
+<span id="cb47-4"><a href="r-assignment-1.html#cb47-4"></a></span>
+<span id="cb47-5"><a href="r-assignment-1.html#cb47-5"></a><span class="kw">glimpse</span>(arrests)</span>
+<span id="cb47-6"><a href="r-assignment-1.html#cb47-6"></a><span class="co"># how many columns are in the data frame arrests</span></span>
+<span id="cb47-7"><a href="r-assignment-1.html#cb47-7"></a><span class="co"># Answer: </span></span>
+<span id="cb47-8"><a href="r-assignment-1.html#cb47-8"></a></span>
+<span id="cb47-9"><a href="r-assignment-1.html#cb47-9"></a><span class="kw">head</span>(arrests)</span>
+<span id="cb47-10"><a href="r-assignment-1.html#cb47-10"></a><span class="co">#what is the race for the arrest in row 6 (e.g. Black, LatinX, Other, White)</span></span>
+<span id="cb47-11"><a href="r-assignment-1.html#cb47-11"></a><span class="co">#Answer: </span></span>
+<span id="cb47-12"><a href="r-assignment-1.html#cb47-12"></a></span>
+<span id="cb47-13"><a href="r-assignment-1.html#cb47-13"></a><span class="kw">tail</span>(arrests)</span>
+<span id="cb47-14"><a href="r-assignment-1.html#cb47-14"></a><span class="co">#what is the race for the arrest in row 6 (e.g. Black, LatinX, Other, White)</span></span>
+<span id="cb47-15"><a href="r-assignment-1.html#cb47-15"></a><span class="co">#Answer: </span></span></code></pre></div>
 </div>
 <div id="performing-summary-against-our-data-frame." class="section level3">
 <h3><span class="header-section-number">3.0.7</span> 6. Performing <code>summary()</code> against our data frame.</h3>
 <p>In class we use <code>summary(arrests)</code> function to find out basic descriptive statistics on
 our data, like minimum, mean, median and max. Run the below code and tell us the mean and
 median for the <code>age</code> variable.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="r-assignment-1.html#cb66-1"></a><span class="co">#run the below, read the oput in the console &amp; provide the answer</span></span>
-<span id="cb66-2"><a href="r-assignment-1.html#cb66-2"></a><span class="kw">summary</span>(arrests)</span>
-<span id="cb66-3"><a href="r-assignment-1.html#cb66-3"></a></span>
-<span id="cb66-4"><a href="r-assignment-1.html#cb66-4"></a><span class="co">#what is the mean and median for the age variable:</span></span>
-<span id="cb66-5"><a href="r-assignment-1.html#cb66-5"></a><span class="co">#Answer: </span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="r-assignment-1.html#cb48-1"></a><span class="co">#run the below, read the oput in the console &amp; provide the answer</span></span>
+<span id="cb48-2"><a href="r-assignment-1.html#cb48-2"></a><span class="kw">summary</span>(arrests)</span>
+<span id="cb48-3"><a href="r-assignment-1.html#cb48-3"></a></span>
+<span id="cb48-4"><a href="r-assignment-1.html#cb48-4"></a><span class="co">#what is the mean and median for the age variable:</span></span>
+<span id="cb48-5"><a href="r-assignment-1.html#cb48-5"></a><span class="co">#Answer: </span></span></code></pre></div>
 </div>
 <div id="creating-a-web-report-on-your-data-using-create_report" class="section level3">
 <h3><span class="header-section-number">3.0.8</span> 7. Creating a web report on your data using <code>create_report()</code></h3>
 <p>In class we used the <code>DataExplorer</code> package to produce a report on our data.
 Run the below code that runs <code>create_report()</code> on the arrests data and answer the question.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="r-assignment-1.html#cb67-1"></a><span class="co">#load the DataExplorer package into our R environment</span></span>
-<span id="cb67-2"><a href="r-assignment-1.html#cb67-2"></a><span class="kw">library</span>(DataExplorer)</span>
-<span id="cb67-3"><a href="r-assignment-1.html#cb67-3"></a><span class="co">#run the report (this takes a bit)</span></span>
-<span id="cb67-4"><a href="r-assignment-1.html#cb67-4"></a><span class="kw">create_report</span>(arrests)</span>
-<span id="cb67-5"><a href="r-assignment-1.html#cb67-5"></a></span>
-<span id="cb67-6"><a href="r-assignment-1.html#cb67-6"></a><span class="co">#In the Basic Statistics section of the report, how many &quot;Missing observations&quot; are there?</span></span>
-<span id="cb67-7"><a href="r-assignment-1.html#cb67-7"></a><span class="co">#Answer: </span></span>
-<span id="cb67-8"><a href="r-assignment-1.html#cb67-8"></a></span>
-<span id="cb67-9"><a href="r-assignment-1.html#cb67-9"></a><span class="co">#In the Basic Statistics section of the report, how many &quot;Total observations&quot; are there?</span></span>
-<span id="cb67-10"><a href="r-assignment-1.html#cb67-10"></a><span class="co">#Answer: </span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="r-assignment-1.html#cb49-1"></a><span class="co">#load the DataExplorer package into our R environment</span></span>
+<span id="cb49-2"><a href="r-assignment-1.html#cb49-2"></a><span class="kw">library</span>(DataExplorer)</span>
+<span id="cb49-3"><a href="r-assignment-1.html#cb49-3"></a><span class="co">#run the report (this takes a bit)</span></span>
+<span id="cb49-4"><a href="r-assignment-1.html#cb49-4"></a><span class="kw">create_report</span>(arrests)</span>
+<span id="cb49-5"><a href="r-assignment-1.html#cb49-5"></a></span>
+<span id="cb49-6"><a href="r-assignment-1.html#cb49-6"></a><span class="co">#In the Basic Statistics section of the report, how many &quot;Missing observations&quot; are there?</span></span>
+<span id="cb49-7"><a href="r-assignment-1.html#cb49-7"></a><span class="co">#Answer: </span></span>
+<span id="cb49-8"><a href="r-assignment-1.html#cb49-8"></a></span>
+<span id="cb49-9"><a href="r-assignment-1.html#cb49-9"></a><span class="co">#In the Basic Statistics section of the report, how many &quot;Total observations&quot; are there?</span></span>
+<span id="cb49-10"><a href="r-assignment-1.html#cb49-10"></a><span class="co">#Answer: </span></span></code></pre></div>
 </div>
 <div id="creating-plots-with-ggplot2" class="section level3">
 <h3><span class="header-section-number">3.0.9</span> 8 Creating plots with <code>ggplot2</code></h3>
 <p>In class we created a bar chart for <code>race_cat</code> by <code>arrest_type</code> with the below code:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="r-assignment-1.html#cb68-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb68-2"><a href="r-assignment-1.html#cb68-2"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>arrest_type)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb68-3"><a href="r-assignment-1.html#cb68-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="r-assignment-1.html#cb50-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb50-2"><a href="r-assignment-1.html#cb50-2"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>arrest_type)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb50-3"><a href="r-assignment-1.html#cb50-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
 <p><img src="afam-188r_files/figure-html/ggplot-8-example-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>Instead of using the fill arguement of <code>arrest_type</code>, let’s color the plot by <code>sex</code>. Fill in the blank below to show <code>sex</code>. What does the plot tell you about the data?</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="r-assignment-1.html#cb69-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb69-2"><a href="r-assignment-1.html#cb69-2"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>___)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb69-3"><a href="r-assignment-1.html#cb69-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="r-assignment-1.html#cb70-1"></a><span class="co">#What does the plot tell you about the data? </span></span>
-<span id="cb70-2"><a href="r-assignment-1.html#cb70-2"></a><span class="co">#Answer: </span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="r-assignment-1.html#cb51-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb51-2"><a href="r-assignment-1.html#cb51-2"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>___)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb51-3"><a href="r-assignment-1.html#cb51-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="r-assignment-1.html#cb52-1"></a><span class="co">#What does the plot tell you about the data? </span></span>
+<span id="cb52-2"><a href="r-assignment-1.html#cb52-2"></a><span class="co">#Answer: </span></span></code></pre></div>
 
 </div>
 </div>
@@ -300,8 +302,8 @@ Run the below code that runs <code>create_report()</code> on the arrests data an
           </div>
         </div>
       </div>
-<a href="getting-started.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mapping-in-r-tmaps-continued.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
