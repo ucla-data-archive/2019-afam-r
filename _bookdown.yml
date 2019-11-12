@@ -1,5 +1,6 @@
 book_filename: "afam-188r"
 language:
   ui:
-    chapter_name: "R Class "
+    chapter_name: "AFAM 188: R "
 delete_merged_file: true
+rmd_files: ["index.Rmd", "01-intro-r.Rmd", "r-assignment-1.Rmd"]
