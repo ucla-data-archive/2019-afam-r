@@ -20,11 +20,9 @@ Email:
 
 ### Instructions 
 
-Complete the follow R coding challenges in RStudio Cloud Project <https://rstudio.cloud/spaces/31925/project/707259> in the `r-assignment-1.R` file. Save this file as you work.vYou will have until **11/19** by 5pm. If you encounter any problems, please come to
+Complete the R coding challenges and questions in RStudio Cloud Project <https://rstudio.cloud/spaces/31925/project/707259> in the `r-assignment-1.R` file. Save that file as you work. You will have until **11/20** by 5pm. If you encounter any problems, please come to
 office hours on 11/12 or 11/19 from 2-5pm in the Data Science Center, 21536 YRL or email us at <datascience@ucla.edu>. This
 assignment is worth 32 points or 4 points per question. 
-
-R Script of this document in RStudio Cloud: 
 
 ### 1. Running R code 
 
