@@ -104,5 +104,9 @@ tm_shape(la_freeways) +
 tm_shape(arrests_sf) +
   tm_dots() 
 ```
-[larger-data]:# use dplyr to aggregate data by zipcode, then create a spatial dataset 
-[zip-map]:# look at SapData package
+[aggre-larger-data]:# use dplyr to aggregate data by zipcode, then create a spatial dataset 
+[map data]:# look at SapData package on how to set up spatial data as a package - add variants of arrests data
+[add-color-other-theme]:# add color to the plot and different data, will need to prep
+[write challenges]:# focus on faded examples - fill in the blank style
+[write learning objectives]:# what do we want them to get out of the next few classes
+

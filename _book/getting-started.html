@@ -149,7 +149,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="getting-started.html"><a href="getting-started.html#arrests"><i class="fa fa-check"></i><b>2.5</b> Explore your first dataset</a></li>
 <li class="chapter" data-level="2.6" data-path="getting-started.html"><a href="getting-started.html#what-are-packages"><i class="fa fa-check"></i><b>2.6</b> What are Packages</a></li>
-<li class="chapter" data-level="2.7" data-path="getting-started.html"><a href="getting-started.html#read-and-save-data-in-r"><i class="fa fa-check"></i><b>2.7</b> Read and Save Data in R</a></li>
+<li class="chapter" data-level="2.7" data-path="getting-started.html"><a href="getting-started.html#reading-data-into-r"><i class="fa fa-check"></i><b>2.7</b> Reading data into R</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="getting-started.html"><a href="getting-started.html#reading-and-saving-data-in-r"><i class="fa fa-check"></i><b>2.7.1</b> Reading and Saving Data in R</a></li>
+</ul></li>
 <li class="chapter" data-level="2.8" data-path="getting-started.html"><a href="getting-started.html#what-to-do-first-after-you-read-in-your-data"><i class="fa fa-check"></i><b>2.8</b> What to do first after you read in your data?</a><ul>
 <li class="chapter" data-level="2.8.1" data-path="getting-started.html"><a href="getting-started.html#ways-to-get-an-overview-of-your-data"><i class="fa fa-check"></i><b>2.8.1</b> Ways to get an overview of your data</a></li>
 </ul></li>
@@ -367,6 +369,9 @@ Figure 2.2: Analogy of R versus R packages.
 <p>How do you find out about packages? Take a look at <a href="https://cran.r-project.org/web/views/">task views</a> on the CRAN (Comprehensive R Archive Network). Packages are grouped by topic. For this class, because we are using R Studio Cloud, I’ve already installed the packages we need.</p>
 <p>Once you install a package you need to tell R you want to use it. We do this with the <code>library()</code> function. Ok but what is a function? Anybody know? Right functions perform tasks in R. They take inputs called <strong>arguments</strong> (in this case our csv file) and return some kind of output. <code>library()</code> takes a package we want to use in our R code and loads it into our current R environment. Let’s try now:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="getting-started.html#cb17-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+</div>
+<div id="reading-data-into-r" class="section level2">
+<h2><span class="header-section-number">2.7</span> Reading data into R</h2>
 <p><code>tidyverse</code> gives us access to a bunch of other functions we can now use after it is loaded. One is called <code>read_csv()</code>. What if we know we need to use <code>read_csv()</code> to read in our data, but we don’t know how. What would we do? We use R’s built in help features to get information on the functions. In R we use a <code>?</code> before the function without the trailing parentheses. Type this code in RStudio and run it:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="getting-started.html#cb18-1"></a>?read_csv</span></code></pre></div>
 <p>We can also call the help menu by using the <code>help()</code> function:</p>
@@ -430,9 +435,8 @@ What is this telling us about our data?
 </p>
 </div>
 <p>Yes, the last part tells us the type of data R thinks our data is. <code>age</code> is a number of double type, <code>sex</code> is a character type, <code>arr_date2</code> is a date.</p>
-</div>
-<div id="read-and-save-data-in-r" class="section level2">
-<h2><span class="header-section-number">2.7</span> Read and Save Data in R</h2>
+<div id="reading-and-saving-data-in-r" class="section level3">
+<h3><span class="header-section-number">2.7.1</span> Reading and Saving Data in R</h3>
 <p>This has been helpful, but the problem is we want to do more with our data than outputting it to the console. In order to save our data and work on it, we need to make it into an <strong>object</strong> in R. Let’s do this now by typing the following and running it:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="getting-started.html#cb24-1"></a>arrests &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
 <pre><code>## Parsed with column specification:
@@ -465,6 +469,7 @@ We can use the upload button in the <strong>Files</strong> tab:
 <p class="caption">
 Upload
 </p>
+</div>
 </div>
 </div>
 </div>

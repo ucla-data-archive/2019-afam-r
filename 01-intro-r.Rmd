@@ -221,6 +221,8 @@ Once you install a package you need to tell R you want to use it. We do this wit
 library(tidyverse)
 ```
 
+## Reading data into R
+
 `tidyverse` gives us access to a bunch of other functions we can now use after it is loaded.  One is called `read_csv()`. What if we know we need to use `read_csv()` to read in our data, but we don't know how. What would we do? We use R's built in help features to get information on the functions. In R we use a `?` before the function without the trailing parentheses. Type this code in RStudio  and run it:
 
 ```{r getting-help-read_csv}
@@ -270,7 +272,7 @@ What does the output tell us? How many rows are in our data? Columns? What about
 Yes, the last part tells us the type of data R thinks our data is. `age` is a number of double type, `sex` is a character type, `arr_date2` is a date.
 
 
-## Read and Save Data in R
+### Reading and Saving Data in R
 
 This has been helpful, but the problem is we want to do more with our data than outputting it to the console. In order to save our data and work on it, we need to make it into an **object** in R. Let's do this now by typing the following and running it:
 
