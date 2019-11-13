@@ -109,4 +109,6 @@ tm_shape(arrests_sf) +
 [add-color-other-theme]:# add color to the plot and different data, will need to prep
 [write challenges]:# focus on faded examples - fill in the blank style
 [write learning objectives]:# what do we want them to get out of the next few classes
+[tmap-functions]:# add color via tm_border, tm_fill https://geocompr.robinlovelace.net/adv-map.html#aesthetics 
+[tmap-functions]:#
 
