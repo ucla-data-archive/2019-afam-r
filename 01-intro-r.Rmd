@@ -271,6 +271,8 @@ Yes, the last part tells us the type of data R thinks our data is. `age` is a nu
 
 This has been helpful, but the problem is we want to do more with our data than outputting it to the console. In order to save our data and work on it, we need to make it into an **object** in R. Let's do this now by typing the following and running it:
 
+## Read and Save Data in R
+
 ```{r}
 arrests <- read_csv('data/aug6_12_arrest_data.csv')
 ```

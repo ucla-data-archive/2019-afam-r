@@ -1,12 +1,12 @@
-# Mapping in R: tmaps continued
+# Mapping in R
 
-Two weeks ago we covered some basic 
+Two weeks ago we covered how to work with data in R and produce some plots.  Today we will learn how to do mapping in R. Let's start by using ggplot2 to plot our arrest data by longitude and latitude. 
 
 ## GGPLOT map 
 
 How about we make a map with GGPLOT? We do this by using our longitude and latitude variables as our x and y mapping. 
 
-```{r}
+```{r ggplot-map}
 ggplot(arrests, aes(x=longitude, y=latitude)) + geom_point()
 ```
 
@@ -21,23 +21,26 @@ library(sf)
 library(tmap)
 ```
 
-`sf` stands for spatial features. `tmap` let's us plot maps like `ggplot`. Ok, first up, let's convert our `arrests` data to a spatial feature. We need to do this b/c `tmap` will need this information so we can use on a map. I'll create a new data frame called `arrests_sf` and use the `st_as_sf()` that lets us convert our data frame to a `sf` object using the latitude and longitude. 
+
+## Converting data to a spatial object
+
+`sf` stands for spatial features. `tmap` let's us plot maps like `ggplot`. Ok, first up, let's convert our `arrests` data to a spatial feature. We need to do this b/c `tmap` will need this information so we can use it on a map. I'll create a new data frame called `arrests_sf` and use the `st_as_sf()` that lets us convert our data frame to a `sf` object using the latitude and longitude. 
 
 ```{r}
 arrests_sf <- st_as_sf(arrests, coords = c("longitude", "latitude"), crs = 4326)
 ```
 
-Notice a couple of things you haven't seen before. We have a `coords` argument that we use a `c()` function to **combine** our `latitude` and `longitude` columns. We also tell the function what **Cordinate Refernce System** be are using `4326` is a common one. 
+Notice a couple of things you haven't seen before. We have a `coords` argument that we use a `c()` function to **combine** our `latitude` and `longitude` columns. We also tell the function what **Cordinate Refernce System** be are using `4326` is a common one.
 
 Let's look at this new spatial data frame: 
 
-```{r, eval=FALSE}
+```{r spatial-data-view, eval=FALSE}
 View(arrests_sf)
 ```
 
 We now have a column called `geometry` at the end of our data frame. This contains our latitude and longitude. 
 
-One thing nice is that we can use the `plot()` function to plot our spatial data frame. 
+One thing nice is that we can use the `plot()` function to plot our spatial data frame as it is. 
 
 ```{r}
 plot(arrests_sf)
@@ -49,9 +52,11 @@ But the problem is that we still have no context for our points. We need the lay
 tm_shape(arrests_sf) + tm_dots()
 ```
 
+## Reading in shapefiles
+
 Nice, but again, we lack geographic boundaries and other shapes. Just like in QGIS, however, we can read in various shapefiles -- the ones ending in `.shp` -- to provide our map some boundaries. We do this by using the function `st_read`. Let's look at our help documentation on `st_read`. 
 
-Inside our `data/` folder we have the shape files we used in our `QGIS` part of the class plus an new one on the LA county boundaries. Let's read them in individually and note the output, especially the `geometry type`. 
+Inside our `data/` folder we have the shape files we used in our `QGIS` part of the class plus a new one on the LA county boundaries. Let's read them in individually and note the output in the console, especially the `geometry type`. 
 
 ```{r la_county}
 #geometry type:  MULTILINESTRING
@@ -87,7 +92,7 @@ tm_shape(arrests_sf) +
 
 Ok, that's more like it. Last thing before we break. So far, we've been using `tmap` to produce a static map, but `tmap` lets us create interactive maps by switching it's mode to `view'. We can do this using a single line. 
 
-```{r tmap-mode, echo=FALSE}
+```{r tmap-mode}
 tmap_mode("view")
 ```
 
@@ -99,6 +104,5 @@ tm_shape(la_freeways) +
 tm_shape(arrests_sf) +
   tm_dots() 
 ```
-[]:# - come up with R script has fill in the blanks challenges 
-[]:#maybe an example with tmap 
-[]:# assign homework for the primers in dataviz few, boxplot, a couple more
+[larger-data]:# use dplyr to aggregate data by zipcode, then create a spatial dataset 
+[zip-map]:# look at SapData package

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>AFAM 188: R 3 R Assignment 1 | African American Studies 188: Intro to R &amp; Mapping in R</title>
+  <title>AFAM 188: R 4 Mapping in R | African American Studies 188: Intro to R &amp; Mapping in R</title>
   <meta name="description" content="This is ." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="AFAM 188: R 3 R Assignment 1 | African American Studies 188: Intro to R &amp; Mapping in R" />
+  <meta property="og:title" content="AFAM 188: R 4 Mapping in R | African American Studies 188: Intro to R &amp; Mapping in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="AFAM 188: R 3 R Assignment 1 | African American Studies 188: Intro to R &amp; Mapping in R" />
+  <meta name="twitter:title" content="AFAM 188: R 4 Mapping in R | African American Studies 188: Intro to R &amp; Mapping in R" />
   
   <meta name="twitter:description" content="This is ." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="getting-started.html"/>
-<link rel="next" href="mapping-in-r.html"/>
+<link rel="prev" href="r-assignment-1.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -195,108 +195,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-assignment-1" class="section level1">
-<h1><span class="header-section-number">AFAM 188: R 3</span> R Assignment 1</h1>
-<p>Please add your name and email to the below lines:</p>
-<p>Name:<br />
-Email:</p>
-<div id="instructions" class="section level3">
-<h3><span class="header-section-number">3.0.1</span> Instructions</h3>
-<p>Complete the R coding challenges and questions in RStudio Cloud Project <a href="https://rstudio.cloud/spaces/31925/project/707259" class="uri">https://rstudio.cloud/spaces/31925/project/707259</a> in the <code>r-assignment-1.R</code> file. Save that file as you work. You will have until <strong>11/20</strong> by 5pm. If you encounter any problems, please come to
-office hours on 11/12 or 11/19 from 2-5pm in the Data Science Center, 21536 YRL or email us at <a href="mailto:datascience@ucla.edu" class="email">datascience@ucla.edu</a>. This
-assignment is worth 32 points or 4 points per question.</p>
+<div id="mapping-in-r" class="section level1">
+<h1><span class="header-section-number">AFAM 188: R 4</span> Mapping in R</h1>
+<p>Two weeks ago we covered how to work with data in R and produce some plots. Today we will learn how to do mapping in R. Let’s start by using ggplot2 to plot our arrest data by longitude and latitude.</p>
+<div id="ggplot-map" class="section level2">
+<h2><span class="header-section-number">4.1</span> GGPLOT map</h2>
+<p>How about we make a map with GGPLOT? We do this by using our longitude and latitude variables as our x and y mapping.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="mapping-in-r.html#cb53-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>longitude, <span class="dt">y=</span>latitude)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/ggplot-map-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>We can see the general shape of LA county, but there are limits to what you can do with geospatial data in ggplot. It doesn’t know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages gives us these capabilities.</p>
 </div>
-<div id="running-r-code" class="section level3">
-<h3><span class="header-section-number">3.0.2</span> 1. Running R code</h3>
-<p>Replace “Your name” to your own name and run the blow code.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="r-assignment-1.html#cb42-1"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span></span>
-<span id="cb42-2"><a href="r-assignment-1.html#cb42-2"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">10</span>  </span>
-<span id="cb42-3"><a href="r-assignment-1.html#cb42-3"></a><span class="st">&quot;Your name&quot;</span> </span></code></pre></div>
+<div id="mapping-in-r-1" class="section level2">
+<h2><span class="header-section-number">4.2</span> Mapping in R</h2>
+<p>We need a way to tell arrests that it is a spatial object in R. To do that we need to use two spatial packages. Let’s load them.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="mapping-in-r.html#cb54-1"></a><span class="kw">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.7.2, GDAL 2.4.2, PROJ 5.2.0</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="mapping-in-r.html#cb56-1"></a><span class="kw">library</span>(tmap)</span></code></pre></div>
 </div>
-<div id="loading-the-installed-package-tidyverse." class="section level3">
-<h3><span class="header-section-number">3.0.3</span> 2. Loading the installed package <code>tidyverse</code>.</h3>
-<p>In class, we used the function <code>library()</code> to load the package <code>tidyverse</code>.
-Below fill in the blank below that that loads <code>tidyverse</code> and run the code:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="r-assignment-1.html#cb43-1"></a><span class="co">#load the tidyverse below</span></span>
-<span id="cb43-2"><a href="r-assignment-1.html#cb43-2"></a><span class="kw">library</span>(_____)</span></code></pre></div>
+<div id="converting-data-to-a-spatial-object" class="section level2">
+<h2><span class="header-section-number">4.3</span> Converting data to a spatial object</h2>
+<p><code>sf</code> stands for spatial features. <code>tmap</code> let’s us plot maps like <code>ggplot</code>. Ok, first up, let’s convert our <code>arrests</code> data to a spatial feature. We need to do this b/c <code>tmap</code> will need this information so we can use it on a map. I’ll create a new data frame called <code>arrests_sf</code> and use the <code>st_as_sf()</code> that lets us convert our data frame to a <code>sf</code> object using the latitude and longitude.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="mapping-in-r.html#cb57-1"></a>arrests_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(arrests, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
+<p>Notice a couple of things you haven’t seen before. We have a <code>coords</code> argument that we use a <code>c()</code> function to <strong>combine</strong> our <code>latitude</code> and <code>longitude</code> columns. We also tell the function what <strong>Cordinate Refernce System</strong> be are using <code>4326</code> is a common one.</p>
+<p>Let’s look at this new spatial data frame:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="mapping-in-r.html#cb58-1"></a><span class="kw">View</span>(arrests_sf)</span></code></pre></div>
+<p>We now have a column called <code>geometry</code> at the end of our data frame. This contains our latitude and longitude.</p>
+<p>One thing nice is that we can use the <code>plot()</code> function to plot our spatial data frame as it is.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="mapping-in-r.html#cb59-1"></a><span class="kw">plot</span>(arrests_sf)</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-16-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>But the problem is that we still have no context for our points. We need the layers of polygons we had in QGIS to let us know this is LA. Let’s look at this in a package called <code>tmaps</code> (thematic maps).</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="mapping-in-r.html#cb60-1"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span><span class="st"> </span><span class="kw">tm_dots</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-17-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 </div>
-<div id="getting-help-in-r" class="section level3">
-<h3><span class="header-section-number">3.0.4</span> 3. Getting help in R</h3>
-<p><code>tidyverse</code> provides us with a function called <code>read_csv</code>.<br />
-Run the command below to get help on <code>read_csv</code> and answer the question below:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="r-assignment-1.html#cb44-1"></a>?read_csv</span>
-<span id="cb44-2"><a href="r-assignment-1.html#cb44-2"></a><span class="kw">help</span>(read_csv)</span></code></pre></div>
-<p>What is the first argument for <code>read_csv()</code>?</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-assignment-1.html#cb45-1"></a><span class="co">#Answer:</span></span>
-<span id="cb45-2"><a href="r-assignment-1.html#cb45-2"></a><span class="co">#</span></span></code></pre></div>
-</div>
-<div id="reading-in-a-csv-into-r" class="section level3">
-<h3><span class="header-section-number">3.0.5</span> 4. Reading in a <code>csv</code> into R</h3>
-<p>Our <code>aug6_12_arrest_data.csv</code> data is in the <code>data/</code> folder in our workspace. Fill in
-the blanks in the below command to read the data into R and assign it to an object
-called <code>arrests</code>. (Run the code after you fill in the blank to assure the data is loaded.)</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="r-assignment-1.html#cb46-1"></a>____ &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;__________&#39;</span>)</span></code></pre></div>
-</div>
-<div id="inspecting-a-data-frame-in-r" class="section level3">
-<h3><span class="header-section-number">3.0.6</span> 5. Inspecting a data frame in R</h3>
-<p>Once we have data as a <code>data frame</code> in R, we can inspect it to find out more information
-about it. Functions that provide ways to inspect your data are <code>View()</code>, <code>glimpse()</code>,
-<code>head()</code>, &amp; <code>tail()</code>. and the <code>$</code>. Run each command below and answer the questions:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="r-assignment-1.html#cb47-1"></a><span class="kw">View</span>(arrests)</span>
-<span id="cb47-2"><a href="r-assignment-1.html#cb47-2"></a><span class="co"># what is the first column name in the arrests data frame</span></span>
-<span id="cb47-3"><a href="r-assignment-1.html#cb47-3"></a><span class="co"># Answer: </span></span>
-<span id="cb47-4"><a href="r-assignment-1.html#cb47-4"></a></span>
-<span id="cb47-5"><a href="r-assignment-1.html#cb47-5"></a><span class="kw">glimpse</span>(arrests)</span>
-<span id="cb47-6"><a href="r-assignment-1.html#cb47-6"></a><span class="co"># how many columns are in the data frame arrests</span></span>
-<span id="cb47-7"><a href="r-assignment-1.html#cb47-7"></a><span class="co"># Answer: </span></span>
-<span id="cb47-8"><a href="r-assignment-1.html#cb47-8"></a></span>
-<span id="cb47-9"><a href="r-assignment-1.html#cb47-9"></a><span class="kw">head</span>(arrests)</span>
-<span id="cb47-10"><a href="r-assignment-1.html#cb47-10"></a><span class="co">#what is the race for the arrest in row 6 (e.g. Black, LatinX, Other, White)</span></span>
-<span id="cb47-11"><a href="r-assignment-1.html#cb47-11"></a><span class="co">#Answer: </span></span>
-<span id="cb47-12"><a href="r-assignment-1.html#cb47-12"></a></span>
-<span id="cb47-13"><a href="r-assignment-1.html#cb47-13"></a><span class="kw">tail</span>(arrests)</span>
-<span id="cb47-14"><a href="r-assignment-1.html#cb47-14"></a><span class="co">#what is the race for the arrest in row 6 (e.g. Black, LatinX, Other, White)</span></span>
-<span id="cb47-15"><a href="r-assignment-1.html#cb47-15"></a><span class="co">#Answer: </span></span></code></pre></div>
-</div>
-<div id="performing-summary-against-our-data-frame." class="section level3">
-<h3><span class="header-section-number">3.0.7</span> 6. Performing <code>summary()</code> against our data frame.</h3>
-<p>In class we use <code>summary(arrests)</code> function to find out basic descriptive statistics on
-our data, like minimum, mean, median and max. Run the below code and tell us the mean and
-median for the <code>age</code> variable.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="r-assignment-1.html#cb48-1"></a><span class="co">#run the below, read the oput in the console &amp; provide the answer</span></span>
-<span id="cb48-2"><a href="r-assignment-1.html#cb48-2"></a><span class="kw">summary</span>(arrests)</span>
-<span id="cb48-3"><a href="r-assignment-1.html#cb48-3"></a></span>
-<span id="cb48-4"><a href="r-assignment-1.html#cb48-4"></a><span class="co">#what is the mean and median for the age variable:</span></span>
-<span id="cb48-5"><a href="r-assignment-1.html#cb48-5"></a><span class="co">#Answer: </span></span></code></pre></div>
-</div>
-<div id="creating-a-web-report-on-your-data-using-create_report" class="section level3">
-<h3><span class="header-section-number">3.0.8</span> 7. Creating a web report on your data using <code>create_report()</code></h3>
-<p>In class we used the <code>DataExplorer</code> package to produce a report on our data.
-Run the below code that runs <code>create_report()</code> on the arrests data and answer the question.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="r-assignment-1.html#cb49-1"></a><span class="co">#load the DataExplorer package into our R environment</span></span>
-<span id="cb49-2"><a href="r-assignment-1.html#cb49-2"></a><span class="kw">library</span>(DataExplorer)</span>
-<span id="cb49-3"><a href="r-assignment-1.html#cb49-3"></a><span class="co">#run the report (this takes a bit)</span></span>
-<span id="cb49-4"><a href="r-assignment-1.html#cb49-4"></a><span class="kw">create_report</span>(arrests)</span>
-<span id="cb49-5"><a href="r-assignment-1.html#cb49-5"></a></span>
-<span id="cb49-6"><a href="r-assignment-1.html#cb49-6"></a><span class="co">#In the Basic Statistics section of the report, how many &quot;Missing observations&quot; are there?</span></span>
-<span id="cb49-7"><a href="r-assignment-1.html#cb49-7"></a><span class="co">#Answer: </span></span>
-<span id="cb49-8"><a href="r-assignment-1.html#cb49-8"></a></span>
-<span id="cb49-9"><a href="r-assignment-1.html#cb49-9"></a><span class="co">#In the Basic Statistics section of the report, how many &quot;Total observations&quot; are there?</span></span>
-<span id="cb49-10"><a href="r-assignment-1.html#cb49-10"></a><span class="co">#Answer: </span></span></code></pre></div>
-</div>
-<div id="creating-plots-with-ggplot2" class="section level3">
-<h3><span class="header-section-number">3.0.9</span> 8 Creating plots with <code>ggplot2</code></h3>
-<p>In class we created a bar chart for <code>race_cat</code> by <code>arrest_type</code> with the below code:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="r-assignment-1.html#cb50-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb50-2"><a href="r-assignment-1.html#cb50-2"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>arrest_type)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb50-3"><a href="r-assignment-1.html#cb50-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/ggplot-8-example-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
-<p>Instead of using the fill arguement of <code>arrest_type</code>, let’s color the plot by <code>sex</code>. Fill in the blank below to show <code>sex</code>. What does the plot tell you about the data?</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="r-assignment-1.html#cb51-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb51-2"><a href="r-assignment-1.html#cb51-2"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>___)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb51-3"><a href="r-assignment-1.html#cb51-3"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="r-assignment-1.html#cb52-1"></a><span class="co">#What does the plot tell you about the data? </span></span>
-<span id="cb52-2"><a href="r-assignment-1.html#cb52-2"></a><span class="co">#Answer: </span></span></code></pre></div>
+<div id="reading-in-shapefiles" class="section level2">
+<h2><span class="header-section-number">4.4</span> Reading in shapefiles</h2>
+<p>Nice, but again, we lack geographic boundaries and other shapes. Just like in QGIS, however, we can read in various shapefiles – the ones ending in <code>.shp</code> – to provide our map some boundaries. We do this by using the function <code>st_read</code>. Let’s look at our help documentation on <code>st_read</code>.</p>
+<p>Inside our <code>data/</code> folder we have the shape files we used in our <code>QGIS</code> part of the class plus a new one on the LA county boundaries. Let’s read them in individually and note the output in the console, especially the <code>geometry type</code>.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="mapping-in-r.html#cb61-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
+<span id="cb61-2"><a href="mapping-in-r.html#cb61-2"></a>la_county &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `DRP_COUNTY_BOUNDARY&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 2 features and 2 fields
+## geometry type:  MULTILINESTRING
+## dimension:      XY
+## bbox:           xmin: 6280000 ymin: 1380000 xmax: 6670000 ymax: 2120000
+## epsg (SRID):    2229
+## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="mapping-in-r.html#cb63-1"></a><span class="co">#geometry type:  MULTIPOLYGON</span></span>
+<span id="cb63-2"><a href="mapping-in-r.html#cb63-2"></a>la_zips &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span> <span class="st">&quot;data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `Los_Angeles_City_Zip_Codes&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 157 features and 7 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -119 ymin: 33.7 xmax: -118 ymax: 34.3
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="mapping-in-r.html#cb65-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
+<span id="cb65-2"><a href="mapping-in-r.html#cb65-2"></a>la_freeways &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `CAMS_FREEWAY_SHIELDS&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 45 features and 4 fields
+## geometry type:  MULTILINESTRING
+## dimension:      XY
+## bbox:           xmin: 6280000 ymin: 1720000 xmax: 6670000 ymax: 2120000
+## epsg (SRID):    2229
+## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
+<p>Now let’s use the layers. The important thing is we match our shapefile with the geometry type. <code>tm_polygons()</code> goes with <code>#geometry type:  MULTIPOLYGON</code> and <code>tm_line()</code> goes with <code>#geometry type:  MULTILINESTRING</code>. Let’s use this new knowledge to make the map better.</p>
+<pre><code>## tmap mode set to plotting</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="mapping-in-r.html#cb68-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb68-2"><a href="mapping-in-r.html#cb68-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
+<span id="cb68-3"><a href="mapping-in-r.html#cb68-3"></a><span class="kw">tm_shape</span>(la_freeways) <span class="op">+</span></span>
+<span id="cb68-4"><a href="mapping-in-r.html#cb68-4"></a><span class="st">  </span><span class="kw">tm_lines</span>() <span class="op">+</span></span>
+<span id="cb68-5"><a href="mapping-in-r.html#cb68-5"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb68-6"><a href="mapping-in-r.html#cb68-6"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-18-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Ok, that’s more like it. Last thing before we break. So far, we’ve been using <code>tmap</code> to produce a static map, but <code>tmap</code> lets us create interactive maps by switching it’s mode to `view’. We can do this using a single line.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="mapping-in-r.html#cb69-1"></a><span class="kw">tmap_mode</span>(<span class="st">&quot;view&quot;</span>)</span></code></pre></div>
+<pre><code>## tmap mode set to interactive viewing</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="mapping-in-r.html#cb71-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb71-2"><a href="mapping-in-r.html#cb71-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
+<span id="cb71-3"><a href="mapping-in-r.html#cb71-3"></a><span class="kw">tm_shape</span>(la_freeways) <span class="op">+</span></span>
+<span id="cb71-4"><a href="mapping-in-r.html#cb71-4"></a><span class="st">  </span><span class="kw">tm_lines</span>() <span class="op">+</span></span>
+<span id="cb71-5"><a href="mapping-in-r.html#cb71-5"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb71-6"><a href="mapping-in-r.html#cb71-6"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span></code></pre></div>
 
 </div>
 </div>
@@ -305,8 +284,8 @@ Run the below code that runs <code>create_report()</code> on the arrests data an
           </div>
         </div>
       </div>
-<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="mapping-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-assignment-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -338,7 +317,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/r-assignment-1.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-mapping-r.Rmd",
 "text": "Edit"
 },
 "history": {
