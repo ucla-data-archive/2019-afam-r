@@ -203,7 +203,7 @@ We can also save a `tmap` as an object in R and reuse it or build on it. For ins
 
 ```{r tmap-save}
 lazips <- tm_shape(la_zips) +
-    tm_borders()
+  tm_borders()
 ```
 
 ```{r runlazips}
@@ -218,10 +218,6 @@ lzip1 <- lazips + tm_fill(col = "red")
 lzip2 <- lazips + tm_fill(col = "red", alpha = 0.3)
 lzip3 <- lazips + tm_borders(col = "blue")
 lzip4 <- lazips + tm_borders(lwd = 3)
-```
-
-```{r print-out-base-no-layer}
-lazips #our familiar map
 ```
 
 
