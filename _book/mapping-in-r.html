@@ -24,7 +24,7 @@
 <meta name="author" content="Tim Dennis" />
 
 
-<meta name="date" content="2019-11-13" />
+<meta name="date" content="2019-11-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -176,6 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="mapping-in-r.html"><a href="mapping-in-r.html#mapping-in-r-1"><i class="fa fa-check"></i><b>4.2</b> Mapping in R</a></li>
 <li class="chapter" data-level="4.3" data-path="mapping-in-r.html"><a href="mapping-in-r.html#converting-data-to-a-spatial-object"><i class="fa fa-check"></i><b>4.3</b> Converting data to a spatial object</a></li>
 <li class="chapter" data-level="4.4" data-path="mapping-in-r.html"><a href="mapping-in-r.html#reading-in-shapefiles"><i class="fa fa-check"></i><b>4.4</b> Reading in shapefiles</a></li>
+<li class="chapter" data-level="4.5" data-path="mapping-in-r.html"><a href="mapping-in-r.html#aesthetics"><i class="fa fa-check"></i><b>4.5</b> Aesthetics</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -203,38 +204,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ggplot-map" class="section level2">
 <h2><span class="header-section-number">4.1</span> GGPLOT map</h2>
 <p>How about we make a map with GGPLOT? We do this by using our longitude and latitude variables as our x and y mapping.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="mapping-in-r.html#cb53-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>longitude, <span class="dt">y=</span>latitude)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="mapping-in-r.html#cb53-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb53-2"><a href="mapping-in-r.html#cb53-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb53-3"><a href="mapping-in-r.html#cb53-3"></a>arrests &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   latitude = col_double(),
+##   longitude = col_double(),
+##   zipcode = col_double(),
+##   arr_date2 = col_date(format = &quot;&quot;),
+##   arrest_time = col_time(format = &quot;&quot;),
+##   age = col_double(),
+##   sex = col_character(),
+##   race_cat = col_character(),
+##   arrest_type = col_character(),
+##   charge = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="mapping-in-r.html#cb55-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>longitude, <span class="dt">y=</span>latitude)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="afam-188r_files/figure-html/ggplot-map-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
-<p>We can see the general shape of LA county, but there are limits to what you can do with geospatial data in ggplot. It doesn’t know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages gives us these capabilities.</p>
+<p>We can see the general shape of LA county, but there are limits to what you can do with geospatial data in ggplot. It doesn’t know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages designed for gis &amp; mapping give us these capabilities.</p>
 </div>
 <div id="mapping-in-r-1" class="section level2">
 <h2><span class="header-section-number">4.2</span> Mapping in R</h2>
-<p>We need a way to tell arrests that it is a spatial object in R. To do that we need to use two spatial packages. Let’s load them.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="mapping-in-r.html#cb54-1"></a><span class="kw">library</span>(sf)</span></code></pre></div>
+<p>We need a way to tell arrests that it is a spatial object in R. To do that we need to use a spatial package called <code>sf</code> to do so. Let’s load it.</p>
+<p>How do we load packages in R?</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="mapping-in-r.html#cb56-1"></a><span class="kw">library</span>(sf)</span></code></pre></div>
 <pre><code>## Linking to GEOS 3.7.2, GDAL 2.4.2, PROJ 5.2.0</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="mapping-in-r.html#cb56-1"></a><span class="kw">library</span>(tmap)</span></code></pre></div>
 </div>
 <div id="converting-data-to-a-spatial-object" class="section level2">
 <h2><span class="header-section-number">4.3</span> Converting data to a spatial object</h2>
-<p><code>sf</code> stands for spatial features. <code>tmap</code> let’s us plot maps like <code>ggplot</code>. Ok, first up, let’s convert our <code>arrests</code> data to a spatial feature. We need to do this b/c <code>tmap</code> will need this information so we can use it on a map. I’ll create a new data frame called <code>arrests_sf</code> and use the <code>st_as_sf()</code> that lets us convert our data frame to a <code>sf</code> object using the latitude and longitude.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="mapping-in-r.html#cb57-1"></a>arrests_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(arrests, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
+<p><code>sf</code> stands for <strong>simple features</strong> and is based on a standard that specifies how to store and work with 2d geometries, points, lines, polygons, etc..</p>
+<p>Ok, first up, let’s convert our <code>arrests</code> data to a simple feature object, so it knows it contains spatial information. We need to do this b/c <code>tmap</code> will need this information so we map it. To store this object, I’ll create a new data frame called <code>arrests_sf</code> and use the <code>st_as_sf()</code> that lets us convert our data frame to a <code>sf</code> object using the latitude and longitude. Let’s look up this funtion in the R help system first.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="mapping-in-r.html#cb58-1"></a>?st_as_sf</span></code></pre></div>
+<p>Many of these conversion functions in the sf package start with <code>st</code> - this is because PostGis, a heavily used GIS database uses <code>ST</code> (spatial type) for many of its functions.</p>
+<p>Ok, let’s now convert our arrests data to a <code>sf</code> object.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="mapping-in-r.html#cb59-1"></a>arrests_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(arrests, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
 <p>Notice a couple of things you haven’t seen before. We have a <code>coords</code> argument that we use a <code>c()</code> function to <strong>combine</strong> our <code>latitude</code> and <code>longitude</code> columns. We also tell the function what <strong>Cordinate Refernce System</strong> be are using <code>4326</code> is a common one.</p>
 <p>Let’s look at this new spatial data frame:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="mapping-in-r.html#cb58-1"></a><span class="kw">View</span>(arrests_sf)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="mapping-in-r.html#cb60-1"></a><span class="kw">View</span>(arrests_sf)</span></code></pre></div>
 <p>We now have a column called <code>geometry</code> at the end of our data frame. This contains our latitude and longitude.</p>
-<p>One thing nice is that we can use the <code>plot()</code> function to plot our spatial data frame as it is.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="mapping-in-r.html#cb59-1"></a><span class="kw">plot</span>(arrests_sf)</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-16-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>One thing nice is that we can use the <code>plot()</code> function that is part of <code>sf</code> package to plot our spatial data frame as it is.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="mapping-in-r.html#cb61-1"></a><span class="kw">plot</span>(arrests_sf)</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/plot-sf-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>But the problem is that we still have no context for our points. We need the layers of polygons we had in QGIS to let us know this is LA. Let’s look at this in a package called <code>tmaps</code> (thematic maps).</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="mapping-in-r.html#cb60-1"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span><span class="st"> </span><span class="kw">tm_dots</span>()</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-17-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>What do we need to do before we use a package in R?</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="mapping-in-r.html#cb62-1"></a><span class="kw">library</span>(tmap)</span></code></pre></div>
+<p><code>tmap</code> let’s us plot maps like <code>ggplot</code> above – we’ll learn to add different layers to the map, this will be a code way of doing what we did in QGIS.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="mapping-in-r.html#cb63-1"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span><span class="st"> </span><span class="kw">tm_dots</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-16-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 </div>
 <div id="reading-in-shapefiles" class="section level2">
 <h2><span class="header-section-number">4.4</span> Reading in shapefiles</h2>
 <p>Nice, but again, we lack geographic boundaries and other shapes. Just like in QGIS, however, we can read in various shapefiles – the ones ending in <code>.shp</code> – to provide our map some boundaries. We do this by using the function <code>st_read</code>. Let’s look at our help documentation on <code>st_read</code>.</p>
 <p>Inside our <code>data/</code> folder we have the shape files we used in our <code>QGIS</code> part of the class plus a new one on the LA county boundaries. Let’s read them in individually and note the output in the console, especially the <code>geometry type</code>.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="mapping-in-r.html#cb61-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
-<span id="cb61-2"><a href="mapping-in-r.html#cb61-2"></a>la_county &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="mapping-in-r.html#cb64-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
+<span id="cb64-2"><a href="mapping-in-r.html#cb64-2"></a>la_county &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `DRP_COUNTY_BOUNDARY&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 2 features and 2 fields
 ## geometry type:  MULTILINESTRING
@@ -242,8 +266,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## bbox:           xmin: 6280000 ymin: 1380000 xmax: 6670000 ymax: 2120000
 ## epsg (SRID):    2229
 ## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="mapping-in-r.html#cb63-1"></a><span class="co">#geometry type:  MULTIPOLYGON</span></span>
-<span id="cb63-2"><a href="mapping-in-r.html#cb63-2"></a>la_zips &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span> <span class="st">&quot;data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="mapping-in-r.html#cb66-1"></a>la_zips_st &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span> <span class="st">&#39;data/CAMS_ZIPCODE_STREET_SPECIFIC/CAMS_ZIPCODE_STREET_SPECIFIC.shp&#39;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `CAMS_ZIPCODE_STREET_SPECIFIC&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/CAMS_ZIPCODE_STREET_SPECIFIC/CAMS_ZIPCODE_STREET_SPECIFIC.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 358 features and 10 fields
+## geometry type:  POLYGON
+## dimension:      XY
+## bbox:           xmin: 6280000 ymin: 1380000 xmax: 6670000 ymax: 2120000
+## epsg (SRID):    2229
+## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="mapping-in-r.html#cb68-1"></a><span class="co">#geometry type:  MULTIPOLYGON</span></span>
+<span id="cb68-2"><a href="mapping-in-r.html#cb68-2"></a>la_zips &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span> <span class="st">&quot;data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `Los_Angeles_City_Zip_Codes&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 157 features and 7 fields
 ## geometry type:  MULTIPOLYGON
@@ -251,8 +283,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## bbox:           xmin: -119 ymin: 33.7 xmax: -118 ymax: 34.3
 ## epsg (SRID):    4326
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="mapping-in-r.html#cb65-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
-<span id="cb65-2"><a href="mapping-in-r.html#cb65-2"></a>la_freeways &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="mapping-in-r.html#cb70-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
+<span id="cb70-2"><a href="mapping-in-r.html#cb70-2"></a>la_freeways &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `CAMS_FREEWAY_SHIELDS&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 45 features and 4 fields
 ## geometry type:  MULTILINESTRING
@@ -262,22 +294,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
 <p>Now let’s use the layers. The important thing is we match our shapefile with the geometry type. <code>tm_polygons()</code> goes with <code>#geometry type:  MULTIPOLYGON</code> and <code>tm_line()</code> goes with <code>#geometry type:  MULTILINESTRING</code>. Let’s use this new knowledge to make the map better.</p>
 <pre><code>## tmap mode set to plotting</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="mapping-in-r.html#cb68-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
-<span id="cb68-2"><a href="mapping-in-r.html#cb68-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
-<span id="cb68-3"><a href="mapping-in-r.html#cb68-3"></a><span class="kw">tm_shape</span>(la_freeways) <span class="op">+</span></span>
-<span id="cb68-4"><a href="mapping-in-r.html#cb68-4"></a><span class="st">  </span><span class="kw">tm_lines</span>() <span class="op">+</span></span>
-<span id="cb68-5"><a href="mapping-in-r.html#cb68-5"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
-<span id="cb68-6"><a href="mapping-in-r.html#cb68-6"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-18-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>We are going to build this up, let’s start with our points like above.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="mapping-in-r.html#cb73-1"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb73-2"><a href="mapping-in-r.html#cb73-2"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/arrests-dots-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Now, if the <code>tmap</code> function that made our arrests data points on the plot is <code>tm_dots()</code>, what do you think the function is for making the zipcode boundaries. What shape are they?</p>
+<p>Yes, polygons, so the <code>tmap</code> function is <code>tm_polygons</code>. Let’s add that to our plot. Note, we use the plus sign to add layers.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="mapping-in-r.html#cb74-1"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb74-2"><a href="mapping-in-r.html#cb74-2"></a><span class="st">  </span><span class="kw">tm_dots</span>() <span class="op">+</span></span>
+<span id="cb74-3"><a href="mapping-in-r.html#cb74-3"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb74-4"><a href="mapping-in-r.html#cb74-4"></a><span class="st">  </span><span class="kw">tm_polygons</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/arrests-la-zips-poly-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Note the output indicagtes the shape is invalid. This can be for various reasons, but an easy remedy is use the <code>st_make_valid()</code> in the lwgeom package. Run the below code.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="mapping-in-r.html#cb75-1"></a>la_zips &lt;-<span class="st"> </span>lwgeom<span class="op">::</span><span class="kw">st_make_valid</span>(la_zips)</span></code></pre></div>
+<p>Ok, more to the point. Where are our points? Why don’t they show?</p>
+<p>Yes, they are hidden underneath our zipcodes! WE can reorder the code and they’ll appear, but we can also add transparency to our <code>tm_polygons</code> function? Does anyone remember what we called this in QGIS?</p>
+<p>Right, <code>alpha</code> is the term for adding transparency in plotting and graphing across software tools. Let’s add a transparency.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="mapping-in-r.html#cb76-1"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb76-2"><a href="mapping-in-r.html#cb76-2"></a><span class="st">  </span><span class="kw">tm_dots</span>() <span class="op">+</span></span>
+<span id="cb76-3"><a href="mapping-in-r.html#cb76-3"></a><span class="kw">tm_shape</span>(la_zips_st) <span class="op">+</span></span>
+<span id="cb76-4"><a href="mapping-in-r.html#cb76-4"></a><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="co">#a value from 0 to 1</span></span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/arrests-la-zips-poly-alpha-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Ok, now I want you to add another layer. Add either <code>la_county</code> boundary (a polygon) or <code>la_freeways</code> to the graph. Take 5min.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="mapping-in-r.html#cb77-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb77-2"><a href="mapping-in-r.html#cb77-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
+<span id="cb77-3"><a href="mapping-in-r.html#cb77-3"></a><span class="kw">tm_shape</span>(la_freeways) <span class="op">+</span></span>
+<span id="cb77-4"><a href="mapping-in-r.html#cb77-4"></a><span class="st">  </span><span class="kw">tm_lines</span>() <span class="op">+</span></span>
+<span id="cb77-5"><a href="mapping-in-r.html#cb77-5"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb77-6"><a href="mapping-in-r.html#cb77-6"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/la-zips-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Ok, what we’ve done so far.</p>
+<ol style="list-style-type: decimal">
+<li>We’ve taken a dataset that has latitude and longitude data in it and converted it to a simple feature object in R.</li>
+<li>We’ve read in shapefiles into R as simple feature objects.</li>
+<li>We’ve layered them on a plot using <code>tmap</code> and even added some transparency to our polygon layer.</li>
+</ol>
+<p>Good job!</p>
+</div>
+<div id="aesthetics" class="section level2">
+<h2><span class="header-section-number">4.5</span> Aesthetics</h2>
+<p>So far, we’ve accepted <code>tmap</code>’s default aesthetic settings. However, we can alter this with arguments in our <code>tm_</code> function.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="mapping-in-r.html#cb78-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb78-2"><a href="mapping-in-r.html#cb78-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="dt">col=</span><span class="st">&#39;blue&#39;</span>)</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/color-polygon-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Let’s add an alpha:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="mapping-in-r.html#cb79-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb79-2"><a href="mapping-in-r.html#cb79-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="dt">col=</span><span class="st">&#39;blue&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/color-polygon-alpha-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Instead of <code>tm_polygons</code> there’s another function that matches our shapes better. It’s <code>tm_borders</code>. Let’s swap it out for <code>tm_polygons</code>:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="mapping-in-r.html#cb80-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb80-2"><a href="mapping-in-r.html#cb80-2"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&#39;blue&#39;</span>, <span class="dt">title=</span><span class="st">&quot;LA Zipcodes&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
+<span id="cb80-3"><a href="mapping-in-r.html#cb80-3"></a><span class="st">  </span><span class="kw">tm_borders</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/tm-borders-color-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="mapping-in-r.html#cb81-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb81-2"><a href="mapping-in-r.html#cb81-2"></a><span class="st">  </span><span class="kw">tm_borders</span>() <span class="op">+</span></span>
+<span id="cb81-3"><a href="mapping-in-r.html#cb81-3"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb81-4"><a href="mapping-in-r.html#cb81-4"></a><span class="st">  </span><span class="kw">tm_dots</span>()</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-17-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>Ok, that’s more like it. Last thing before we break. So far, we’ve been using <code>tmap</code> to produce a static map, but <code>tmap</code> lets us create interactive maps by switching it’s mode to `view’. We can do this using a single line.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="mapping-in-r.html#cb69-1"></a><span class="kw">tmap_mode</span>(<span class="st">&quot;view&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="mapping-in-r.html#cb82-1"></a><span class="kw">tmap_mode</span>(<span class="st">&quot;view&quot;</span>)</span></code></pre></div>
 <pre><code>## tmap mode set to interactive viewing</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="mapping-in-r.html#cb71-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
-<span id="cb71-2"><a href="mapping-in-r.html#cb71-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
-<span id="cb71-3"><a href="mapping-in-r.html#cb71-3"></a><span class="kw">tm_shape</span>(la_freeways) <span class="op">+</span></span>
-<span id="cb71-4"><a href="mapping-in-r.html#cb71-4"></a><span class="st">  </span><span class="kw">tm_lines</span>() <span class="op">+</span></span>
-<span id="cb71-5"><a href="mapping-in-r.html#cb71-5"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
-<span id="cb71-6"><a href="mapping-in-r.html#cb71-6"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="mapping-in-r.html#cb84-1"></a>tm &lt;-<span class="st"> </span><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb84-2"><a href="mapping-in-r.html#cb84-2"></a><span class="st">  </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
+<span id="cb84-3"><a href="mapping-in-r.html#cb84-3"></a><span class="kw">tm_shape</span>(la_freeways) <span class="op">+</span></span>
+<span id="cb84-4"><a href="mapping-in-r.html#cb84-4"></a><span class="st">  </span><span class="kw">tm_lines</span>() <span class="op">+</span></span>
+<span id="cb84-5"><a href="mapping-in-r.html#cb84-5"></a><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb84-6"><a href="mapping-in-r.html#cb84-6"></a><span class="st">  </span><span class="kw">tm_dots</span>() </span>
+<span id="cb84-7"><a href="mapping-in-r.html#cb84-7"></a><span class="kw">tmap_save</span>(tm, <span class="dt">filename =</span> <span class="st">&quot;world_map.html&quot;</span>)</span></code></pre></div>
+<pre><code>## Interactive map saved to /Users/timdennis/instruction/afam188/afam188-r/world_map.html</code></pre>
 
 </div>
 </div>

@@ -7,24 +7,38 @@ Two weeks ago we covered how to work with data in R and produce some plots.  Tod
 How about we make a map with GGPLOT? We do this by using our longitude and latitude variables as our x and y mapping. 
 
 ```{r ggplot-map}
+library(ggplot2)
+library(tidyverse)
+arrests <- read_csv('data/aug6_12_arrest_data.csv')
 ggplot(arrests, aes(x=longitude, y=latitude)) + geom_point()
 ```
 
-We can see the general shape of LA county, but there are limits to what you can do with geospatial data in ggplot. It doesn't know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages gives us these capabilities. 
+We can see the general shape of LA county, but there are limits to what you can do with geospatial data in ggplot. It doesn't know what to do with the latitude and longitude beyond adding the points to a plot. It has no sense of the layers we used in QGIS. But other R packages designed for gis & mapping give us these capabilities. 
 
 ## Mapping in R 
 
-We need a way to tell arrests that it is a spatial object in R. To do that we need to use two spatial packages. Let's load them. 
+We need a way to tell arrests that it is a spatial object in R. To do that we need to use a spatial package called `sf` to do so. Let's load it. 
+
+How do we load packages in R?
 
 ```{r}
 library(sf)
-library(tmap)
 ```
 
 
 ## Converting data to a spatial object
 
-`sf` stands for spatial features. `tmap` let's us plot maps like `ggplot`. Ok, first up, let's convert our `arrests` data to a spatial feature. We need to do this b/c `tmap` will need this information so we can use it on a map. I'll create a new data frame called `arrests_sf` and use the `st_as_sf()` that lets us convert our data frame to a `sf` object using the latitude and longitude. 
+`sf` stands for **simple features** and is based on a standard that specifies how to store and work with 2d geometries, points, lines, polygons, etc.. 
+
+Ok, first up, let's convert our `arrests` data to a simple feature object, so it knows it contains spatial information. We need to do this b/c `tmap` will need this information so we map it. To store this object, I'll create a new data frame called `arrests_sf` and use the `st_as_sf()` that lets us convert our data frame to a `sf` object using the latitude and longitude. Let's look up this funtion in the R help system first. 
+
+```{r help-st_as_sf}
+?st_as_sf
+```
+
+Many of these conversion functions in the sf package start with `st` - this is because PostGis, a heavily used GIS database uses `ST` (spatial type) for many of its functions. 
+
+Ok, let's now convert our arrests data to a `sf` object. 
 
 ```{r}
 arrests_sf <- st_as_sf(arrests, coords = c("longitude", "latitude"), crs = 4326)
@@ -40,13 +54,21 @@ View(arrests_sf)
 
 We now have a column called `geometry` at the end of our data frame. This contains our latitude and longitude. 
 
-One thing nice is that we can use the `plot()` function to plot our spatial data frame as it is. 
+One thing nice is that we can use the `plot()` function that is part of `sf` package to plot our spatial data frame as it is. 
 
-```{r}
+```{r plot-sf}
 plot(arrests_sf)
 ```
 
 But the problem is that we still have no context for our points. We need the layers of polygons we had in QGIS to let us know this is LA. Let's look at this in a package called `tmaps` (thematic maps). 
+
+What do we need to do before we use a package in R? 
+
+```{r load-tmap}
+library(tmap)
+```
+
+`tmap` let's us plot maps like `ggplot` above -- we'll learn to add different layers to the map, this will be a code way of doing what we did in QGIS. 
 
 ```{r}
 tm_shape(arrests_sf) + tm_dots()
@@ -61,6 +83,9 @@ Inside our `data/` folder we have the shape files we used in our `QGIS` part of 
 ```{r la_county}
 #geometry type:  MULTILINESTRING
 la_county <- st_read(dsn ="data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp")
+```
+```{r zip-coes-streets}
+la_zips_st <- st_read(dsn = 'data/CAMS_ZIPCODE_STREET_SPECIFIC/CAMS_ZIPCODE_STREET_SPECIFIC.shp')
 ```
 
 ```{r la_zips}
@@ -79,15 +104,92 @@ Now let's use the layers. The important thing is we match our shapefile with the
 tmap_mode("plot")
 ```
 
+We are going to build this up, let's start with our points like above.
 
+```{r arrests-dots}
+tm_shape(arrests_sf) +
+  tm_dots() 
+```
 
-```{r}
+Now, if the `tmap` function that made our arrests data points on the plot is `tm_dots()`, what do you think the function is for making the zipcode boundaries. What shape are they? 
+
+Yes, polygons, so the `tmap` function is `tm_polygons`. Let's add that to our plot. Note, we use the plus sign to add layers. 
+
+```{r arrests-la-zips-poly}
+tm_shape(arrests_sf) +
+  tm_dots() +
+tm_shape(la_zips) +
+  tm_polygons()
+```
+
+Note the output indicagtes the shape is invalid. This can be for various reasons, but an easy remedy is use the `st_make_valid()` in the lwgeom package. Run the below code. 
+
+```{r valid-data}
+la_zips <- lwgeom::st_make_valid(la_zips)
+```
+
+Ok, more to the point. Where are our points? Why don't they show? 
+
+Yes, they are hidden underneath our zipcodes! WE can reorder the code and they'll appear, but we can also add transparency to our `tm_polygons` function? Does anyone remember what we called this in QGIS? 
+
+Right, `alpha` is the term for adding transparency in plotting and graphing across software tools. Let's add a transparency. 
+
+```{r arrests-la-zips-poly-alpha}
+tm_shape(arrests_sf) +
+  tm_dots() +
+tm_shape(la_zips_st) +
+  tm_polygons(alpha = 0.5) #a value from 0 to 1
+```
+
+Ok, now I want you to add another layer. Add either `la_county` boundary (a polygon) or `la_freeways` to the graph. Take 5min. 
+
+```{r la-zips}
 tm_shape(la_zips) +
   tm_polygons() +
 tm_shape(la_freeways) +
   tm_lines() +
 tm_shape(arrests_sf) +
   tm_dots() 
+```
+
+Ok, what we've done so far. 
+
+1. We've taken a dataset that has latitude and longitude data in it and converted it to a simple feature object in R.
+2. We've read in shapefiles into R as simple feature objects.
+3. We've layered them on a plot using `tmap` and even added some transparency to our polygon layer. 
+
+Good job! 
+
+## Aesthetics 
+
+So far, we've accepted `tmap`'s default aesthetic settings. However, we can alter this with arguments in our `tm_` function. 
+
+```{r color-polygon}
+tm_shape(la_zips) +
+  tm_polygons(col='blue')
+```
+
+Let's add an alpha:
+
+```{r color-polygon-alpha}
+tm_shape(la_zips) +
+  tm_polygons(col='blue', alpha = 0.5)
+```
+
+Instead of `tm_polygons` there's another function that matches our shapes better. It's `tm_borders`. Let's swap it out for `tm_polygons`:
+
+```{r tm-borders-color}
+tm_shape(la_zips) +
+  tm_fill(col='blue', title="LA Zipcodes", alpha = 0.5) +
+  tm_borders()
+```
+
+
+```{r}
+tm_shape(la_zips) +
+  tm_borders() +
+tm_shape(arrests_sf) +
+  tm_dots()
 ```
 
 Ok, that's more like it. Last thing before we break. So far, we've been using `tmap` to produce a static map, but `tmap` lets us create interactive maps by switching it's mode to `view'. We can do this using a single line. 
@@ -96,19 +198,20 @@ Ok, that's more like it. Last thing before we break. So far, we've been using `t
 tmap_mode("view")
 ```
 
-```{r tmap-view, eval=FALSE}
-tm_shape(la_zips) +
+```{r tmap-view}
+tm <- tm_shape(la_zips) +
   tm_polygons() +
 tm_shape(la_freeways) +
   tm_lines() +
 tm_shape(arrests_sf) +
   tm_dots() 
+tmap_save(tm, filename = "world_map.html")
 ```
-[aggre-larger-data]:# use dplyr to aggregate data by zipcode, then create a spatial dataset 
-[map data]:# look at SapData package on how to set up spatial data as a package - add variants of arrests data
+[aggre-larger-data]:# use dplyr to aggregate data by zipcode, then create a spatial dataset, by sex, by race, by age
+[map data]:# look at SpaData package on how to set up spatial data as a package - add variants of arrests data
 [add-color-other-theme]:# add color to the plot and different data, will need to prep
 [write challenges]:# focus on faded examples - fill in the blank style
-[write learning objectives]:# what do we want them to get out of the next few classes
+[write learning objectives]:# what do we want them to get out of the next few classes, how to make a map in tmap, how to convert data to publish data, how to add color elements
 [tmap-functions]:# add color via tm_border, tm_fill https://geocompr.robinlovelace.net/adv-map.html#aesthetics 
 [tmap-functions]:#
 
