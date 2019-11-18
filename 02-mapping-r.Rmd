@@ -113,7 +113,21 @@ tm_shape(arrests_sf) +
 
 Now, if the `tmap` function that made our arrests data points on the plot is `tm_dots()`, what do you think the function is for making the zipcode boundaries. What shape are they? 
 
-Yes, polygons, so the `tmap` function is `tm_polygons`. Let's add that to our plot. Note, we use the plus sign to add layers. 
+`tmap` gives a number of functions that lets us determine how we want to map objects. You start with `tm_shape` and that's the function that takes in the data you want to map. Then you tell `tmap` how to map it via functions like `tm_fill`, `tm_polygons`, `tm_borders`, `tm_lines`, `tm_dots` & `tm_bubbles`.  There are many more. Which one you use is dependent on what types of shapes you want to create.  
+
+Let's use our zipcode shapes. 
+
+```{r fill-funtion}
+tm_shape(la_zips) +
+  tm_fill()
+```
+
+Note the output indicates the shape is invalid. This can be for various reasons, but an easy remedy is use the `st_make_valid()` in the lwgeom package. Run the below code. Paste in the etherpad. 
+
+```{r valid-data}
+la_zips <- lwgeom::st_make_valid(la_zips)
+```
+`tm_fill` fills our polygons in zipcodes. Let's see what happens if we use `tm_polygons` instead and add our arrests data as `tm_dots`. Note, we use the plus sign to add layers. 
 
 ```{r arrests-la-zips-poly}
 tm_shape(arrests_sf) +
@@ -122,17 +136,11 @@ tm_shape(la_zips) +
   tm_polygons()
 ```
 
-Note the output indicagtes the shape is invalid. This can be for various reasons, but an easy remedy is use the `st_make_valid()` in the lwgeom package. Run the below code. 
+Where are our points? Why don't they show? What do you think? 
 
-```{r valid-data}
-la_zips <- lwgeom::st_make_valid(la_zips)
-```
+Yes, they are hidden underneath our zipcodes! WE can reorder the code and they'll appear, but we can also add transparency to our `tm_polygons` function. Does anyone remember what we called this in QGIS? 
 
-Ok, more to the point. Where are our points? Why don't they show? 
-
-Yes, they are hidden underneath our zipcodes! WE can reorder the code and they'll appear, but we can also add transparency to our `tm_polygons` function? Does anyone remember what we called this in QGIS? 
-
-Right, `alpha` is the term for adding transparency in plotting and graphing across software tools. Let's add a transparency. 
+Right, `alpha` is the term for adding transparency in plotting and graphing across many software tools, `tmap` is no diff. Let's add a transparency. 
 
 ```{r arrests-la-zips-poly-alpha}
 tm_shape(arrests_sf) +
@@ -155,14 +163,14 @@ tm_shape(arrests_sf) +
 Ok, what we've done so far. 
 
 1. We've taken a dataset that has latitude and longitude data in it and converted it to a simple feature object in R.
-2. We've read in shapefiles into R as simple feature objects.
+2. We've read in shapefiles into R as simple feature objects that become mappable.
 3. We've layered them on a plot using `tmap` and even added some transparency to our polygon layer. 
 
 Good job! 
 
 ## Aesthetics 
 
-So far, we've accepted `tmap`'s default aesthetic settings. However, we can alter this with arguments in our `tm_` function. 
+So far, we've accepted `tmap`'s default aesthetic settings, like the grey color fill for `tm_polygons`. However, we can alter this with arguments in our `tm_` function. 
 
 ```{r color-polygon}
 tm_shape(la_zips) +
@@ -173,7 +181,9 @@ Let's add an alpha:
 
 ```{r color-polygon-alpha}
 tm_shape(la_zips) +
-  tm_polygons(col='blue', alpha = 0.5)
+  tm_polygons(col='blue', alpha = 0.5) +
+tm_shape(arrests_sf) +
+  tm_bubbles(size = 0.09, col="gold", alpha = 0.4)
 ```
 
 Instead of `tm_polygons` there's another function that matches our shapes better. It's `tm_borders`. Let's swap it out for `tm_polygons`:
@@ -181,18 +191,67 @@ Instead of `tm_polygons` there's another function that matches our shapes better
 ```{r tm-borders-color}
 tm_shape(la_zips) +
   tm_fill(col='blue', title="LA Zipcodes", alpha = 0.5) +
-  tm_borders()
-```
-
-
-```{r}
-tm_shape(la_zips) +
-  tm_borders() +
+    tm_borders()  +
 tm_shape(arrests_sf) +
-  tm_dots()
+  tm_dots() +
+  tm_compass(type = "4star", position = c("left", "top"), size = 2) 
 ```
 
-Ok, that's more like it. Last thing before we break. So far, we've been using `tmap` to produce a static map, but `tmap` lets us create interactive maps by switching it's mode to `view'. We can do this using a single line. 
+## Saving map objects
+
+We can also save a `tmap` as an object in R and reuse it or build on it. For instance:
+
+```{r tmap-save}
+lazips <- tm_shape(la_zips) +
+    tm_borders()
+```
+
+```{r runlazips}
+lazips
+```
+
+We can now build off of `lazips` and then use different versions of the map. 
+
+```{r adding-tolazips}
+lazips <- tm_shape(la_zips) 
+lzip1 <- lazips + tm_fill(col = "red")
+lzip2 <- lazips + tm_fill(col = "red", alpha = 0.3)
+lzip3 <- lazips + tm_borders(col = "blue")
+lzip4 <- lazips + tm_borders(lwd = 3)
+```
+
+```{r print-out-base-no-layer}
+lazips #our familiar map
+```
+
+
+```{r print-out-map}
+lzip1
+lzip2
+lzip3
+```
+
+```{r arrange-maps}
+tmap_arrange(lzip1, lzip2, lzip3, lzip3)
+```
+
+`tmap` is very flexible and granular. We can control all aspects of the map and as we move along we can show more 
+
+```{r layout}
+lzip1 + tm_layout(title="LA Zipcodes")
+```
+
+```{r la-zip-style}
+lzip3 + tm_style("cobalt") + tm_layout(title="LA Zips", title.color = "white")
+#tm_style("classic")
+#tm_style("bw")
+#tm_style("col_blind")
+#look at ?tm_layout for more
+```
+
+## Interactive Maps
+
+So far, we've been using `tmap` to produce a static map, but `tmap` lets us create interactive maps by switching it's mode to `view'. We can do this using a single line. 
 
 ```{r tmap-mode}
 tmap_mode("view")
