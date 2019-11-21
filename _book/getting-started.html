@@ -24,7 +24,7 @@
 <meta name="author" content="Tim Dennis" />
 
 
-<meta name="date" content="2019-11-18" />
+<meta name="date" content="2019-11-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -544,15 +544,15 @@ Upload
 <p>We will often want to look at graphs of specific variables and how they relate to other variables. We can use a plotting package for this? The most popular one in R is called <code>ggplot2</code> and let’s us make publication quality graphics of our data. GGPLOT is part of the <code>tidyverse</code> so we do not need to install it or load it. Let’s start by looking at a bar chart with <code>race_cat</code>.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="getting-started.html#cb33-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat)) <span class="op">+</span></span>
 <span id="cb33-2"><a href="getting-started.html#cb33-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-7-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="afam-188r_files/figure-html/bar-chart-race-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>It creates a bar chart of our <code>race_cat</code> and the count of arrests for this period of data we have. But what if we want to add another variable to the bar chart making it a staked bar? We can do this through the <code>fill</code> argument. What’s an argument again?</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="getting-started.html#cb34-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>arrest_type)) <span class="op">+</span></span>
 <span id="cb34-2"><a href="getting-started.html#cb34-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-8-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-7-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>One thing about stacked bar charts is that it is often hard to tell by sight the proportions represented. Often, it’s recommended to use bar charts that are side by side. We can do this via the <code>position</code> argument inside the <code>geom_bar</code> function.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="getting-started.html#cb35-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x =</span> race_cat, <span class="dt">fill=</span>arrest_type)) <span class="op">+</span></span>
 <span id="cb35-2"><a href="getting-started.html#cb35-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-9-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-8-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <div class="challenge">
 <h2 id="replace-the-fill-with-sex-and-run">
 Replace the fill with <code>sex</code> and run
@@ -579,14 +579,14 @@ Replace the fill with <code>sex</code> and run the code.
 <h3><span class="header-section-number">2.9.2</span> Two variables</h3>
 <p>You often want to see the distribution of a variable based on another. Let’s use a <code>boxplot</code> to generate <code>arrest_type</code> by <code>age</code> with a boxplot.</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="getting-started.html#cb40-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>arrest_type, <span class="dt">y=</span>age)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-11-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-10-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <div class="challenge">
 <h2 id="change-the-x-value-to-another-category-sex-race_cat-etc.">
 Change the x value to another category (sex, race_cat, etc.)
 </h2>
 </div>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="getting-started.html#cb41-1"></a><span class="kw">ggplot</span>(arrests, <span class="kw">aes</span>(<span class="dt">x=</span>race_cat, <span class="dt">y=</span>age)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="afam-188r_files/figure-html/unnamed-chunk-13-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="afam-188r_files/figure-html/unnamed-chunk-12-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

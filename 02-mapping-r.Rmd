@@ -68,6 +68,12 @@ What do we need to do before we use a package in R?
 library(tmap)
 ```
 
+```{r tmmode-set}
+tmap_mode('plot')
+```
+
+
+
 `tmap` let's us plot maps like `ggplot` above -- we'll learn to add different layers to the map, this will be a code way of doing what we did in QGIS. 
 
 ```{r}
@@ -98,7 +104,7 @@ la_zips <- st_read(dsn = "data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_C
 la_freeways <- st_read(dsn ="data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp")
 ```
 
-Now let's use the layers. The important thing is we match our shapefile with the geometry type. `tm_polygons()` goes with `#geometry type:  MULTIPOLYGON` and `tm_line()` goes with `#geometry type:  MULTILINESTRING`. Let's use this new knowledge to make the map better. 
+Now let's use the layers. The important thing is we match our shapefile with the geometry type. `tm_polygons()` & `tm_borders` goes with `#geometry type:  MULTIPOLYGON` and `tm_line()` goes with `#geometry type:  MULTILINESTRING`. Let's use this new knowledge to make the map better. 
 
 ```{r tmap-mode-plot, echo=FALSE}
 tmap_mode("plot")

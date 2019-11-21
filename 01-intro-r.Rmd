@@ -353,7 +353,7 @@ This provides you with the `min`, `median`, `mean` quartiles, and `max` all at o
 
 We will often want to look at graphs of specific variables and how they relate to other variables.  We can use a plotting package for this? The most popular one in R is called `ggplot2` and let's us make publication quality graphics of our data. GGPLOT is part of the `tidyverse` so we do not need to install it or load it. Let's start by looking at a bar chart with `race_cat`. 
 
-```{r}
+```{r bar-chart-race}
 ggplot(arrests, aes(x = race_cat)) +
   geom_bar()
 ```

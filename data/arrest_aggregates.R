@@ -44,9 +44,9 @@ arrests17_18 %>%
   count(charge, charge_desc, sort=TRUE) %>%
   View()
 
-arrests_10_18 <- read_csv('data/Arrest_Data_from_2010_to_Present.csv')
-arrests_10_18 <- clean_names(arrests_10_18)
-glimpse(arrests_10_18)
+arrests <- read_csv('data/Arrest_Data_from_2010_to_Present.csv')
+arrests <- clean_names(arrests)
+glimpse(arrests)
 max(arrests_10_18$arrest_date)
 min(arrests_10_18$arrest_date)
 
