@@ -6,6 +6,7 @@ bookdown::gitbook:
         <li><a href="./">AFAM 188</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        <li><a href="https://pad.carpentries.org/2019-afam188" target="blank">Class Etherpad</a></li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:

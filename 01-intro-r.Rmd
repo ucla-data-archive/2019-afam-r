@@ -49,7 +49,7 @@ After this lesson, learners will be able to:
 * Make a map in R, exporting images in R 
 
 Source:  The first part of the lesson is largely taken from the ModerDive book <https://moderndive.com/> 
-Slides: <day1-slides.html>
+Slides: <https://afam188.netlify.com/day1-slides.html#/>  
 
 
 ## What are R and RStudio? {#r-RStudio}
