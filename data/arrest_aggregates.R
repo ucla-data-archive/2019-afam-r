@@ -14,6 +14,7 @@ arrests17_18 <- read_csv('data/ARREST_DATA_2017_2018.csv')
 arrests17_18 <- clean_names(arrests17_18)
 #names(arrests17_18)
 
+# arrests_by_zip
 arrests_zip <- arrests17_18 %>%
   group_by(zipcode) %>%
   tally() %>%
@@ -22,6 +23,8 @@ arrests_zip <- arrests17_18 %>%
 #geometry type:  MULTIPOLYGON
 la_zips <- st_read(dsn = "data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp")
 la_zips <- clean_names(la_zips)
+la_zips <- lwgeom::st_make_valid(la_zips)
+
 
 #merging our arrests data + zip shapes
 arrest_zip <- left_join(arrests_zip, la_zips, by = c("zipcode" = "zip"))
@@ -39,9 +42,11 @@ tm_shape(arrestsbyzip ) +
 
 st_is_empty(arrestsbyzip)
 
+## select charge and chage description
+
 arrests17_18 %>%
-  select(charge, charge_desc) %>%
-  count(charge, charge_desc, sort=TRUE) %>%
+  select(zipcode,charge, chg_grp_desc, sex) %>%
+  count(zipcode, chg_grp_desc, sex, sort=TRUE) %>%
   View()
 
 ## Full data - for 12/

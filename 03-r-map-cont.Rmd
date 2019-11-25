@@ -176,13 +176,15 @@ tm_shape(arrests_sf) +
 #tmap_save(tm, filename = "world_map.html")
 ```
 
-```{r}
+```{r eval=FALSE}
 tm
 ```
 
 Note, that we can interact with the map and change the base layer, turn off and on the layers. 
 
 ## Publishing the map using rpubs 
+
+Open a RMarkdown document, copy 
 
 [aggre-larger-data]:# use dplyr to aggregate data by zipcode, then create a spatial dataset, by sex, by race, by age
 [add-color-other-theme]:# add color to the plot and different data, will need to prep
