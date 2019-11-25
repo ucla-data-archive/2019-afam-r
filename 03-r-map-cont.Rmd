@@ -1,0 +1,191 @@
+# Mapping with R Continued
+
+```{r load-libs}
+library(tidyverse)
+library(sf)
+library(tmap)
+```
+
+
+```{r read-setup-data-shp-files, message=FALSE}
+arrests <- read_csv('data/aug6_12_arrest_data.csv')
+arrests_sf <- st_as_sf(arrests, coords = c("longitude", "latitude"), crs = 4326)
+#geometry type:  MULTILINESTRING
+la_county <- st_read(dsn ="data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp")
+la_zips_st <- st_read(dsn = 'data/CAMS_ZIPCODE_STREET_SPECIFIC/CAMS_ZIPCODE_STREET_SPECIFIC.shp')
+#geometry type:  MULTIPOLYGON
+la_zips <- st_read(dsn = "data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp")
+#geometry type:  MULTILINESTRING
+la_freeways <- st_read(dsn ="data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp")
+## the below command will make our zip data valid
+la_zips <- lwgeom::st_make_valid(la_zips)
+```
+
+## Revisit last week 
+
+Last week we finished with this map.
+
+```{r tmap-mode-change-view-plot, echo=FALSE}
+tmap_mode("plot")
+```
+
+```{r arrests-bubbles-compass}
+ tm_shape(la_zips) +
+   tm_polygons(col="blue", alpha = 0.3) +
+   tm_shape(arrests_sf) +
+   tm_bubbles(size = 0.09, col="gold", alpha=0.4)+
+   tm_compass(type = "4star", position = c("left", "top"), size = 2) 
+```
+
+```{r arrests-bubbles-compass-var-map}
+ tm_shape(la_zips) +
+   tm_polygons(col="blue", alpha = 0.3) +
+   tm_shape(arrests_sf) +
+   tm_bubbles(size = 0.09, col="sex", alpha=0.4)+
+   tm_compass(type = "4star", position = c("left", "top"), size = 2) 
+```
+
+Let's affect the color of the dots by setting a palette argument.
+
+```{r arrests-bubbles-compass-palette}
+#using a palette
+ tm_shape(la_zips) +
+   tm_polygons(col="blue", alpha = 0.3) +
+   tm_shape(arrests_sf) +
+   tm_bubbles(size = 0.09, col="sex", palette = "Set3")+
+   tm_compass(type = "4star", position = c("left", "top"), size = 2) 
+```
+
+We can find the available palettes via this code: 
+
+```{r palette-explore, eval=FALSE}
+#lets look at options
+tmaptools::palette_explorer()
+```
+
+Try out a few palettes. 
+
+We can also add a style argument.  
+
+```{r add-style}
+tm_shape(la_zips) +
+   tm_polygons(col="blue", alpha = 0.3) +
+   tm_shape(arrests_sf) +
+   tm_bubbles(size = 0.09, col="sex", style = "cat")+
+   tm_compass(type = "4star", position = c("left", "top"), size = 1) 
+```
+
+
+## Saving map objects
+
+We can also save a `tmap` as an object in R and reuse it or build on it. For instance:
+
+```{r tmap-save-object}
+lazips <- tm_shape(la_zips) 
+```
+
+If we run this we get an error that no layer is define - we haven't told `tmap` how to display our la_zips data. 
+
+```{r run-lazips, eval=FALSE}
+lazips
+```
+
+**BUT** we can now build off of `lazips` and then use different versions of the map. 
+
+```{r adding-to-lazips-red}
+lazips + tm_fill(col = "red")
+```
+
+We can use this idea and save our work after each change. Let's create multiple objects with different colors and other parameters. 
+
+```{r adding-tolazips-multi-objs}
+lzip1 <- lazips + tm_fill(col = "red")
+lzip2 <- lazips + tm_fill(col = "red", alpha = 0.3)
+lzip3 <- lazips + tm_borders(col = "blue")
+lzip4 <- lazips + tm_borders(lwd = 3)
+```
+
+
+```{r print-out-map-one-by-one}
+lzip1
+lzip2
+lzip3
+lzip4
+```
+
+Even more interesting we can compose these maps into a grid by using `tmap_arrange` function: 
+
+```{r arrange-maps-lazips}
+tmap_arrange(lzip1, lzip2, lzip3, lzip4)
+```
+
+The most commonly used aesthetics for fill and border layers include color, transparency, line width and line type, set with `col`, `alpha`, `lwd`, and `lty` arguments, respectively.
+
+`tmap` is very flexible and granular. We can control all aspects of the map and as we move along we can show more 
+
+```{r layout-zips}
+lzip1 + tm_layout(title="LA Zipcodes")
+```
+
+```{r la-zip-tmstyle}
+lzip3 + tm_style("cobalt") + tm_layout(title="LA Zips", title.color = "white")
+#tm_style("classic")
+#tm_style("bw")
+#tm_style("col_blind")
+#look at ?tm_layout for more
+```
+
+## Faceted Maps (small multiples)
+
+One way to present different data on a map is to split the data by a category and create two maps with different data. Let's look at this example. 
+
+```{r faceted-map}
+tm_shape(la_zips) +
+   tm_polygons() +
+   tm_shape(arrests_sf) +
+   tm_symbols(col = "black", border.col = "white", size = 0.5) +
+   tm_facets(by = "sex", nrow=2, free.coords = FALSE)
+```
+
+Let's color by multiple variables in our data: 
+
+```{r faceted-map-two-var}
+tm_shape(la_zips) +
+   tm_polygons() +
+   tm_shape(arrests_sf) +
+   tm_symbols(col = "race_cat", border.col = "white", size = 0.5) +
+   tm_facets(by = "sex", nrow=2, free.coords = FALSE)
+```
+
+
+## Interactive Maps
+
+So far, we've been using `tmap` to produce a static map, but `tmap` lets us create interactive maps by switching it's mode to `view` instead of the default `plot`. We can do this using a single line. 
+
+```{r tmap-mode-change-view}
+tmap_mode("view")
+```
+
+```{r tmap-view-zip-freeway-layers}
+tm <- tm_shape(la_zips) +
+  tm_polygons() +
+tm_shape(la_freeways) +
+  tm_lines() +
+tm_shape(arrests_sf) +
+  tm_dots() 
+#tmap_save(tm, filename = "world_map.html")
+```
+
+```{r}
+tm
+```
+
+Note, that we can interact with the map and change the base layer, turn off and on the layers. 
+
+## Publishing the map using rpubs 
+
+[aggre-larger-data]:# use dplyr to aggregate data by zipcode, then create a spatial dataset, by sex, by race, by age
+[add-color-other-theme]:# add color to the plot and different data, will need to prep
+[tmap-functions]:# add color via tm_border, tm_fill https://geocompr.robinlovelace.net/adv-map.html#aesthetics 
+[shinyjs]:# need to install shinyjs to run palette explorer
+

@@ -12,7 +12,7 @@ library(tmap)
 
 arrests17_18 <- read_csv('data/ARREST_DATA_2017_2018.csv')
 arrests17_18 <- clean_names(arrests17_18)
-names(arrests17_18)
+#names(arrests17_18)
 
 arrests_zip <- arrests17_18 %>%
   group_by(zipcode) %>%
@@ -44,6 +44,7 @@ arrests17_18 %>%
   count(charge, charge_desc, sort=TRUE) %>%
   View()
 
+## Full data - for 12/
 arrests <- read_csv('data/Arrest_Data_from_2010_to_Present.csv')
 arrests <- clean_names(arrests)
 glimpse(arrests)
