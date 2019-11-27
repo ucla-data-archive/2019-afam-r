@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>AFAM 188: R 6 R Assignment 1 | African American Studies 188: Intro to R &amp; Mapping in R</title>
+  <meta name="description" content="This is ." />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="AFAM 188: R 6 R Assignment 1 | African American Studies 188: Intro to R &amp; Mapping in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is ." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="AFAM 188: R 6 R Assignment 1 | African American Studies 188: Intro to R &amp; Mapping in R" />
+  
+  <meta name="twitter:description" content="This is ." />
+  
+
+<meta name="author" content="Tim Dennis" />
+
+
+<meta name="date" content="2019-11-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mapping-with-r-continued.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">AFAM 188</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>2</b> Getting Started with Data in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="getting-started.html"><a href="getting-started.html#learn-objectives"><i class="fa fa-check"></i><b>2.1</b> Learn Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-started.html"><a href="getting-started.html#r-RStudio"><i class="fa fa-check"></i><b>2.2</b> What are R and RStudio?</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="getting-started.html"><a href="getting-started.html#using-r-via-rstudio"><i class="fa fa-check"></i><b>2.2.1</b> Using R via RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="getting-started.html"><a href="getting-started.html#code"><i class="fa fa-check"></i><b>2.3</b> How do I code in R?</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="getting-started.html"><a href="getting-started.html#programming-concepts"><i class="fa fa-check"></i><b>2.3.1</b> Basic programming concepts and terminology</a></li>
+<li class="chapter" data-level="2.3.2" data-path="getting-started.html"><a href="getting-started.html#messages"><i class="fa fa-check"></i><b>2.3.2</b> Errors, warnings, and messages</a></li>
+<li class="chapter" data-level="2.3.3" data-path="getting-started.html"><a href="getting-started.html#tips-code"><i class="fa fa-check"></i><b>2.3.3</b> Tips on learning to code</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="getting-started.html"><a href="getting-started.html#how-to-run-codeyour-first-script"><i class="fa fa-check"></i><b>2.4</b> How to run code/your first script</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="getting-started.html"><a href="getting-started.html#lets-start-coding-in-r"><i class="fa fa-check"></i><b>2.4.1</b> Let’s start coding in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="getting-started.html"><a href="getting-started.html#arrests"><i class="fa fa-check"></i><b>2.5</b> Explore your first dataset</a></li>
+<li class="chapter" data-level="2.6" data-path="getting-started.html"><a href="getting-started.html#what-are-packages"><i class="fa fa-check"></i><b>2.6</b> What are Packages</a></li>
+<li class="chapter" data-level="2.7" data-path="getting-started.html"><a href="getting-started.html#reading-data-into-r"><i class="fa fa-check"></i><b>2.7</b> Reading data into R</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="getting-started.html"><a href="getting-started.html#reading-and-saving-data-in-r"><i class="fa fa-check"></i><b>2.7.1</b> Reading and Saving Data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="getting-started.html"><a href="getting-started.html#what-to-do-first-after-you-read-in-your-data"><i class="fa fa-check"></i><b>2.8</b> What to do first after you read in your data?</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="getting-started.html"><a href="getting-started.html#ways-to-get-an-overview-of-your-data"><i class="fa fa-check"></i><b>2.8.1</b> Ways to get an overview of your data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="getting-started.html"><a href="getting-started.html#looking-at-specific-variables"><i class="fa fa-check"></i><b>2.9</b> Looking at specific variables</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="getting-started.html"><a href="getting-started.html#variable-distribution"><i class="fa fa-check"></i><b>2.9.1</b> Variable distribution</a></li>
+<li class="chapter" data-level="2.9.2" data-path="getting-started.html"><a href="getting-started.html#two-variables"><i class="fa fa-check"></i><b>2.9.2</b> Two variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-assignment-1.html"><a href="r-assignment-1.html"><i class="fa fa-check"></i><b>3</b> R Assignment 1</a><ul>
+<li class="chapter" data-level="3.0.1" data-path="r-assignment-1.html"><a href="r-assignment-1.html#instructions"><i class="fa fa-check"></i><b>3.0.1</b> Instructions</a></li>
+<li class="chapter" data-level="3.0.2" data-path="r-assignment-1.html"><a href="r-assignment-1.html#running-r-code"><i class="fa fa-check"></i><b>3.0.2</b> 1. Running R code</a></li>
+<li class="chapter" data-level="3.0.3" data-path="r-assignment-1.html"><a href="r-assignment-1.html#loading-the-installed-package-tidyverse."><i class="fa fa-check"></i><b>3.0.3</b> 2. Loading the installed package <code>tidyverse</code>.</a></li>
+<li class="chapter" data-level="3.0.4" data-path="r-assignment-1.html"><a href="r-assignment-1.html#getting-help-in-r"><i class="fa fa-check"></i><b>3.0.4</b> 3. Getting help in R</a></li>
+<li class="chapter" data-level="3.0.5" data-path="r-assignment-1.html"><a href="r-assignment-1.html#reading-in-a-csv-into-r"><i class="fa fa-check"></i><b>3.0.5</b> 4. Reading in a <code>csv</code> into R</a></li>
+<li class="chapter" data-level="3.0.6" data-path="r-assignment-1.html"><a href="r-assignment-1.html#inspecting-a-data-frame-in-r"><i class="fa fa-check"></i><b>3.0.6</b> 5. Inspecting a data frame in R</a></li>
+<li class="chapter" data-level="3.0.7" data-path="r-assignment-1.html"><a href="r-assignment-1.html#performing-summary-against-our-data-frame."><i class="fa fa-check"></i><b>3.0.7</b> 6. Performing <code>summary()</code> against our data frame.</a></li>
+<li class="chapter" data-level="3.0.8" data-path="r-assignment-1.html"><a href="r-assignment-1.html#creating-a-web-report-on-your-data-using-create_report"><i class="fa fa-check"></i><b>3.0.8</b> 7. Creating a web report on your data using <code>create_report()</code></a></li>
+<li class="chapter" data-level="3.0.9" data-path="r-assignment-1.html"><a href="r-assignment-1.html#creating-plots-with-ggplot2"><i class="fa fa-check"></i><b>3.0.9</b> 8 Creating plots with <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mapping-in-r.html"><a href="mapping-in-r.html"><i class="fa fa-check"></i><b>4</b> Mapping in R</a><ul>
+<li class="chapter" data-level="4.1" data-path="mapping-in-r.html"><a href="mapping-in-r.html#ggplot-map"><i class="fa fa-check"></i><b>4.1</b> GGPLOT map</a></li>
+<li class="chapter" data-level="4.2" data-path="mapping-in-r.html"><a href="mapping-in-r.html#mapping-in-r-1"><i class="fa fa-check"></i><b>4.2</b> Mapping in R</a></li>
+<li class="chapter" data-level="4.3" data-path="mapping-in-r.html"><a href="mapping-in-r.html#converting-data-to-a-spatial-object"><i class="fa fa-check"></i><b>4.3</b> Converting data to a spatial object</a></li>
+<li class="chapter" data-level="4.4" data-path="mapping-in-r.html"><a href="mapping-in-r.html#reading-in-shapefiles"><i class="fa fa-check"></i><b>4.4</b> Reading in shapefiles</a></li>
+<li class="chapter" data-level="4.5" data-path="mapping-in-r.html"><a href="mapping-in-r.html#aesthetics"><i class="fa fa-check"></i><b>4.5</b> Aesthetics</a></li>
+<li class="chapter" data-level="4.6" data-path="mapping-in-r.html"><a href="mapping-in-r.html#saving-map-objects"><i class="fa fa-check"></i><b>4.6</b> Saving map objects</a></li>
+<li class="chapter" data-level="4.7" data-path="mapping-in-r.html"><a href="mapping-in-r.html#interactive-maps"><i class="fa fa-check"></i><b>4.7</b> Interactive Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html"><i class="fa fa-check"></i><b>5</b> Mapping with R Continued</a><ul>
+<li class="chapter" data-level="5.1" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html#revisit-last-week"><i class="fa fa-check"></i><b>5.1</b> Revisit last week</a></li>
+<li class="chapter" data-level="5.2" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html#saving-map-objects-1"><i class="fa fa-check"></i><b>5.2</b> Saving map objects</a></li>
+<li class="chapter" data-level="5.3" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html#faceted-maps-small-multiples"><i class="fa fa-check"></i><b>5.3</b> Faceted Maps (small multiples)</a></li>
+<li class="chapter" data-level="5.4" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html#interactive-maps-1"><i class="fa fa-check"></i><b>5.4</b> Interactive Maps</a></li>
+<li class="chapter" data-level="5.5" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html#publishing-the-map-using-rpubs"><i class="fa fa-check"></i><b>5.5</b> Publishing the map using rpubs</a></li>
+<li class="chapter" data-level="5.6" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html#aggregate-data"><i class="fa fa-check"></i><b>5.6</b> Aggregate data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="r-assignment-1-1.html"><a href="r-assignment-1-1.html"><i class="fa fa-check"></i><b>6</b> R Assignment 1</a><ul>
+<li class="chapter" data-level="6.1" data-path="r-assignment-1-1.html"><a href="r-assignment-1-1.html#instructions-1"><i class="fa fa-check"></i><b>6.1</b> Instructions</a></li>
+<li class="chapter" data-level="6.2" data-path="r-assignment-1-1.html"><a href="r-assignment-1-1.html#for-this-exercise-we-need-to-load-packages-in-r.-3-points"><i class="fa fa-check"></i><b>6.2</b> 1. For this exercise we need to load packages in R. (3 points)</a></li>
+<li class="chapter" data-level="6.3" data-path="r-assignment-1-1.html"><a href="r-assignment-1-1.html#we-also-will-need-to-load-the-data-we-will-be-using-to-map-in-r.-load-the-data.-3-points"><i class="fa fa-check"></i><b>6.3</b> 2. We also will need to load the data we will be using to map in R. Load the data. (3 points)</a></li>
+<li class="chapter" data-level="6.4" data-path="r-assignment-1-1.html"><a href="r-assignment-1-1.html#altering-a-bubble-map.-6pts"><i class="fa fa-check"></i><b>6.4</b> 3. Altering a bubble map. (6pts)</a></li>
+<li class="chapter" data-level="6.5" data-path="r-assignment-1-1.html"><a href="r-assignment-1-1.html#mapping-arrests-by-sex-6pts"><i class="fa fa-check"></i><b>6.5</b> 4. Mapping arrests by sex (6pts)</a></li>
+<li class="chapter" data-level="6.6" data-path="r-assignment-1-1.html"><a href="r-assignment-1-1.html#using-arrange-to-make-a-row-of-maps-7-points"><i class="fa fa-check"></i><b>6.6</b> 5. Using arrange to make a row of maps (7 points)</a></li>
+<li class="chapter" data-level="6.7" data-path="r-assignment-1-1.html"><a href="r-assignment-1-1.html#creating-a-faceted-map-7-points"><i class="fa fa-check"></i><b>6.7</b> 6. Creating a faceted map (7 points)</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://pad.carpentries.org/2019-afam188" target="blank">Class Etherpad</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">African American Studies 188: Intro to R &amp; Mapping in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-assignment-1-1" class="section level1">
+<h1><span class="header-section-number">AFAM 188: R 6</span> R Assignment 1</h1>
+<p>Please add your name and email to the below lines:</p>
+<p>Name:<br />
+Email:</p>
+<div id="instructions-1" class="section level2">
+<h2><span class="header-section-number">6.1</span> Instructions</h2>
+<p>Complete the R coding challenges and questions in RStudio Cloud Project &lt;&gt; in the <code>r-assignment-2.R</code> file. Save that file as you work. You will have until <strong>12/06</strong> by 5pm. If you encounter any problems, please come to
+office hours on 12/3 from 2-4pm in the Data Science Center, 21536 YRL, email us at <a href="mailto:datascience@ucla.edu" class="email">datascience@ucla.edu</a> or set up an <a href="https://calendly.com/data-science-team/dsc-consulting?back=1&amp;month=2019-11">appointment</a>.</p>
+<p><strong>This assignment is worth 32 points.</strong></p>
+</div>
+<div id="for-this-exercise-we-need-to-load-packages-in-r.-3-points" class="section level2">
+<h2><span class="header-section-number">6.2</span> 1. For this exercise we need to load packages in R. (3 points)</h2>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="r-assignment-1-1.html#cb135-1"></a><span class="co">#load libraries we need:</span></span>
+<span id="cb135-2"><a href="r-assignment-1-1.html#cb135-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb135-3"><a href="r-assignment-1-1.html#cb135-3"></a><span class="kw">library</span>(sf)</span>
+<span id="cb135-4"><a href="r-assignment-1-1.html#cb135-4"></a><span class="kw">library</span>(tmap)</span></code></pre></div>
+</div>
+<div id="we-also-will-need-to-load-the-data-we-will-be-using-to-map-in-r.-load-the-data.-3-points" class="section level2">
+<h2><span class="header-section-number">6.3</span> 2. We also will need to load the data we will be using to map in R. Load the data. (3 points)</h2>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="r-assignment-1-1.html#cb136-1"></a>arrests &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/aug6_12_arrest_data.csv&#39;</span>)</span>
+<span id="cb136-2"><a href="r-assignment-1-1.html#cb136-2"></a>arrests_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(arrests, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb136-3"><a href="r-assignment-1-1.html#cb136-3"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
+<span id="cb136-4"><a href="r-assignment-1-1.html#cb136-4"></a>la_county &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `DRP_COUNTY_BOUNDARY&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 2 features and 2 fields
+## geometry type:  MULTILINESTRING
+## dimension:      XY
+## bbox:           xmin: 6280000 ymin: 1380000 xmax: 6670000 ymax: 2120000
+## epsg (SRID):    2229
+## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="r-assignment-1-1.html#cb138-1"></a>la_zips &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span> <span class="st">&quot;data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `Los_Angeles_City_Zip_Codes&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 157 features and 7 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -119 ymin: 33.7 xmax: -118 ymax: 34.3
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="r-assignment-1-1.html#cb140-1"></a><span class="co">#geometry type:  MULTILINESTRING</span></span>
+<span id="cb140-2"><a href="r-assignment-1-1.html#cb140-2"></a><span class="co">## the below command will make our zip data valid</span></span>
+<span id="cb140-3"><a href="r-assignment-1-1.html#cb140-3"></a>la_zips &lt;-<span class="st"> </span>lwgeom<span class="op">::</span><span class="kw">st_make_valid</span>(la_zips)</span>
+<span id="cb140-4"><a href="r-assignment-1-1.html#cb140-4"></a>la_freeways &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span><span class="st">&quot;data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `CAMS_FREEWAY_SHIELDS&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 45 features and 4 fields
+## geometry type:  MULTILINESTRING
+## dimension:      XY
+## bbox:           xmin: 6280000 ymin: 1720000 xmax: 6670000 ymax: 2120000
+## epsg (SRID):    2229
+## proj4string:    +proj=lcc +lat_1=35.46666666666667 +lat_2=34.03333333333333 +lat_0=33.5 +lon_0=-118 +x_0=2000000.0001016 +y_0=500000.0001016001 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</code></pre>
+</div>
+<div id="altering-a-bubble-map.-6pts" class="section level2">
+<h2><span class="header-section-number">6.4</span> 3. Altering a bubble map. (6pts)</h2>
+<p>In class we made the below map using <code>tmap</code>.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="r-assignment-1-1.html#cb142-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb142-2"><a href="r-assignment-1-1.html#cb142-2"></a><span class="st">   </span><span class="kw">tm_polygons</span>(<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb142-3"><a href="r-assignment-1-1.html#cb142-3"></a><span class="st">   </span><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb142-4"><a href="r-assignment-1-1.html#cb142-4"></a><span class="st">   </span><span class="kw">tm_bubbles</span>(<span class="dt">size =</span> <span class="fl">0.09</span>, <span class="dt">col=</span><span class="st">&quot;gold&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.4</span>)<span class="op">+</span></span>
+<span id="cb142-5"><a href="r-assignment-1-1.html#cb142-5"></a><span class="st">   </span><span class="kw">tm_compass</span>(<span class="dt">type =</span> <span class="st">&quot;4star&quot;</span>, <span class="dt">position =</span> <span class="kw">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;top&quot;</span>), <span class="dt">size =</span> <span class="dv">2</span>) </span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/3-bubbles-map-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Alter the below code by filling in the blanks with a different color for the <code>tm_polygons</code> and <code>tm_bubbles</code> functions. Also, adjust the <code>alpha</code> parameters. What colors are available for you to use? You can run the below function <code>colors()</code> for a list:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="r-assignment-1-1.html#cb143-1"></a><span class="kw">colors</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="r-assignment-1-1.html#cb144-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb144-2"><a href="r-assignment-1-1.html#cb144-2"></a><span class="st">   </span><span class="kw">tm_polygons</span>(<span class="dt">col=</span><span class="st">&quot;___&quot;</span>, <span class="dt">alpha =</span> ___) <span class="op">+</span></span>
+<span id="cb144-3"><a href="r-assignment-1-1.html#cb144-3"></a><span class="st">   </span><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb144-4"><a href="r-assignment-1-1.html#cb144-4"></a><span class="st">   </span><span class="kw">tm_bubbles</span>(<span class="dt">size =</span> <span class="fl">0.09</span>, <span class="dt">col=</span><span class="st">&quot;___&quot;</span>, <span class="dt">alpha=</span> ___)<span class="op">+</span></span>
+<span id="cb144-5"><a href="r-assignment-1-1.html#cb144-5"></a><span class="st">   </span><span class="kw">tm_compass</span>(<span class="dt">type =</span> <span class="st">&quot;4star&quot;</span>, <span class="dt">position =</span> <span class="kw">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;top&quot;</span>), <span class="dt">size =</span> <span class="dv">2</span>) </span></code></pre></div>
+</div>
+<div id="mapping-arrests-by-sex-6pts" class="section level2">
+<h2><span class="header-section-number">6.5</span> 4. Mapping arrests by sex (6pts)</h2>
+<p>Changing the map above so the bubbles are colored based on the sex variable in our data.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="r-assignment-1-1.html#cb145-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb145-2"><a href="r-assignment-1-1.html#cb145-2"></a><span class="st">   </span><span class="kw">tm_polygons</span>(<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb145-3"><a href="r-assignment-1-1.html#cb145-3"></a><span class="st">   </span><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb145-4"><a href="r-assignment-1-1.html#cb145-4"></a><span class="st">   </span><span class="kw">tm_bubbles</span>(<span class="dt">size =</span> <span class="fl">0.09</span>, <span class="dt">col=</span><span class="st">&quot;___&quot;</span>, <span class="dt">palette=</span><span class="kw">c</span>(<span class="dt">F=</span><span class="st">&#39;cyan&#39;</span>, <span class="dt">M=</span><span class="st">&#39;red&#39;</span>)) <span class="op">+</span></span>
+<span id="cb145-5"><a href="r-assignment-1-1.html#cb145-5"></a><span class="st">   </span><span class="kw">tm_compass</span>(<span class="dt">type =</span> <span class="st">&quot;4star&quot;</span>, <span class="dt">position =</span> <span class="kw">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;top&quot;</span>), <span class="dt">size =</span> <span class="dv">2</span>) </span></code></pre></div>
+<p>What does the map tell you about the data?
+Answer:</p>
+</div>
+<div id="using-arrange-to-make-a-row-of-maps-7-points" class="section level2">
+<h2><span class="header-section-number">6.6</span> 5. Using arrange to make a row of maps (7 points)</h2>
+<p>With the below code, we create multiple maps based off the base map <code>lazips</code>. Run the code, to create the R objects.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="r-assignment-1-1.html#cb146-1"></a>lazips &lt;-<span class="st"> </span><span class="kw">tm_shape</span>(la_zips)</span>
+<span id="cb146-2"><a href="r-assignment-1-1.html#cb146-2"></a>lzip1 &lt;-<span class="st"> </span>lazips <span class="op">+</span><span class="st"> </span><span class="kw">tm_fill</span>(<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb146-3"><a href="r-assignment-1-1.html#cb146-3"></a>lzip2 &lt;-<span class="st"> </span>lazips <span class="op">+</span><span class="st"> </span><span class="kw">tm_fill</span>(<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.3</span>)</span>
+<span id="cb146-4"><a href="r-assignment-1-1.html#cb146-4"></a>lzip3 &lt;-<span class="st"> </span>lazips <span class="op">+</span><span class="st"> </span><span class="kw">tm_borders</span>(<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb146-5"><a href="r-assignment-1-1.html#cb146-5"></a>lzip4 &lt;-<span class="st"> </span>lazips <span class="op">+</span><span class="st"> </span><span class="kw">tm_borders</span>(<span class="dt">lwd =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p>Now, use the function <code>tmap_arrange()</code> to arrange <code>lzip1</code> to <code>lzip4</code>, printing them out in a row of maps on the right plot. To see how we did this in class, see section 5.2 of the lesson: <a href="https://afam188.netlify.com/mapping-with-r-continued.html#saving-map-objects-1" class="uri">https://afam188.netlify.com/mapping-with-r-continued.html#saving-map-objects-1</a></p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="r-assignment-1-1.html#cb147-1"></a><span class="kw">tmap_arrange</span>(lzip1, ____, _____, ____, ____)</span></code></pre></div>
+</div>
+<div id="creating-a-faceted-map-7-points" class="section level2">
+<h2><span class="header-section-number">6.7</span> 6. Creating a faceted map (7 points)</h2>
+<p>In class we produced a faceted map of arrests by sex with the below code. Run the code to see how it works:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="r-assignment-1-1.html#cb148-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb148-2"><a href="r-assignment-1-1.html#cb148-2"></a><span class="st">   </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
+<span id="cb148-3"><a href="r-assignment-1-1.html#cb148-3"></a><span class="st">   </span><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb148-4"><a href="r-assignment-1-1.html#cb148-4"></a><span class="st">   </span><span class="kw">tm_symbols</span>(<span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">border.col =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
+<span id="cb148-5"><a href="r-assignment-1-1.html#cb148-5"></a><span class="st">   </span><span class="kw">tm_facets</span>(<span class="dt">by =</span> <span class="st">&quot;sex&quot;</span>, <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">free.coords =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p><img src="afam-188r_files/figure-html/faceted-by-sex-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Now, for below, fill in the blank in the <code>tm_facets</code> function to produce a faceted map of arrests by race category <code>race_cat</code>. This should produce a plot for each race category with arrest points colored by race.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="r-assignment-1-1.html#cb149-1"></a><span class="kw">tm_shape</span>(la_zips) <span class="op">+</span></span>
+<span id="cb149-2"><a href="r-assignment-1-1.html#cb149-2"></a><span class="st">   </span><span class="kw">tm_polygons</span>() <span class="op">+</span></span>
+<span id="cb149-3"><a href="r-assignment-1-1.html#cb149-3"></a><span class="st">   </span><span class="kw">tm_shape</span>(arrests_sf) <span class="op">+</span></span>
+<span id="cb149-4"><a href="r-assignment-1-1.html#cb149-4"></a><span class="st">   </span><span class="kw">tm_symbols</span>(<span class="dt">col =</span> <span class="st">&quot;sex&quot;</span>, <span class="dt">border.col =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>, <span class="dt">palette=</span><span class="kw">c</span>(<span class="dt">M =</span> <span class="st">&#39;yellow&#39;</span>, <span class="dt">F =</span> <span class="st">&quot;steelblue&quot;</span>)) <span class="op">+</span></span>
+<span id="cb149-5"><a href="r-assignment-1-1.html#cb149-5"></a><span class="st">   </span><span class="kw">tm_facets</span>(<span class="dt">by =</span> <span class="st">&quot;____&quot;</span>, <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">free.coords =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mapping-with-r-continued.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/r-assignment-2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["afam-188r.pdf", "afam-188r.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -3,4 +3,5 @@ language:
   ui:
     chapter_name: "AFAM 188: R "
 delete_merged_file: true
-rmd_files: ["index.Rmd", "01-intro-r.Rmd", "r-assignment-1.Rmd", "02-mapping-r.Rmd", "03-r-map-cont.Rmd"]
+rmd_files: ["index.Rmd", "01-intro-r.Rmd", "r-assignment-1.Rmd",
+ "02-mapping-r.Rmd", "03-r-map-cont.Rmd", "r-assignment-2.Rmd"]

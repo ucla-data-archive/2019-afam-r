@@ -184,7 +184,29 @@ Note, that we can interact with the map and change the base layer, turn off and 
 
 ## Publishing the map using rpubs 
 
-Open a RMarkdown document, copy 
+Notice on the interactive map panel on the right. A button entitled `publish` exists. You are presented options on RPubs or RStudio Connect (you'll need an account with RPubs). Select Rpubs and you'll be able to publish this map. 
+
+## Aggregate data 
+
+Looking at points on a map is nice, but what if we want to see arrests by zipcode or some other attribute. We need to aggregate our data to the zipcode and then map those numbers by zipcode. We've done this already in R for you and we can show you how to do this if you want to know how. For now, let's read in the data. 
+
+```{r}
+#read in a geopackage
+arrestsbyzip <- st_read(dsn = "data/arrests_zip.gpkg")
+```
+
+Note this is a format called a **geopackage**. It's an open, non-proprietary geo format. 
+
+Let's look at it. It has `zipcode`, `n`, a `geom`. `n` is the number of arrests in that zipcode. Note, this data represents 2 years, 2017-2018. Ok, we can map it now: 
+
+```{r arrests-by-zip, eval=FALSE}
+tmap_mode("view")
+#map of arrests
+tm_shape(arrestsbyzip ) +
+  tm_polygons("n")
+```
+
+Ok, this is opening up a whole new way to think about our data.  We can aggregate to a certain geo and add different variables, race, arrest_type, etc. 
 
 [aggre-larger-data]:# use dplyr to aggregate data by zipcode, then create a spatial dataset, by sex, by race, by age
 [add-color-other-theme]:# add color to the plot and different data, will need to prep

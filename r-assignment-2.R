@@ -1,0 +1,147 @@
+#' ---
+#' title: 'AF AM 188: R Assignment 2'
+#' author: "Tim Dennis"
+#' date: "11/26/2019"
+#' output: html_document
+#' ---
+#' 
+## ----setup-assignment, include=FALSE-------------------------------------
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+#' 
+#' # R Assignment 2  
+#' 
+#' Please add your name and email to the below lines: 
+#' 
+#' Name:   
+#' Email:   
+#' 
+#' ## Instructions 
+#' 
+#' Complete the R coding challenges and questions in RStudio Cloud Project
+#' <https://rstudio.cloud/spaces/31925/project/757350> in the `r-assignment-2.R` file.
+#' Save that file as you work. You will have until **12/06 by 5pm**. If you encounter any problems, please come to
+#' office hours on 12/3 from 2-4pm in the Data Science Center, 21536 YRL, email us at
+#' <datascience@ucla.edu> or set up an [appointment](https://calendly.com/data-science-team/dsc-consulting?back=1&month=2019-11). 
+#' 
+#' **This assignment is worth 32 points.**
+#' 
+#' ## 1. For this exercise we need to load packages in R.  (3 points)
+#' 
+## ----1-load-libraries----------------------------------------------------
+#load libraries we need. Also, set tmap_mode to plot b/c we want static maps for this exercise.
+library(tidyverse)
+library(sf)
+library(tmap)
+tmap_mode("plot")
+
+#' 
+#' 
+#' ## 2.  We also will need to load the data we will be using to map in R. 
+#' Load the data. (3 points)
+#' 
+## ----2-load-data, message=FALSE------------------------------------------
+arrests <- read_csv('data/aug6_12_arrest_data.csv')
+arrests_sf <- st_as_sf(arrests, coords = c("longitude", "latitude"), crs = 4326)
+#geometry type:  MULTILINESTRING
+la_county <- st_read(dsn ="data/DRP_COUNTY_BOUNDARY/DRP_COUNTY_BOUNDARY.shp")
+la_zips <- st_read(dsn = "data/Los_Angeles_City_Zip_Codes/Los_Angeles_City_Zip_Codes.shp")
+#geometry type:  MULTILINESTRING
+## the below command will make our zip data valid
+la_zips <- lwgeom::st_make_valid(la_zips)
+la_freeways <- st_read(dsn ="data/CAMS_FREEWAY_SHIELDS/CAMS_FREEWAY_SHIELDS.shp")
+
+#' 
+#' ## 3. Altering a bubble map. (6pts)
+#' 
+#' In class we made the below map using `tmap`.  
+#' 
+## ----3-bubbles-map-------------------------------------------------------
+tm_shape(la_zips) +
+   tm_polygons(col="blue", alpha = 0.3) +
+   tm_shape(arrests_sf) +
+   tm_bubbles(size = 0.09, col="gold", alpha=0.4)+
+   tm_compass(type = "4star", position = c("left", "top"), size = 2) 
+
+#' 
+#' Alter the below code by filling in the blanks with a different color for the
+#' `tm_polygons` and `tm_bubbles` functions. Also, adjust the `alpha` parameters. What
+#' colors are available for you to use? You can run the below function `colors()` for a
+#' list: 
+#' 
+## ----see colors, eval=FALSE----------------------------------------------
+## colors()
+
+#' 
+#' 
+## ----3-alter-bubble-map, eval=FALSE--------------------------------------
+## tm_shape(la_zips) +
+##    tm_polygons(col="___", alpha = ___) +
+##    tm_shape(arrests_sf) +
+##    tm_bubbles(size = 0.09, col="___", alpha= ___)+
+##    tm_compass(type = "4star", position = c("left", "top"), size = 2)
+
+#' 
+#' 
+#' ## 4. Mapping arrests by sex (6pts)
+#' 
+#' Changing the map above so the bubbles are colored based on the sex variable in our
+#' data. Fill in the blank in the `tm_bubbles` function. 
+#' 
+## ----arrests-by-sex, eval=FALSE------------------------------------------
+## tm_shape(la_zips) +
+##    tm_polygons(col="blue", alpha = 0.3) +
+##    tm_shape(arrests_sf) +
+##    tm_bubbles(size = 0.09, col="___", palette=c(F='cyan', M='red')) +
+##    tm_compass(type = "4star", position = c("left", "top"), size = 2)
+
+#' 
+#' What does the map tell you about the data? 
+#' 
+#' Answer: 
+#' 
+#' ## 5. Using arrange to make a row of maps (7 points)
+#' 
+#' With the below code, we create multiple maps based off the base map `lazips`. 
+#' Run the code to create the R objects. 
+#' 
+## ----creating-maps-base-map----------------------------------------------
+lazips <- tm_shape(la_zips)
+lzip1 <- lazips + tm_fill(col = "red")
+lzip2 <- lazips + tm_fill(col = "red", alpha = 0.3)
+lzip3 <- lazips + tm_borders(col = "blue")
+lzip4 <- lazips + tm_borders(lwd = 3)
+
+#' 
+#' Now, use the function `tmap_arrange()` to arrange `lzip1` to `lzip4`, printing them out in a row of maps in the right Plots pane. To see how we did this in class, see section 5.2 of the lesson: https://afam188.netlify.com/mapping-with-r-continued.html#saving-map-objects-1
+#' 
+## ----using-arrange-maps, eval=FALSE--------------------------------------
+## tmap_arrange(lzip1, ____, _____, ____, ____)
+
+#' 
+#' 
+#' ## 6. Creating a faceted map (7 points)
+#' 
+#' In class we produced a faceted map of arrests by sex with the below code. 
+#' Run the code to see how it works: 
+#' 
+## ----faceted-by-sex------------------------------------------------------
+tm_shape(la_zips) +
+   tm_polygons() +
+   tm_shape(arrests_sf) +
+   tm_symbols(col = "black", border.col = "white", size = 0.5) +
+   tm_facets(by = "sex", nrow=2, free.coords = FALSE)
+
+#' 
+#' Now, for below, fill in the blank in the `tm_facets` function to produce a faceted map
+#' of arrests by race category `race_cat`. This should produce a plot for each racial
+#' category with arrest points colored by race. 
+#' 
+## ----arrests-by-facets, eval=FALSE---------------------------------------
+## tm_shape(la_zips) +
+##    tm_polygons() +
+##    tm_shape(arrests_sf) +
+##    tm_symbols(col = "sex", border.col = "white", size = 0.5, palette=c(M = 'yellow', F = "steelblue")) +
+##    tm_facets(by = "____", nrow=2, free.coords = FALSE)
+

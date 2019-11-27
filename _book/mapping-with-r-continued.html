@@ -24,7 +24,7 @@
 <meta name="author" content="Tim Dennis" />
 
 
-<meta name="date" content="2019-11-25" />
+<meta name="date" content="2019-11-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="mapping-in-r.html"/>
-
+<link rel="next" href="r-assignment-2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -186,6 +186,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html#faceted-maps-small-multiples"><i class="fa fa-check"></i><b>5.3</b> Faceted Maps (small multiples)</a></li>
 <li class="chapter" data-level="5.4" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html#interactive-maps-1"><i class="fa fa-check"></i><b>5.4</b> Interactive Maps</a></li>
 <li class="chapter" data-level="5.5" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html#publishing-the-map-using-rpubs"><i class="fa fa-check"></i><b>5.5</b> Publishing the map using rpubs</a></li>
+<li class="chapter" data-level="5.6" data-path="mapping-with-r-continued.html"><a href="mapping-with-r-continued.html#aggregate-data"><i class="fa fa-check"></i><b>5.6</b> Aggregate data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="r-assignment-2.html"><a href="r-assignment-2.html"><i class="fa fa-check"></i><b>6</b> R Assignment 2</a><ul>
+<li class="chapter" data-level="6.1" data-path="r-assignment-2.html"><a href="r-assignment-2.html#instructions-1"><i class="fa fa-check"></i><b>6.1</b> Instructions</a></li>
+<li class="chapter" data-level="6.2" data-path="r-assignment-2.html"><a href="r-assignment-2.html#for-this-exercise-we-need-to-load-packages-in-r.-3-points"><i class="fa fa-check"></i><b>6.2</b> 1. For this exercise we need to load packages in R. (3 points)</a></li>
+<li class="chapter" data-level="6.3" data-path="r-assignment-2.html"><a href="r-assignment-2.html#we-also-will-need-to-load-the-data-we-will-be-using-to-map-in-r.-load-the-data.-3-points"><i class="fa fa-check"></i><b>6.3</b> 2. We also will need to load the data we will be using to map in R. Load the data. (3 points)</a></li>
+<li class="chapter" data-level="6.4" data-path="r-assignment-2.html"><a href="r-assignment-2.html#altering-a-bubble-map.-6pts"><i class="fa fa-check"></i><b>6.4</b> 3. Altering a bubble map. (6pts)</a></li>
+<li class="chapter" data-level="6.5" data-path="r-assignment-2.html"><a href="r-assignment-2.html#mapping-arrests-by-sex-6pts"><i class="fa fa-check"></i><b>6.5</b> 4. Mapping arrests by sex (6pts)</a></li>
+<li class="chapter" data-level="6.6" data-path="r-assignment-2.html"><a href="r-assignment-2.html#using-arrange-to-make-a-row-of-maps-7-points"><i class="fa fa-check"></i><b>6.6</b> 5. Using arrange to make a row of maps (7 points)</a></li>
+<li class="chapter" data-level="6.7" data-path="r-assignment-2.html"><a href="r-assignment-2.html#creating-a-faceted-map-7-points"><i class="fa fa-check"></i><b>6.7</b> 6. Creating a faceted map (7 points)</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -358,7 +368,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="publishing-the-map-using-rpubs" class="section level2">
 <h2><span class="header-section-number">5.5</span> Publishing the map using rpubs</h2>
-<p>Open a RMarkdown document, copy</p>
+<p>Notice on the interactive map panel on the right. A button entitled <code>publish</code> exists. You are presented options on RPubs or RStudio Connect (you’ll need an account with RPubs). Select Rpubs and you’ll be able to publish this map.</p>
+</div>
+<div id="aggregate-data" class="section level2">
+<h2><span class="header-section-number">5.6</span> Aggregate data</h2>
+<p>Looking at points on a map is nice, but what if we want to see arrests by zipcode or some other attribute. We need to aggregate our data to the zipcode and then map those numbers by zipcode. We’ve done this already in R for you and we can show you how to do this if you want to know how. For now, let’s read in the data.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="mapping-with-r-continued.html#cb132-1"></a><span class="co">#read in a geopackage</span></span>
+<span id="cb132-2"><a href="mapping-with-r-continued.html#cb132-2"></a>arrestsbyzip &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="dt">dsn =</span> <span class="st">&quot;data/arrests_zip.gpkg&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `arrests_zip&#39; from data source `/Users/timdennis/instruction/afam188/afam188-r/data/arrests_zip.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 147 features and 8 fields (with 3 geometries empty)
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -119 ymin: 33.7 xmax: -118 ymax: 34.3
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<p>Note this is a format called a <strong>geopackage</strong>. It’s an open, non-proprietary geo format.</p>
+<p>Let’s look at it. It has <code>zipcode</code>, <code>n</code>, a <code>geom</code>. <code>n</code> is the number of arrests in that zipcode. Note, this data represents 2 years, 2017-2018. Ok, we can map it now:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="mapping-with-r-continued.html#cb134-1"></a><span class="kw">tmap_mode</span>(<span class="st">&quot;view&quot;</span>)</span>
+<span id="cb134-2"><a href="mapping-with-r-continued.html#cb134-2"></a><span class="co">#map of arrests</span></span>
+<span id="cb134-3"><a href="mapping-with-r-continued.html#cb134-3"></a><span class="kw">tm_shape</span>(arrestsbyzip ) <span class="op">+</span></span>
+<span id="cb134-4"><a href="mapping-with-r-continued.html#cb134-4"></a><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p>Ok, this is opening up a whole new way to think about our data. We can aggregate to a certain geo and add different variables, race, arrest_type, etc.</p>
 
 </div>
 </div>
@@ -367,8 +397,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="mapping-in-r.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="mapping-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-assignment-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
